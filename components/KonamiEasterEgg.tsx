@@ -83,6 +83,13 @@ export default function KhodamChecker() {
     return () => window.removeEventListener("keydown", onKey);
   }, [step]);
 
+  // Mobile 7-tap trigger
+  useEffect(() => {
+    const onTap = () => { setOpen(true); setPhase("input"); setName(""); };
+    window.addEventListener("khodam:open", onTap);
+    return () => window.removeEventListener("khodam:open", onTap);
+  }, []);
+
   // Escape to close
   useEffect(() => {
     if (!open) return;

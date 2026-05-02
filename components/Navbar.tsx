@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
@@ -17,6 +17,19 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const indicatorRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLUListElement>(null);
+  const tapCount = useRef(0);
+  const tapTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleLogoTap = useCallback(() => {
+    tapCount.current += 1;
+    if (tapTimer.current) clearTimeout(tapTimer.current);
+    if (tapCount.current === 7) {
+      tapCount.current = 0;
+      window.dispatchEvent(new Event("khodam:open"));
+      return;
+    }
+    tapTimer.current = setTimeout(() => { tapCount.current = 0; }, 2000);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -50,7 +63,7 @@ export default function Navbar() {
       }`}
     >
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#hero" className="font-cinzel text-gold text-lg tracking-widest hover:text-shadow-gold transition-all">
+        <a href="#hero" onClick={handleLogoTap} className="font-cinzel text-gold text-lg tracking-widest hover:text-shadow-gold transition-all">
           OmniDev
         </a>
 
