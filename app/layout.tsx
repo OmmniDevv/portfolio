@@ -6,6 +6,7 @@ import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import KonamiEasterEgg from "@/components/KonamiEasterEgg";
 import SpotifyWidget from "@/components/SpotifyWidget";
+import BackToTop from "@/components/BackToTop";
 import SplashScreen from "@/components/SplashScreen";
 
 const cinzel = Cinzel({
@@ -72,6 +73,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <SpotifyWidget />
+        <BackToTop />
         <KonamiEasterEgg />
       </body>
     </html>

@@ -88,3 +88,7 @@
 .elem-pulse-icon {
   animation: elem-pulse 5s ease-in-out infinite;
 }
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
