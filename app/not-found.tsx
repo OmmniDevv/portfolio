@@ -14,7 +14,7 @@ export default function NotFound() {
   return (
     <main className="min-h-screen flex items-center justify-center px-6 pt-24 pb-16">
       <Reveal className="w-full max-w-lg text-center">
-        <div className="glass p-10 md:p-14">
+        <div className="glass p-8 md:p-14">
           <p className="eyebrow mb-6">Error 404</p>
           <p className="text-6xl mb-6" aria-hidden="true">
             {face}

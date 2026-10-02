@@ -84,7 +84,7 @@ export default function Guestbook() {
   };
 
   return (
-    <section id="buku-tamu" className="py-24 px-6">
+    <section id="buku-tamu" className="py-16 md:py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <p className="eyebrow mb-4">{t.guestbook.eyebrow}</p>

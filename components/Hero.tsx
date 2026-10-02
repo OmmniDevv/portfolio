@@ -35,7 +35,7 @@ export default function Hero() {
             <p className="eyebrow mb-6">{t.hero.eyebrow}</p>
           </Reveal>
           <Reveal delay={80}>
-            <h1 className="font-bold tracking-tight text-5xl md:text-6xl xl:text-7xl leading-[1.04]">
+            <h1 className="font-bold tracking-tight text-4xl md:text-6xl xl:text-7xl leading-[1.08]">
               {t.hero.titleA} <span className="text-gradient">{t.hero.titleHighlight}</span>{" "}
               {t.hero.titleB}
             </h1>

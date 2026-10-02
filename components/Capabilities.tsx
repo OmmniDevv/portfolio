@@ -27,7 +27,7 @@ export default function Capabilities() {
   ];
 
   return (
-    <section id="kemampuan" className="py-24 px-6">
+    <section id="kemampuan" className="py-16 md:py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <p className="eyebrow mb-4 text-center">{t.capabilities.eyebrow}</p>
@@ -42,7 +42,7 @@ export default function Capabilities() {
         <div className="mt-12 grid md:grid-cols-2 gap-5">
           {CAPABILITIES.map((c, i) => (
             <Reveal key={c.title} delay={i * 80} className={c.span ? "md:col-span-2" : ""}>
-              <div className="glass p-8 md:p-10 h-full">
+              <div className="glass p-6 md:p-10 h-full">
                 <h3 className="font-bold text-xl md:text-2xl mb-3">{c.title}</h3>
                 <p className="text-soft leading-relaxed max-w-xl">{c.desc}</p>
                 <ul className="flex flex-wrap gap-2 mt-6" aria-label={`${t.capabilities.techLabel} ${c.title}`}>

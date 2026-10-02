@@ -79,7 +79,7 @@ export default function CvPage() {
           </a>
         </div>
 
-        <article className="glass p-8 md:p-12">
+        <article className="glass p-6 md:p-12">
           <div>
             <h1 className="text-3xl md:text-4xl font-bold tracking-tight">{CV.name}</h1>
             <p className="mt-1 text-gradient font-semibold">{CV.title}</p>

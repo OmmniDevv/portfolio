@@ -10,7 +10,7 @@ export default function FAQ() {
   const FAQS = [t.faq.q1, t.faq.q2, t.faq.q3, t.faq.q4, t.faq.q5, t.faq.q6, t.faq.q7, t.faq.q8];
 
   return (
-    <section id="faq" className="py-24 px-6">
+    <section id="faq" className="py-16 md:py-24 px-6">
       <div className="max-w-3xl mx-auto">
         <Reveal>
           <p className="eyebrow mb-4 text-center">{t.faq.eyebrow}</p>
@@ -33,7 +33,7 @@ export default function FAQ() {
                     onClick={() => setOpen(isOpen ? null : i)}
                     aria-expanded={isOpen}
                     aria-controls={`faq-panel-${i}`}
-                    className="w-full min-h-[56px] flex items-center justify-between gap-4 text-left px-6 py-4 cursor-pointer"
+                    className="w-full min-h-[56px] flex items-center justify-between gap-4 text-left px-5 md:px-6 py-4 cursor-pointer"
                   >
                     <span className="font-bold text-ink text-[15px] md:text-base">
                       {f.q}
@@ -56,7 +56,7 @@ export default function FAQ() {
                     }`}
                   >
                     <div className="overflow-hidden">
-                      <p className="px-6 pb-5 text-soft text-[15px] leading-relaxed">
+                      <p className="px-5 md:px-6 pb-5 text-soft text-[15px] leading-relaxed">
                         {f.a}
                       </p>
                     </div>

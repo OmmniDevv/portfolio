@@ -14,9 +14,9 @@ export default function About() {
   ];
 
   return (
-    <section id="tentang" className="py-24 px-6">
+    <section id="tentang" className="py-16 md:py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="glass p-8 md:p-12 grid md:grid-cols-[220px_1fr] gap-10 items-center">
+        <div className="glass p-6 md:p-12 grid md:grid-cols-[220px_1fr] gap-8 md:gap-10 items-center">
           <Reveal>
             <div className="relative aspect-square rounded-2xl overflow-hidden w-44 md:w-full mx-auto shadow-lg">
               <Image

@@ -15,7 +15,7 @@ export default function Pricing() {
   ];
 
   return (
-    <section id="harga" className="py-24 px-6">
+    <section id="harga" className="py-16 md:py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <p className="eyebrow mb-4 text-center">{t.pricing.eyebrow}</p>

@@ -31,7 +31,7 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="pb-28 px-6">
+    <section className="pb-20 md:pb-28 px-6">
       <div className="max-w-5xl mx-auto">
         <Reveal>
           <div className="glass p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6">
@@ -46,7 +46,7 @@ export default function Newsletter() {
             {status === "done" ? (
               <p className="text-sm text-ink md:text-right" role="status">{msg}</p>
             ) : (
-              <form onSubmit={submit} className="flex gap-3 w-full md:w-auto">
+              <form onSubmit={submit} className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
                 <label htmlFor="nl-email" className="sr-only">{t.newsletter.emailLabel}</label>
                 <input
                   id="nl-email"
@@ -56,7 +56,7 @@ export default function Newsletter() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="nama@email.com"
                   disabled={status === "loading"}
-                  className="flex-1 md:w-64 bg-[var(--input-bg)] border border-[var(--hairline)] rounded-full px-5 h-12 text-sm text-ink placeholder:text-faint outline-none focus:border-[color-mix(in_srgb,var(--primary)_65%,transparent)] transition-colors disabled:opacity-50"
+                  className="flex-1 md:w-64 bg-[var(--input-bg)] border border-[var(--hairline)] rounded-full px-5 h-12 text-base md:text-sm text-ink placeholder:text-faint outline-none focus:border-[color-mix(in_srgb,var(--primary)_65%,transparent)] transition-colors disabled:opacity-50"
                 />
                 <button type="submit" disabled={status === "loading" || !email} className="btn-primary !min-h-[48px] shrink-0 disabled:opacity-50">
                   {status === "loading" ? "..." : t.newsletter.subscribe}

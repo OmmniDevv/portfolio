@@ -12,10 +12,10 @@ const SOCIALS = [
 export default function Contact() {
   const { t } = useLang();
   return (
-    <section id="kontak" className="py-24 px-6">
+    <section id="kontak" className="py-16 md:py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <Reveal>
-          <div className="glass-strong p-10 md:p-16 text-center relative overflow-hidden">
+          <div className="glass-strong p-7 md:p-16 text-center relative overflow-hidden">
             <div
               aria-hidden="true"
               className="absolute -top-32 left-1/2 -translate-x-1/2 w-[36rem] h-64 rounded-full bg-gradient-to-r from-primary/25 to-accent/25 blur-[100px] pointer-events-none"

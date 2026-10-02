@@ -214,7 +214,7 @@ export default function CommandPalette() {
             aria-activedescendant={filtered[active] ? `palette-opt-${filtered[active].id}` : undefined}
             role="combobox"
             autoComplete="off"
-            className="w-full bg-transparent text-ink placeholder:text-faint outline-none text-[15px]"
+            className="w-full bg-transparent text-ink placeholder:text-faint outline-none text-base"
           />
           <kbd className="font-mono text-[11px] text-faint border border-[var(--hairline)] rounded px-1.5 py-0.5 shrink-0">
             ESC

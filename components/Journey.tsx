@@ -10,7 +10,7 @@ export default function Journey() {
   );
 
   return (
-    <section id="perjalanan" className="py-24 px-6">
+    <section id="perjalanan" className="py-16 md:py-24 px-6">
       <div className="max-w-3xl mx-auto">
         <Reveal>
           <p className="eyebrow mb-4 text-center">{t.journey.eyebrow}</p>

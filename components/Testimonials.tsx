@@ -10,7 +10,7 @@ export default function Testimonials() {
   const TESTIMONIALS = [t.testimonials.item1, t.testimonials.item2, t.testimonials.item3];
 
   return (
-    <section id="testimoni" className="py-24 px-6">
+    <section id="testimoni" className="py-16 md:py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <p className="eyebrow mb-4 text-center">{t.testimonials.eyebrow}</p>
@@ -22,7 +22,7 @@ export default function Testimonials() {
         <div className="mt-12 grid md:grid-cols-3 gap-5">
           {TESTIMONIALS.map((item, i) => (
             <Reveal key={item.name} delay={i * 80}>
-              <figure className="glass p-8 h-full flex flex-col">
+              <figure className="glass p-6 md:p-8 h-full flex flex-col">
                 <div className="flex gap-1 mb-5" aria-label={t.testimonials.ratingLabel}>
                   {Array.from({ length: 5 }).map((_, s) => (
                     <span key={s} className="text-gradient text-lg" aria-hidden="true">

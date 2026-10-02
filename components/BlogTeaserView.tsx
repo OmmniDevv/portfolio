@@ -8,7 +8,7 @@ export default function BlogTeaserView({ posts }: { posts: Post[] }) {
   const { t } = useLang();
 
   return (
-    <section id="blog" className="py-24 px-6">
+    <section id="blog" className="py-16 md:py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <div className="flex items-end justify-between gap-4">

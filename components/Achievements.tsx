@@ -32,7 +32,7 @@ function medalClass(juara: string) {
 }
 
   return (
-    <section id="pencapaian" className="py-24 px-6">
+    <section id="pencapaian" className="py-16 md:py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <p className="eyebrow mb-4 text-center">{t.achievements.eyebrow}</p>
