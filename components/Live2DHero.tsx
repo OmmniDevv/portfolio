@@ -177,7 +177,7 @@ export default function Live2DHero() {
   };
 
   return (
-    <div ref={wrapRef} className="relative z-10 w-full h-[560px] md:h-[720px] select-none">
+    <div ref={wrapRef} className="relative z-10 w-full h-[440px] md:h-[720px] select-none">
       {bubble && (
         <div className="absolute top-2 left-1/2 -translate-x-1/2 z-10 glass-strong px-4 py-2.5 max-w-[240px] text-sm text-ink leading-relaxed text-center animate-[pop_0.25s_ease] pointer-events-none">
           {bubble}
