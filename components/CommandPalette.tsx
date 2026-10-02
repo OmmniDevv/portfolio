@@ -24,7 +24,6 @@ const ITEMS: PaletteItem[] = [
   { id: "now", label: "Now", deskripsi: "Lagi ngapain sekarang", kategori: "Halaman", keywords: "sekarang now update", href: "/now" },
   { id: "changelog", label: "Changelog", deskripsi: "Update apa saja di web ini", kategori: "Halaman", keywords: "perubahan update log riwayat", href: "/changelog" },
   { id: "buku-tamu", label: "Buku Tamu", deskripsi: "Tinggalkan pesan", kategori: "Navigasi", keywords: "guestbook pesan tamu", href: "/#buku-tamu" },
-  { id: "pencapaian", label: "Pencapaian", deskripsi: "Badge achievements yang terbuka", kategori: "Navigasi", keywords: "achievement badge lencana", href: "/#pencapaian" },
   {
     id: "tema",
     label: "Ganti tema terang/gelap",

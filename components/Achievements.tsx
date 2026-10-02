@@ -5,16 +5,23 @@ import { useLang } from "@/lib/i18n";
 export default function Achievements() {
   const { t } = useLang();
 
-  // NOTE: Data contoh — ganti dengan prestasi lomba asli.
-  // Format: { juara, lomba, penyelenggara, tahun, deskripsi }
-  const PRESTASI = [
-    { ...t.achievements.item1, tahun: "2025" },
-    { ...t.achievements.item2, tahun: "2025" },
-    { ...t.achievements.item3, tahun: "2024" },
-    { ...t.achievements.item4, tahun: "2024" },
-    { ...t.achievements.item5, tahun: "2024" },
-    { ...t.achievements.item6, tahun: "2023" },
-  ];
+  // ISI DENGAN PRESTASI ASLI — contoh format per item:
+// {
+//   juara: "Juara 1",
+//   lomba: "Web Design Competition",
+//   penyelenggara: "TechFest SMK se-Kota Bandung",
+//   tahun: "2025",
+//   desc: "Deskripsi singkat pencapaian.",
+// },
+const PRESTASI: {
+  juara: string;
+  lomba: string;
+  penyelenggara: string;
+  tahun: string;
+  desc: string;
+}[] = [
+  // <-- tambah prestasi asli di sini, lalu aktifkan lagi <Achievements /> di app/page.tsx
+];
 
 /* Warna medali per peringkat. */
 function medalClass(juara: string) {

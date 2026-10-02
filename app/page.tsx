@@ -11,7 +11,6 @@ import FAQ from "@/components/FAQ";
 import BlogTeaser from "@/components/BlogTeaser";
 import AnimeWidget from "@/components/AnimeWidget";
 import CodingStats from "@/components/CodingStats";
-import Achievements from "@/components/Achievements";
 import Guestbook from "@/components/Guestbook";
 import Contact from "@/components/Contact";
 import Newsletter from "@/components/Newsletter";
@@ -33,7 +32,6 @@ export default function Home() {
       <Pricing />
       <FAQ />
       <BlogTeaser />
-      <Achievements />
       <Guestbook />
       <Contact />
       <Newsletter />
