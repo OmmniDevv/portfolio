@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { useLang } from "@/lib/i18n";
 import dynamic from "next/dynamic";
 import Reveal from "./Reveal";
 
@@ -12,6 +14,7 @@ const Live2DHero = dynamic(() => import("./Live2DHero"), {
 });
 
 export default function Hero() {
+  const { t } = useLang();
   return (
     <section className="relative min-h-[100svh] flex items-center pt-24 pb-16 px-6 overflow-hidden">
       {/* Background ilustrasi kamar — hanya di hero ini */}
@@ -29,33 +32,32 @@ export default function Hero() {
       <div className="relative max-w-6xl mx-auto w-full grid md:grid-cols-[1fr_1.25fr] gap-8 items-center">
         <div className="text-center md:text-left">
           <Reveal>
-            <p className="eyebrow mb-6">Studio — Portfolio Pribadi</p>
+            <p className="eyebrow mb-6">{t.hero.eyebrow}</p>
           </Reveal>
           <Reveal delay={80}>
             <h1 className="font-bold tracking-tight text-5xl md:text-6xl xl:text-7xl leading-[1.04]">
-              Kami membangun <span className="text-gradient">produk digital</span> yang
-              memberikan hasil nyata.
+              {t.hero.titleA} <span className="text-gradient">{t.hero.titleHighlight}</span>{" "}
+              {t.hero.titleB}
             </h1>
           </Reveal>
           <Reveal delay={160}>
             <p className="mt-6 max-w-xl mx-auto md:mx-0 text-soft text-lg leading-relaxed">
-              Halo, saya Abdul Malik Rizky Nur Rahmat. Junior developer dari Bandung
-              yang fokus bikin website cepat dan bot automasi yang rapi.
+              {t.hero.intro}
             </p>
           </Reveal>
           <Reveal delay={240}>
             <div className="mt-10 flex flex-wrap justify-center md:justify-start gap-4">
               <Link href="/#proyek" className="btn-primary">
-                Lihat Proyek
+                {t.hero.viewProjects}
               </Link>
               <Link href="/#kontak" className="btn-ghost">
-                Hubungi Saya
+                {t.hero.contactMe}
               </Link>
             </div>
           </Reveal>
           <Reveal delay={320}>
             <p className="mt-10 font-mono text-xs text-faint">
-              Psst — klik Mao di sebelah kanan, dia bisa diajak interaksi!
+              {t.hero.hint}
             </p>
           </Reveal>
         </div>

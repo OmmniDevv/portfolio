@@ -4,18 +4,20 @@ import Link from "next/link";
 
 import ThemeToggle from "./ThemeToggle";
 import LangToggle from "./LangToggle";
-
-const LINKS = [
-  { label: "Tentang", href: "/#tentang" },
-  { label: "Kemampuan", href: "/#kemampuan" },
-  { label: "Proyek", href: "/#proyek" },
-  { label: "Blog", href: "/blog" },
-  { label: "Kontak", href: "/#kontak" },
-];
+import { useLang } from "@/lib/i18n";
 
 export default function Navbar() {
+  const { t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const LINKS = [
+    { label: t.nav.about, href: "/#tentang" },
+    { label: t.nav.skills, href: "/#kemampuan" },
+    { label: t.nav.projects, href: "/#proyek" },
+    { label: t.nav.blog, href: "/blog" },
+    { label: t.nav.contact, href: "/#kontak" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -30,7 +32,7 @@ export default function Navbar() {
         scrolled ? "glass-strong !rounded-none border-x-0 border-t-0" : "bg-transparent"
       }`}
     >
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Navigasi utama">
+      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label={t.nav.mainNavLabel}>
         <Link href="/" className="font-bold text-lg tracking-tight text-ink">
           Omni<span className="text-gradient">Dev</span>
         </Link>
@@ -47,7 +49,7 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-3">
           <Link href="/#kontak" className="btn-primary !min-h-[44px] !px-6 text-sm">
-            Mari Bicara
+            {t.buttons.letsTalk}
           </Link>
           <LangToggle />
           <ThemeToggle />
@@ -60,7 +62,7 @@ export default function Navbar() {
           className="w-11 h-11 flex flex-col items-center justify-center gap-1.5"
           onClick={() => setOpen((o) => !o)}
           aria-expanded={open}
-          aria-label={open ? "Tutup menu" : "Buka menu"}
+          aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
         >
           <span className={`block w-6 h-0.5 bg-ink transition-transform ${open ? "rotate-45 translate-y-2" : ""}`} />
           <span className={`block w-6 h-0.5 bg-ink transition-opacity ${open ? "opacity-0" : ""}`} />
