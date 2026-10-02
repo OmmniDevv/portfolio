@@ -42,12 +42,13 @@ export default function Live2DHero() {
     (async () => {
       try {
         // 1. Load Cubism 4 runtime dulu (wajib sebelum import cubism4)
+        // Dari CDN resmi Live2D (sama seperti kana-hermes)
         if (!(window as any).Live2DCubismCore) {
           await new Promise<void>((resolve, reject) => {
             const s = document.createElement("script");
-            s.src = "/js/live2dcubismcore.min.js";
+            s.src = "https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js";
             s.onload = () => resolve();
-            s.onerror = () => reject(new Error("Gagal load live2dcubismcore.min.js"));
+            s.onerror = () => reject(new Error("Gagal load Cubism Core dari CDN Live2D"));
             document.head.appendChild(s);
           });
         }

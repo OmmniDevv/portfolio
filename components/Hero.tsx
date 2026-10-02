@@ -17,7 +17,7 @@ export default function Hero() {
       {/* Background ilustrasi kamar — hanya di hero ini */}
       <div aria-hidden="true" className="absolute inset-0">
         <img
-          src="/images/hero-room.jpg"
+          src="/images/hero-room.webp"
           alt=""
           className="w-full h-full object-cover"
           loading="eager"
