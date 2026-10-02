@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import ThemeToggle from "./ThemeToggle";
+import LangToggle from "./LangToggle";
 
 const LINKS = [
   { label: "Tentang", href: "/#tentang" },
@@ -48,10 +49,12 @@ export default function Navbar() {
           <Link href="/#kontak" className="btn-primary !min-h-[44px] !px-6 text-sm">
             Mari Bicara
           </Link>
+          <LangToggle />
           <ThemeToggle />
         </div>
 
         <div className="flex md:hidden items-center gap-2">
+          <LangToggle />
           <ThemeToggle />
           <button
           className="w-11 h-11 flex flex-col items-center justify-center gap-1.5"
