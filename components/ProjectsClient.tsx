@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
+import ContributionGraph from "./ContributionGraph";
 import type { GithubRepo } from "@/lib/github";
 
 const LANG_COLORS: Record<string, string> = {
@@ -287,25 +288,14 @@ export default function ProjectsClient({ repos }: { repos: GithubRepo[] }) {
           </p>
         )}
 
-        {/* GitHub Activity Graph */}
+        {/* GitHub Activity Graph — custom, tidak tergantung service pihak ketiga */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.4 }}
           className="mt-14"
         >
-          <p className="font-cinzel text-xs text-gold/50 tracking-widest uppercase text-center mb-4">
-            Contribution Activity
-          </p>
-          <div className="rounded-xl overflow-hidden border border-gold/20">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://github-readme-activity-graph.vercel.app/graph?username=OmmniDevv&bg_color=0D1B2A&color=C8A96E&line=4FC3F7&point=EF9A9A&area=true&hide_border=true"
-              alt="GitHub contribution activity graph"
-              className="w-full"
-              loading="lazy"
-            />
-          </div>
+          <ContributionGraph />
         </motion.div>
 
         {/* Visitor Counter */}
