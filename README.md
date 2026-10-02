@@ -41,3 +41,4 @@ Isi tulisan...
 ## Deploy
 
 Otomatis via Vercel setiap push ke `main`.
+
