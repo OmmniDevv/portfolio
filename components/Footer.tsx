@@ -1,57 +1,14 @@
 export default function Footer() {
   return (
-    <footer className="py-12 px-6 text-center relative overflow-hidden">
-      {/* Ornamental divider */}
-      <div className="flex items-center justify-center mb-8">
-        <svg
-          width="320"
-          height="24"
-          viewBox="0 0 320 24"
-          fill="none"
-          aria-hidden="true"
-          className="opacity-50"
-        >
-          <line x1="0" y1="12" x2="120" y2="12" stroke="#C8A96E" strokeWidth="0.5" />
-          <path d="M120 12 L130 6 L140 12 L130 18 Z" stroke="#C8A96E" strokeWidth="0.5" fill="none" />
-          <circle cx="160" cy="12" r="6" stroke="#C8A96E" strokeWidth="0.5" />
-          <circle cx="160" cy="12" r="2" fill="#C8A96E" />
-          <path d="M180 12 L190 6 L200 12 L190 18 Z" stroke="#C8A96E" strokeWidth="0.5" fill="none" />
-          <line x1="200" y1="12" x2="320" y2="12" stroke="#C8A96E" strokeWidth="0.5" />
-          {/* Small rune marks */}
-          <line x1="148" y1="8" x2="148" y2="16" stroke="#C8A96E" strokeWidth="0.5" />
-          <line x1="172" y1="8" x2="172" y2="16" stroke="#C8A96E" strokeWidth="0.5" />
-        </svg>
+    <footer className="border-t border-white/8 px-6 py-10">
+      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p className="font-display font-bold">
+          Omni<span className="text-accent">Dev</span>
+        </p>
+        <p className="text-faint text-xs">
+          © 2026 Abdul Malik Rizky Nur Rahmat. Dibangun dengan Next.js.
+        </p>
       </div>
-
-      <blockquote className="font-cinzel text-parchment/50 text-sm italic tracking-wide max-w-md mx-auto mb-6">
-        &ldquo;Even in the darkest night, a developer&rsquo;s code illuminates the world.&rdquo;
-      </blockquote>
-
-      <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-6">
-        {[
-          { label: "GitHub", href: "https://github.com/OmmniDevv" },
-          { label: "Email", href: "mailto:omnidevv@gmail.com" },
-          { label: "WhatsApp", href: "https://wa.me/6285187605007" },
-          { label: "Telegram", href: "https://t.me/zanslord" },
-        ].map((l) => (
-          <a
-            key={l.label}
-            href={l.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-cinzel text-xs tracking-widest uppercase text-parchment/40 hover:text-gold transition-colors"
-          >
-            {l.label}
-          </a>
-        ))}
-      </div>
-
-      <p className="font-inter text-parchment/30 text-xs tracking-widest">
-        &copy; 2026 OmniDev &mdash; Abdul Malik Rizky Nur Rahmat
-      </p>
-      <p className="font-inter text-parchment/20 text-[11px] tracking-widest mt-2">
-        Forged with Next.js, Tailwind &amp; Framer Motion
-      </p>
     </footer>
   );
 }

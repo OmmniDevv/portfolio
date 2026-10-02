@@ -1,89 +1,35 @@
 import type { Metadata } from "next";
-import { Cinzel, Inter, JetBrains_Mono, Noto_Sans_JP } from "next/font/google";
-import "../styles/globals.css";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import "./globals.css";
 import Navbar from "@/components/Navbar";
-import CustomCursor from "@/components/CustomCursor";
-import ScrollProgress from "@/components/ScrollProgress";
-import KonamiEasterEgg from "@/components/KonamiEasterEgg";
-import SpotifyWidget from "@/components/SpotifyWidget";
-import BackToTop from "@/components/BackToTop";
-import SakuraPetals from "@/components/SakuraPetals";
-import SplashScreen from "@/components/SplashScreen";
 
-const cinzel = Cinzel({
+const display = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-cinzel",
+  variable: "--font-display",
   display: "swap",
 });
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-});
-
-const notoJp = Noto_Sans_JP({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-jp",
-  display: "swap",
-});
+const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
+const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://omnidev.vercel.app"),
+  metadataBase: new URL("https://omnidevv.vercel.app"),
   title: "OmniDev — Abdul Malik Rizky Nur Rahmat",
-  description:
-    "Junior Developer & Bot Architect. Crafting digital worlds, one line of code at a time.",
-  keywords: [
-    "OmniDev",
-    "Abdul Malik",
-    "developer",
-    "portfolio",
-    "bot development",
-    "web development",
-    "TypeScript",
-    "JavaScript",
-  ],
-  authors: [{ name: "Abdul Malik Rizky Nur Rahmat" }],
+  description: "Junior developer crafting web experiences and automation bots.",
   openGraph: {
     title: "OmniDev — Abdul Malik Rizky Nur Rahmat",
-    description: "Junior Developer & Bot Architect",
-    url: "https://omnidev.vercel.app",
-    siteName: "OmniDev Portfolio",
-    images: [{ url: "/images/profile.jpg", width: 800, height: 800 }],
+    description: "Junior developer crafting web experiences and automation bots.",
+    url: "https://omnidevv.vercel.app",
+    siteName: "OmniDev",
     type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "OmniDev — Abdul Malik Rizky Nur Rahmat",
-    description: "Junior Developer & Bot Architect",
-    images: ["/images/profile.jpg"],
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${cinzel.variable} ${inter.variable} ${jetbrainsMono.variable} ${notoJp.variable}`}>
+    <html lang="id" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
       <body>
-        <CustomCursor />
-        <SakuraPetals />
-        <SplashScreen />
-        <ScrollProgress />
         <Navbar />
         <main>{children}</main>
-        <SpotifyWidget />
-        <BackToTop />
-        <KonamiEasterEgg />
       </body>
     </html>
   );

@@ -44,9 +44,9 @@ export async function POST(req: Request) {
     // Untuk produksi (Vercel), hubungkan ke Resend/Brevo lewat RESEND_API_KEY —
     // lihat komentar di components/Newsletter.tsx
     return NextResponse.json({
-      message: "Terdaftar! (mode sementara — hubungkan email provider untuk produksi)",
+      message: "Terdaftar! (mode sementara)",
     });
   }
 
-  return NextResponse.json({ message: "Berhasil terdaftar! Arigatou gozaimasu~" });
+  return NextResponse.json({ message: "Berhasil terdaftar! Terima kasih." });
 }

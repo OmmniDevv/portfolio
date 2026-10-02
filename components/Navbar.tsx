@@ -1,141 +1,77 @@
 "use client";
-import { useState, useEffect, useRef, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 
-const NAV_LINKS = [
-  { label: "Hero", href: "/#hero", section: "hero" },
-  { label: "About", href: "/#about", section: "about" },
-  { label: "Journey", href: "/#journey", section: "journey" },
-  { label: "Skills", href: "/#skills", section: "skills" },
-  { label: "Projects", href: "/#projects", section: "projects" },
-  { label: "Blog", href: "/blog", section: "blog" },
-  { label: "Services", href: "/#services", section: "services" },
-  { label: "Contact", href: "/#contact", section: "contact" },
-  { label: "News", href: "/#newsletter", section: "newsletter" },
+const LINKS = [
+  { label: "Tentang", href: "/#tentang" },
+  { label: "Skill", href: "/#skill" },
+  { label: "Proyek", href: "/#proyek" },
+  { label: "Blog", href: "/blog" },
+  { label: "Kontak", href: "/#kontak" },
 ];
 
 export default function Navbar() {
-  const [active, setActive] = useState("hero");
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const indicatorRef = useRef<HTMLDivElement>(null);
-  const navRef = useRef<HTMLUListElement>(null);
-  const tapCount = useRef(0);
-  const tapTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const handleLogoTap = useCallback(() => {
-    tapCount.current += 1;
-    if (tapTimer.current) clearTimeout(tapTimer.current);
-    if (tapCount.current === 7) {
-      tapCount.current = 0;
-      window.dispatchEvent(new Event("khodam:open"));
-      return;
-    }
-    tapTimer.current = setTimeout(() => { tapCount.current = 0; }, 2000);
-  }, []);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 40);
-      if (window.location.pathname.startsWith("/blog")) {
-        setActive("blog");
-        return;
-      }
-      const sections = NAV_LINKS.map((l) => l.section).filter((s) => s !== "blog");
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el && window.scrollY >= el.offsetTop - 120) {
-          setActive(sections[i]);
-          break;
-        }
-      }
-    };
+    const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    if (!navRef.current || !indicatorRef.current) return;
-    const activeEl = navRef.current.querySelector<HTMLElement>(`[data-section="${active}"]`);
-    if (activeEl) {
-      indicatorRef.current.style.left = `${activeEl.offsetLeft}px`;
-      indicatorRef.current.style.width = `${activeEl.offsetWidth}px`;
-    }
-  }, [active]);
-
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-navy/90 backdrop-blur-md border-b border-gold/20 shadow-[0_4px_30px_rgba(0,0,0,0.4)]" : "bg-transparent"
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        scrolled ? "glass-strong !rounded-none border-x-0 border-t-0" : "bg-transparent border-b border-transparent"
       }`}
     >
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="/#hero" onClick={handleLogoTap} className="font-cinzel text-gold text-lg tracking-widest hover:text-shadow-gold transition-all">
-          OmniDev
-        </a>
+      <nav className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Navigasi utama">
+        <Link href="/" className="font-display font-700 text-lg tracking-tight font-bold">
+          Omni<span className="text-accent">Dev</span>
+        </Link>
 
-        <ul ref={navRef} className="hidden md:flex items-center gap-1 relative">
-          <div
-            ref={indicatorRef}
-            className="absolute bottom-0 h-0.5 bg-gold transition-all duration-300 rounded-full"
-            style={{ left: 0, width: 0 }}
-          />
-          {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                data-section={link.section}
-                className={`relative px-4 py-2 font-cinzel text-xs tracking-widest uppercase transition-all duration-200 block ${
-                  active === link.section ? "text-gold" : "text-parchment/60 hover:text-parchment"
-                }`}
+        <ul className="hidden md:flex items-center gap-8">
+          {LINKS.map((l) => (
+            <li key={l.href}>
+              <Link
+                href={l.href}
+                className="text-sm text-muted hover:text-mist transition-colors"
               >
-                {active === link.section && (
-                  <motion.span layoutId="nav-dot" className="absolute -top-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-gold" />
-                )}
-                {link.label}
-              </a>
+                {l.label}
+              </Link>
             </li>
           ))}
         </ul>
 
         <button
-          className="md:hidden flex flex-col gap-1.5 p-2"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+          className="md:hidden w-11 h-11 flex flex-col items-center justify-center gap-1.5"
+          onClick={() => setOpen((o) => !o)}
+          aria-expanded={open}
+          aria-label={open ? "Tutup menu" : "Buka menu"}
         >
-          <span className={`block w-6 h-0.5 bg-gold transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
-          <span className={`block w-6 h-0.5 bg-gold transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-0.5 bg-gold transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+          <span className={`block w-6 h-0.5 bg-mist transition-transform ${open ? "rotate-45 translate-y-2" : ""}`} />
+          <span className={`block w-6 h-0.5 bg-mist transition-opacity ${open ? "opacity-0" : ""}`} />
+          <span className={`block w-6 h-0.5 bg-mist transition-transform ${open ? "-rotate-45 -translate-y-2" : ""}`} />
         </button>
       </nav>
 
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "tween", duration: 0.3 }}
-            className="md:hidden fixed inset-0 top-16 bg-navy/95 backdrop-blur-md border-l border-gold/20 z-40"
-          >
-            <ul className="flex flex-col items-center justify-center h-full gap-8">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={() => setMenuOpen(false)}
-                    className={`font-cinzel text-xl tracking-widest uppercase transition-colors ${
-                      active === link.section ? "text-gold text-shadow-gold" : "text-parchment/70"
-                    }`}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {open && (
+        <ul className="md:hidden glass-strong !rounded-none border-x-0 px-6 py-4 flex flex-col gap-1">
+          {LINKS.map((l) => (
+            <li key={l.href}>
+              <Link
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="block py-3 text-base text-mist border-b border-white/5 last:border-0"
+              >
+                {l.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </header>
   );
 }
