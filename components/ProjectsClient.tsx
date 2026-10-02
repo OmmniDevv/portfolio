@@ -242,7 +242,7 @@ export default function ProjectsClient({ repos }: { repos: GithubRepo[] }) {
         >
           <div className="rune-divider mb-4">
             <span className="font-cinzel text-xs text-gold/50 tracking-widest uppercase">
-              Artifact Collection
+              Artifact Collection <span className="font-jp text-gold/40">・プロジェクト</span>
             </span>
           </div>
           <h2 className="section-heading">Projects</h2>

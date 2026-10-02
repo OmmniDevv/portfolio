@@ -181,7 +181,7 @@ export default function Contact() {
         >
           <div className="rune-divider mb-4">
             <span className="font-cinzel text-xs text-gold/50 tracking-widest uppercase">
-              Send a Message
+              Send a Message <span className="font-jp text-gold/40">・連絡</span>
             </span>
           </div>
           <h2 className="section-heading">Contact the Traveler</h2>

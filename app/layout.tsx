@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cinzel, Inter, JetBrains_Mono } from "next/font/google";
+import { Cinzel, Inter, JetBrains_Mono, Noto_Sans_JP } from "next/font/google";
 import "../styles/globals.css";
 import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
@@ -7,6 +7,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import KonamiEasterEgg from "@/components/KonamiEasterEgg";
 import SpotifyWidget from "@/components/SpotifyWidget";
 import BackToTop from "@/components/BackToTop";
+import SakuraPetals from "@/components/SakuraPetals";
 import SplashScreen from "@/components/SplashScreen";
 
 const cinzel = Cinzel({
@@ -24,6 +25,13 @@ const inter = Inter({
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
+  display: "swap",
+});
+
+const notoJp = Noto_Sans_JP({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-jp",
   display: "swap",
 });
 
@@ -65,9 +73,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${cinzel.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${cinzel.variable} ${inter.variable} ${jetbrainsMono.variable} ${notoJp.variable}`}>
       <body>
         <CustomCursor />
+        <SakuraPetals />
         <SplashScreen />
         <ScrollProgress />
         <Navbar />

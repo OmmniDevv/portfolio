@@ -312,7 +312,7 @@ export default function Skills() {
         >
           <div className="rune-divider mb-4">
             <span className="font-cinzel text-xs tracking-widest uppercase" style={{ color: "var(--color-primary)", opacity: 0.6 }}>
-              Elemental Mastery
+              Elemental Mastery <span className="font-jp" style={{opacity:0.5}}>・スキル</span>
             </span>
           </div>
           <h2 className="section-heading">Skills &amp; Elements</h2>

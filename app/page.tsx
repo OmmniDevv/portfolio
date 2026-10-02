@@ -8,6 +8,7 @@ import Projects from "@/components/Projects";
 import ProjectsSkeleton from "@/components/ProjectsSkeleton";
 import Services from "@/components/Services";
 import Contact from "@/components/Contact";
+import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
       </Suspense>
       <Services />
       <Contact />
+      <Newsletter />
       <Footer />
     </>
   );

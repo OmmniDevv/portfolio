@@ -24,6 +24,7 @@ const config: Config = {
         cinzel: ["var(--font-cinzel)", "serif"],
         inter: ["var(--font-inter)", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
+        jp: ["var(--font-jp)", "sans-serif"],
       },
       backgroundImage: {
         "star-pattern":

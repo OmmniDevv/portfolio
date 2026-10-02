@@ -70,7 +70,7 @@ export default function About() {
           className="text-center mb-16"
         >
           <div className="rune-divider mb-4">
-            <span className="font-cinzel text-xs text-gold/50 tracking-widest uppercase">Character Profile</span>
+            <span className="font-cinzel text-xs text-gold/50 tracking-widest uppercase">Character Profile <span className="font-jp text-gold/40">・プロフィール</span></span>
           </div>
           <h2 className="section-heading">About <InkUnderline>OmniDev</InkUnderline></h2>
         </motion.div>

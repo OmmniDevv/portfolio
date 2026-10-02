@@ -1,7 +1,13 @@
 "use client";
 import { useEffect, useRef, useState, useCallback } from "react";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import Image from "next/image";
+
+const Hero3D = dynamic(() => import("./Hero3D"), {
+  ssr: false,
+  loading: () => null,
+});
 
 const KATAKANA =
   "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン01";
@@ -15,10 +21,12 @@ function CodeRain() {
     if (!ctx) return;
     const isMobile = window.innerWidth < 768;
     if (isMobile) return; // skip on mobile for perf
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const fontSize = 14;
     let cols: number[] = [];
     let raf: number;
+    let last = 0;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -31,19 +39,21 @@ function CodeRain() {
     resize();
     window.addEventListener("resize", resize);
 
-    const draw = () => {
-      ctx.fillStyle = "rgba(13,27,42,0.05)";
+    const draw = (t: number) => {
+      raf = requestAnimationFrame(draw);
+      if (t - last < 66) return; // ~15fps throttle
+      last = t;
+      ctx.fillStyle = "rgba(13,27,42,0.06)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "rgba(200,169,110,0.07)";
+      ctx.fillStyle = "rgba(200,169,110,0.08)";
       ctx.font = `${fontSize}px monospace`;
       cols.forEach((y, i) => {
         const char = KATAKANA[Math.floor(Math.random() * KATAKANA.length)];
         ctx.fillText(char, i * fontSize, y);
         cols[i] = y > canvas.height ? -fontSize * 5 : y + fontSize;
       });
-      raf = requestAnimationFrame(draw);
     };
-    draw();
+    raf = requestAnimationFrame(draw);
 
     return () => {
       cancelAnimationFrame(raf);
@@ -55,7 +65,7 @@ function CodeRain() {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 pointer-events-none"
-      style={{ opacity: 0.06 }}
+      style={{ opacity: 0.05 }}
       aria-hidden="true"
     />
   );
@@ -66,92 +76,6 @@ const SUBTITLES = [
   "Building bots that breathe life into automation",
   "Turning ideas into elegant, functional code",
 ];
-
-function ParticleCanvas() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const mouse = useRef({ x: -9999, y: -9999 });
-  const rafRef = useRef<number>(0);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const isMobile = window.innerWidth < 768;
-    const COUNT = isMobile ? 30 : 70;
-
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    resize();
-    window.addEventListener("resize", resize);
-
-    const colors = ["#C8A96E", "#4FC3F7", "#EF9A9A", "#9B72CF", "#74C69D"];
-    const particles = Array.from({ length: COUNT }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      r: Math.random() * 2 + 1,
-      color: colors[Math.floor(Math.random() * colors.length)],
-      alpha: Math.random() * 0.6 + 0.2,
-    }));
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((p) => {
-        const dx = mouse.current.x - p.x;
-        const dy = mouse.current.y - p.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          p.vx -= (dx / dist) * 0.3;
-          p.vy -= (dy / dist) * 0.3;
-        }
-        p.vx *= 0.98;
-        p.vy *= 0.98;
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
-        ctx.globalAlpha = p.alpha;
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = p.color;
-        ctx.fill();
-        ctx.globalAlpha = 1;
-        ctx.shadowBlur = 0;
-      });
-      rafRef.current = requestAnimationFrame(draw);
-    };
-    draw();
-
-    const onMove = (e: MouseEvent) => {
-      mouse.current = { x: e.clientX, y: e.clientY };
-    };
-    window.addEventListener("mousemove", onMove);
-
-    return () => {
-      cancelAnimationFrame(rafRef.current);
-      window.removeEventListener("resize", resize);
-      window.removeEventListener("mousemove", onMove);
-    };
-  }, []);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 pointer-events-none"
-      aria-hidden="true"
-    />
-  );
-}
 
 function Typewriter({ texts }: { texts: string[] }) {
   const [idx, setIdx] = useState(0);
@@ -201,12 +125,18 @@ function Typewriter({ texts }: { texts: string[] }) {
 }
 
 export default function Hero() {
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    setReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
+
   return (
     <section
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      <ParticleCanvas />
+      {!reducedMotion && <Hero3D />}
       <CodeRain />
 
       {/* Background gradient */}
