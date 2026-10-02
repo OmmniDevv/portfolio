@@ -58,14 +58,14 @@ export default function CodingStats() {
 
         <div className="mt-8 grid sm:grid-cols-3 gap-4">
           {stats.map((s) => (
-            <div key={s.label} className="glass p-6">
+            <div key={s.label} className="glass card-interactive accent-sky p-6">
               <p className="font-mono text-xs uppercase tracking-widest text-faint">{s.label}</p>
               <p className="mt-2 text-3xl font-bold tracking-tight">{s.value}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-4 glass p-6">
+        <div className="mt-4 glass card-interactive accent-emerald p-6">
           <h3 className="font-semibold">{t.codingStats.langTitle}</h3>
           <div className="mt-5 space-y-4">
             {data.languages.map((l) => (

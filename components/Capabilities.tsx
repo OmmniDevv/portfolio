@@ -2,6 +2,8 @@
 import Reveal from "./Reveal";
 import { useLang } from "@/lib/i18n";
 
+const ACCENTS = ["accent-primary", "accent-sky", "accent-amber", "accent-emerald", "accent-rose", "accent-fuchsia"];
+
 export default function Capabilities() {
   const { t } = useLang();
 
@@ -42,14 +44,14 @@ export default function Capabilities() {
         <div className="mt-12 grid md:grid-cols-2 gap-5">
           {CAPABILITIES.map((c, i) => (
             <Reveal key={c.title} delay={i * 80} className={c.span ? "md:col-span-2" : ""}>
-              <div className="glass p-6 md:p-10 h-full">
+              <div className={`glass card-interactive p-6 md:p-10 h-full ${ACCENTS[i % ACCENTS.length]}`}>
                 <h3 className="font-bold text-xl md:text-2xl mb-3">{c.title}</h3>
                 <p className="text-soft leading-relaxed max-w-xl">{c.desc}</p>
                 <ul className="flex flex-wrap gap-2 mt-6" aria-label={`${t.capabilities.techLabel} ${c.title}`}>
                   {c.tags.map((t) => (
                     <li
                       key={t}
-                      className="font-mono text-xs px-3 py-1.5 rounded-full bg-[color-mix(in_srgb,var(--primary)_10%,transparent)] text-primary border border-[color-mix(in_srgb,var(--primary)_25%,transparent)]"
+                      className="font-mono text-xs px-3 py-1.5 rounded-full bg-[color-mix(in_srgb,var(--card-accent)_12%,transparent)] text-[var(--card-accent)] border border-[color-mix(in_srgb,var(--card-accent)_30%,transparent)]"
                     >
                       {t}
                     </li>

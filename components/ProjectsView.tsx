@@ -3,6 +3,8 @@ import type { GithubRepo } from "@/lib/github";
 import Reveal from "./Reveal";
 import { useLang } from "@/lib/i18n";
 
+const ACCENTS = ["accent-primary", "accent-sky", "accent-amber", "accent-emerald", "accent-rose", "accent-fuchsia"];
+
 const LANG_DOT: Record<string, string> = {
   TypeScript: "#3178C6",
   JavaScript: "#F7DF1E",
@@ -48,7 +50,7 @@ export default function ProjectsView({ repos }: { repos: GithubRepo[] }) {
                   href={repo.html_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="glass p-6 h-full flex flex-col gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
+                  className={`glass card-interactive p-6 h-full flex flex-col gap-3 ${ACCENTS[i % ACCENTS.length]}`}
                 >
                   <h3 className="font-bold text-lg text-ink leading-snug">{repo.name}</h3>
                   <p className="text-soft text-sm leading-relaxed flex-1 line-clamp-3">

@@ -33,7 +33,7 @@ export default function AnimeWidget() {
 
         <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4">
           {FAVORITES.map((a) => (
-            <article key={a.title} className="glass p-4 flex gap-4 items-center">
+            <article key={a.title} className="glass card-interactive accent-rose p-4 flex gap-4 items-center">
               <div
                 aria-hidden="true"
                 className="w-14 h-20 rounded-lg shrink-0 overflow-hidden"

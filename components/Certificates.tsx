@@ -26,7 +26,7 @@ export default function Certificates() {
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {CERTIFICATES.map((c, i) => (
             <Reveal key={c.title} delay={i * 70}>
-              <div className="glass p-6 h-full flex flex-col">
+              <div className="glass card-interactive accent-amber p-6 h-full flex flex-col">
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-mono text-[11px] uppercase tracking-widest px-3 py-1 rounded-full bg-[color-mix(in_srgb,var(--amber)_12%,transparent)] text-[var(--amber)] border border-[color-mix(in_srgb,var(--amber)_30%,transparent)]">
                     {c.type}

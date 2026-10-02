@@ -22,7 +22,7 @@ export default function Testimonials() {
         <div className="mt-12 grid md:grid-cols-3 gap-5">
           {TESTIMONIALS.map((item, i) => (
             <Reveal key={item.name} delay={i * 80}>
-              <figure className="glass p-6 md:p-8 h-full flex flex-col">
+              <figure className="glass card-interactive accent-amber p-6 md:p-8 h-full flex flex-col">
                 <div className="flex gap-1 mb-5" aria-label={t.testimonials.ratingLabel}>
                   {Array.from({ length: 5 }).map((_, s) => (
                     <span key={s} className="text-[var(--amber)] text-lg" aria-hidden="true">

@@ -31,8 +31,9 @@ export default function Pricing() {
           {PLANS.map((p, i) => (
             <Reveal key={p.name} delay={i * 70}>
               <div
-                className={`glass p-7 h-full flex flex-col relative ${
-                  p.popular ? "border-2" : ""
+                className={`glass card-interactive p-7 h-full flex flex-col relative ${
+                  p.popular ? "accent-emerald" : "accent-primary"
+                } ${                  p.popular ? "border-2" : ""
                 }`}
                 style={p.popular ? { borderColor: "var(--primary)" } : undefined}
               >
