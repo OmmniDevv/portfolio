@@ -3,13 +3,14 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
-  { label: "Hero", href: "#hero" },
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Services", href: "#services" },
-  { label: "Contact", href: "#contact" },
-  { label: "News", href: "#newsletter" },
+  { label: "Hero", href: "/#hero", section: "hero" },
+  { label: "About", href: "/#about", section: "about" },
+  { label: "Skills", href: "/#skills", section: "skills" },
+  { label: "Projects", href: "/#projects", section: "projects" },
+  { label: "Blog", href: "/blog", section: "blog" },
+  { label: "Services", href: "/#services", section: "services" },
+  { label: "Contact", href: "/#contact", section: "contact" },
+  { label: "News", href: "/#newsletter", section: "newsletter" },
 ];
 
 export default function Navbar() {
@@ -35,7 +36,11 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
-      const sections = NAV_LINKS.map((l) => l.href.slice(1));
+      if (window.location.pathname.startsWith("/blog")) {
+        setActive("blog");
+        return;
+      }
+      const sections = NAV_LINKS.map((l) => l.section).filter((s) => s !== "blog");
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i]);
         if (el && window.scrollY >= el.offsetTop - 120) {
@@ -64,7 +69,7 @@ export default function Navbar() {
       }`}
     >
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#hero" onClick={handleLogoTap} className="font-cinzel text-gold text-lg tracking-widest hover:text-shadow-gold transition-all">
+        <a href="/#hero" onClick={handleLogoTap} className="font-cinzel text-gold text-lg tracking-widest hover:text-shadow-gold transition-all">
           OmniDev
         </a>
 
@@ -78,12 +83,12 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                data-section={link.href.slice(1)}
+                data-section={link.section}
                 className={`relative px-4 py-2 font-cinzel text-xs tracking-widest uppercase transition-all duration-200 block ${
-                  active === link.href.slice(1) ? "text-gold" : "text-parchment/60 hover:text-parchment"
+                  active === link.section ? "text-gold" : "text-parchment/60 hover:text-parchment"
                 }`}
               >
-                {active === link.href.slice(1) && (
+                {active === link.section && (
                   <motion.span layoutId="nav-dot" className="absolute -top-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-gold" />
                 )}
                 {link.label}
@@ -119,7 +124,7 @@ export default function Navbar() {
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
                     className={`font-cinzel text-xl tracking-widest uppercase transition-colors ${
-                      active === link.href.slice(1) ? "text-gold text-shadow-gold" : "text-parchment/70"
+                      active === link.section ? "text-gold text-shadow-gold" : "text-parchment/70"
                     }`}
                   >
                     {link.label}
