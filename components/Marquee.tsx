@@ -1,4 +1,6 @@
 "use client";
+import { useLang } from "@/lib/i18n";
+
 const STACK = [
   "Next.js",
   "React",
@@ -19,11 +21,12 @@ const STACK = [
 
 /** Strip marquee tech stack — animasi CSS infinite, pause saat hover. */
 export default function Marquee() {
+  const { t } = useLang();
   // Duplikat 2x agar translateX(-50%) loop mulus tanpa lompatan.
   const items = [...STACK, ...STACK];
 
   return (
-    <section aria-label="Tech stack" className="py-8 overflow-hidden border-y border-[var(--hairline)]">
+    <section aria-label={t.marquee.label} className="py-8 overflow-hidden border-y border-[var(--hairline)]">
       <div className="marquee-track flex w-max">
         {items.map((s, i) => (
           <span

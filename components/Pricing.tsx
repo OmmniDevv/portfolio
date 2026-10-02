@@ -1,78 +1,29 @@
+"use client";
 import Link from "next/link";
 import Reveal from "./Reveal";
-
-// Harga wajar untuk junior freelancer Indonesia. Sesuaikan seperlunya.
-const PLANS = [
-  {
-    name: "Web Company Profile",
-    price: "Rp 1,5 jt",
-    unit: "mulai dari",
-    desc: "Website profil usaha yang rapi, cepat, dan SEO-friendly.",
-    features: [
-      "5–7 halaman (home, tentang, layanan, galeri, kontak)",
-      "Desain responsif (HP & desktop)",
-      "Form kontak via WhatsApp",
-      "SEO dasar + Google Maps",
-      "Gratis domain .com tahun pertama*",
-    ],
-    popular: false,
-  },
-  {
-    name: "Web App / Dashboard",
-    price: "Rp 4 jt",
-    unit: "mulai dari",
-    desc: "Aplikasi web atau dashboard admin sesuai kebutuhan bisnis.",
-    features: [
-      "Login & hak akses user",
-      "CRUD data + laporan",
-      "Database MySQL",
-      "Export Excel/PDF",
-      "Deploy + training singkat",
-    ],
-    popular: true,
-  },
-  {
-    name: "Bot WhatsApp / Telegram",
-    price: "Rp 1 jt",
-    unit: "mulai dari",
-    desc: "Bot automasi untuk order, notifikasi, atau auto-reply.",
-    features: [
-      "Auto-reply & menu interaktif",
-      "Notifikasi otomatis",
-      "Integrasi API / spreadsheet",
-      "Multi-device (WhatsApp)",
-      "Panduan instalasi",
-    ],
-    popular: false,
-  },
-  {
-    name: "Maintenance",
-    price: "Rp 300 rb",
-    unit: "/bulan",
-    desc: "Web tetap aman, update, dan backup rutin.",
-    features: [
-      "Update konten ringan",
-      "Backup database berkala",
-      "Monitoring uptime",
-      "Fix bug minor",
-      "Laporan bulanan singkat",
-    ],
-    popular: false,
-  },
-];
+import { useLang } from "@/lib/i18n";
 
 export default function Pricing() {
+  const { t } = useLang();
+
+  // Harga wajar untuk junior freelancer Indonesia. Sesuaikan seperlunya.
+  const PLANS = [
+    { ...t.pricing.plan1, features: [t.pricing.plan1.f1, t.pricing.plan1.f2, t.pricing.plan1.f3, t.pricing.plan1.f4, t.pricing.plan1.f5], popular: false },
+    { ...t.pricing.plan2, features: [t.pricing.plan2.f1, t.pricing.plan2.f2, t.pricing.plan2.f3, t.pricing.plan2.f4, t.pricing.plan2.f5], popular: true },
+    { ...t.pricing.plan3, features: [t.pricing.plan3.f1, t.pricing.plan3.f2, t.pricing.plan3.f3, t.pricing.plan3.f4, t.pricing.plan3.f5], popular: false },
+    { ...t.pricing.plan4, features: [t.pricing.plan4.f1, t.pricing.plan4.f2, t.pricing.plan4.f3, t.pricing.plan4.f4, t.pricing.plan4.f5], popular: false },
+  ];
+
   return (
     <section id="harga" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <Reveal>
-          <p className="eyebrow mb-4 text-center">Harga Jasa</p>
+          <p className="eyebrow mb-4 text-center">{t.pricing.eyebrow}</p>
           <h2 className="font-bold tracking-tight text-3xl md:text-5xl text-center">
-            Transparan sejak awal
+            {t.pricing.title}
           </h2>
           <p className="text-soft mt-4 text-center max-w-lg mx-auto leading-relaxed">
-            Estimasi harga untuk project freelance. Harga final menyesuaikan
-            kompleksitas — diskusi dulu gratis.
+            {t.pricing.desc}
           </p>
         </Reveal>
 
@@ -87,7 +38,7 @@ export default function Pricing() {
               >
                 {p.popular && (
                   <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 font-mono text-[11px] uppercase tracking-widest px-4 py-1.5 rounded-full text-white bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] whitespace-nowrap">
-                    Populer
+                    {t.pricing.popular}
                   </span>
                 )}
                 <h3 className="font-bold text-lg text-ink">{p.name}</h3>
@@ -114,7 +65,7 @@ export default function Pricing() {
                     p.popular ? "btn-primary" : "btn-ghost"
                   }`}
                 >
-                  Tanya Dulu
+                  {t.pricing.cta}
                 </Link>
               </div>
             </Reveal>
@@ -123,8 +74,7 @@ export default function Pricing() {
 
         <Reveal delay={120}>
           <p className="text-faint text-xs text-center mt-8 max-w-xl mx-auto leading-relaxed">
-            *Syarat &amp; ketentuan berlaku. Butuh yang custom? Ceritakan kebutuhanmu —
-            estimasi detail diberikan sebelum project mulai, tanpa biaya.
+            {t.pricing.footnote}
           </p>
         </Reveal>
       </div>

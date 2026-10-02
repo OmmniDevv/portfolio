@@ -1,4 +1,6 @@
+"use client";
 import Reveal from "./Reveal";
+import { useLang } from "@/lib/i18n";
 
 const SOCIALS = [
   { label: "GitHub", href: "https://github.com/OmmniDevv" },
@@ -8,6 +10,7 @@ const SOCIALS = [
 ];
 
 export default function Contact() {
+  const { t } = useLang();
   return (
     <section id="kontak" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
@@ -17,13 +20,12 @@ export default function Contact() {
               aria-hidden="true"
               className="absolute -top-32 left-1/2 -translate-x-1/2 w-[36rem] h-64 rounded-full bg-gradient-to-r from-primary/25 to-accent/25 blur-[100px] pointer-events-none"
             />
-            <p className="eyebrow mb-4 relative">Kontak</p>
+            <p className="eyebrow mb-4 relative">{t.contact.eyebrow}</p>
             <h2 className="font-bold tracking-tight text-3xl md:text-5xl relative max-w-2xl mx-auto leading-tight">
-              Punya proyek dalam pikiran? <span className="text-gradient">Mari bicara.</span>
+              {t.contact.titleA} <span className="text-gradient">{t.contact.titleB}</span>
             </h2>
             <p className="text-soft mt-4 max-w-md mx-auto leading-relaxed relative">
-              Ceritakan kebutuhanmu. Saya akan membalas secepat mungkin,
-              biasanya dalam 1x24 jam.
+              {t.contact.desc}
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3 relative">
               {SOCIALS.map((s) => (

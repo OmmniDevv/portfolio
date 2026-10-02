@@ -1,3 +1,6 @@
+"use client";
+import { useLang } from "@/lib/i18n";
+
 /**
  * Widget "Anime Favorit" — data STATIS agar tidak bergantung API eksternal.
  *
@@ -5,25 +8,27 @@
  * Kalau nanti kamu kasih username MyAnimeList, widget ini bisa di-upgrade
  * untuk fetch otomatis dari Jikan API (https://api.jikan.moe/v4/users/{username}/animelist).
  */
-const FAVORITES = [
-  { title: "Frieren: Beyond Journey's End", score: 9.1, genre: "Fantasy", hue: 265 },
-  { title: "Steins;Gate", score: 9.0, genre: "Sci-Fi", hue: 210 },
-  { title: "Violet Evergarden", score: 8.9, genre: "Drama", hue: 190 },
-  { title: "Mushishi", score: 8.8, genre: "Slice of Life", hue: 150 },
-  { title: "Cowboy Bebop", score: 8.7, genre: "Space Western", hue: 20 },
-  { title: "March Comes in Like a Lion", score: 8.6, genre: "Drama", hue: 330 },
-];
-
 export default function AnimeWidget() {
+  const { t } = useLang();
+
+  const FAVORITES = [
+    { ...t.anime.item1, score: 9.1, hue: 265 },
+    { ...t.anime.item2, score: 9.0, hue: 210 },
+    { ...t.anime.item3, score: 8.9, hue: 190 },
+    { ...t.anime.item4, score: 8.8, hue: 150 },
+    { ...t.anime.item5, score: 8.7, hue: 20 },
+    { ...t.anime.item6, score: 8.6, hue: 330 },
+  ];
+
   return (
-    <section aria-label="Anime favorit" className="px-6 py-16">
+    <section aria-label={t.anime.label} className="px-6 py-16">
       <div className="max-w-6xl mx-auto">
-        <p className="eyebrow mb-4">Hobi</p>
+        <p className="eyebrow mb-4">{t.anime.eyebrow}</p>
         <h2 className="font-bold tracking-tight text-3xl md:text-4xl">
-          Anime <span className="text-gradient">Favorit</span>
+          {t.anime.titleA} <span className="text-gradient">{t.anime.titleB}</span>
         </h2>
         <p className="mt-3 text-soft max-w-xl">
-          Selain ngoding, saya juga penikmat anime. Ini daftar yang paling berkesan.
+          {t.anime.desc}
         </p>
 
         <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4">

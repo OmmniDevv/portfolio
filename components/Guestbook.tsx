@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Reveal from "./Reveal";
+import { useLang } from "@/lib/i18n";
 
 interface Entry {
   nama: string;
@@ -8,9 +9,9 @@ interface Entry {
   createdAt: string;
 }
 
-function formatTanggal(iso: string): string {
+function formatTanggal(iso: string, locale: string): string {
   try {
-    return new Date(iso).toLocaleDateString("id-ID", {
+    return new Date(iso).toLocaleDateString(locale, {
       day: "numeric",
       month: "short",
       year: "numeric",
@@ -21,6 +22,8 @@ function formatTanggal(iso: string): string {
 }
 
 export default function Guestbook() {
+  const { t, lang } = useLang();
+  const dateLocale = lang === "en" ? "en-US" : "id-ID";
   const [entries, setEntries] = useState<Entry[]>([]);
   const [loading, setLoading] = useState(true);
   const [nama, setNama] = useState("");
@@ -59,7 +62,7 @@ export default function Guestbook() {
       });
       const data = await res.json();
       if (!res.ok) {
-        setNotice({ type: "err", text: data.error ?? "Gagal mengirim pesan." });
+        setNotice({ type: "err", text: data.error ?? t.guestbook.failDefault });
       } else {
         const entry: Entry = data.entry ?? {
           nama: nama.trim(),
@@ -67,14 +70,14 @@ export default function Guestbook() {
           createdAt: new Date().toISOString(),
         };
         setEntries((prev) => [entry, ...prev]);
-        setNotice({ type: "ok", text: data.message ?? "Pesan terkirim!" });
+        setNotice({ type: "ok", text: data.message ?? t.guestbook.sentFallback });
         setNama("");
         setPesan("");
         // Beri tahu sistem achievements.
         window.dispatchEvent(new Event("kana:guestbook-post"));
       }
     } catch {
-      setNotice({ type: "err", text: "Jaringan bermasalah, coba lagi ya." });
+      setNotice({ type: "err", text: t.guestbook.networkError });
     } finally {
       setSending(false);
     }
@@ -84,33 +87,33 @@ export default function Guestbook() {
     <section id="buku-tamu" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <Reveal>
-          <p className="eyebrow mb-4">Buku Tamu</p>
+          <p className="eyebrow mb-4">{t.guestbook.eyebrow}</p>
           <h2 className="font-bold tracking-tight text-3xl md:text-4xl mb-3">
-            Tinggalkan <span className="text-gradient">pesan</span>
+            {t.guestbook.titleA} <span className="text-gradient">{t.guestbook.titleB}</span>
           </h2>
           <p className="text-soft max-w-xl leading-relaxed mb-10">
-            Mampir dan sapa! Pesanmu bakal tampil di sini.
+            {t.guestbook.desc}
           </p>
         </Reveal>
 
         <div className="grid md:grid-cols-2 gap-6 items-start">
           {/* Form */}
           <Reveal delay={80}>
-            <form onSubmit={kirim} className="glass p-6 md:p-8" aria-label="Form buku tamu">
+            <form onSubmit={kirim} className="glass p-6 md:p-8" aria-label={t.guestbook.formLabel}>
               <label htmlFor="gb-nama" className="block font-mono text-xs uppercase tracking-[0.15em] text-faint mb-2">
-                Nama
+                {t.guestbook.nameLabel}
               </label>
               <input
                 id="gb-nama"
                 value={nama}
                 onChange={(e) => setNama(e.target.value)}
                 maxLength={50}
-                placeholder="Namamu siapa?"
+                placeholder={t.guestbook.namePlaceholder}
                 autoComplete="name"
                 className="w-full mb-5 rounded-xl border border-[var(--hairline)] bg-[var(--input-bg)] px-4 py-3 text-ink placeholder:text-faint outline-none focus:border-[var(--primary)] transition-colors"
               />
               <label htmlFor="gb-pesan" className="block font-mono text-xs uppercase tracking-[0.15em] text-faint mb-2">
-                Pesan
+                {t.guestbook.msgLabel}
               </label>
               <textarea
                 id="gb-pesan"
@@ -118,7 +121,7 @@ export default function Guestbook() {
                 onChange={(e) => setPesan(e.target.value)}
                 maxLength={500}
                 rows={4}
-                placeholder="Tulis pesanmu di sini… (maks 500 karakter)"
+                placeholder={t.guestbook.msgPlaceholder}
                 className="w-full rounded-xl border border-[var(--hairline)] bg-[var(--input-bg)] px-4 py-3 text-ink placeholder:text-faint outline-none focus:border-[var(--primary)] transition-colors resize-y"
               />
               <div className="flex items-center justify-between mt-5 gap-4">
@@ -126,7 +129,7 @@ export default function Guestbook() {
                   {pesan.length}/500
                 </span>
                 <button type="submit" disabled={sending} className="btn-primary !min-h-[48px] disabled:opacity-60">
-                  {sending ? "Mengirim…" : "Kirim Pesan"}
+                  {sending ? t.guestbook.sending : t.guestbook.send}
                 </button>
               </div>
               {notice && (
@@ -142,7 +145,7 @@ export default function Guestbook() {
 
           {/* Daftar pesan */}
           <Reveal delay={160}>
-            <div aria-live="polite" aria-label="Daftar pesan buku tamu">
+            <div aria-live="polite" aria-label={t.guestbook.listLabel}>
               {loading ? (
                 <div className="space-y-4">
                   {[0, 1, 2].map((i) => (
@@ -156,7 +159,7 @@ export default function Guestbook() {
               ) : entries.length === 0 ? (
                 <div className="glass p-8 text-center">
                   <p className="text-soft text-sm leading-relaxed">
-                    Belum ada pesan. Jadilah yang pertama ninggalin jejak! ✨
+                    {t.guestbook.empty}
                   </p>
                 </div>
               ) : (
@@ -166,7 +169,7 @@ export default function Guestbook() {
                       <div className="flex items-baseline justify-between gap-3 mb-2">
                         <p className="font-bold text-ink text-sm break-words">{en.nama}</p>
                         <time className="font-mono text-[11px] text-faint shrink-0">
-                          {formatTanggal(en.createdAt)}
+                          {formatTanggal(en.createdAt, dateLocale)}
                         </time>
                       </div>
                       <p className="text-sm text-soft leading-relaxed break-words whitespace-pre-wrap">

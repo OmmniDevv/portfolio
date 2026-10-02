@@ -1,55 +1,24 @@
 "use client";
 import { useState } from "react";
 import Reveal from "./Reveal";
-
-const FAQS = [
-  {
-    q: "Berapa lama pengerjaan project?",
-    a: "Company profile biasanya 1–2 minggu, web app/dashboard 3–6 minggu, dan bot 1–3 minggu — tergantung kompleksitas dan kelengkapan materi (teks, foto, logo) dari kamu. Timeline pasti dikasih sebelum project mulai.",
-  },
-  {
-    q: "Sistem pembayarannya bagaimana?",
-    a: "DP 50% di awal sebagai tanda jadi, pelunasan 50% setelah website/bot live dan kamu setuju hasil akhirnya. Pembayaran via transfer bank atau e-wallet.",
-  },
-  {
-    q: "Apakah dapat revisi?",
-    a: "Dapat. Setiap paket termasuk 2x revisi mayor selama masa pengerjaan. Revisi kecil (typo, ganti foto/teks) gratis selama project berjalan.",
-  },
-  {
-    q: "Bagaimana kalau ada bug setelah serah terima?",
-    a: "Ada garansi bug-fixing 30 hari setelah serah terima untuk bug yang berasal dari pengerjaan saya. Setelah itu bisa ambil paket maintenance bulanan.",
-  },
-  {
-    q: "Teknologi apa yang dipakai?",
-    a: "Website pakai Next.js/React + Tailwind (cepat & SEO-friendly), backend bisa Laravel + MySQL kalau butuh dashboard. Bot WhatsApp pakai Baileys, bot Telegram pakai Telegram Bot API.",
-  },
-  {
-    q: "Apakah saya dapat akses penuh ke source code?",
-    a: "Ya. Setelah pelunasan, semua source code, akses hosting/domain, dan dokumentasi singkat diserahkan penuh ke kamu. Tidak ada yang disandera.",
-  },
-  {
-    q: "Bagaimana cara mulai order?",
-    a: "Hubungi saya via halaman kontak / WhatsApp, ceritakan kebutuhanmu, lalu kita diskusi gratis sampai dapat estimasi harga & timeline yang jelas. Deal → DP → project jalan.",
-  },
-  {
-    q: "Apakah melayani di luar Bandung / luar negeri?",
-    a: "Bisa. Semua komunikasi via WhatsApp/Zoom dan serah terima online, jadi lokasi bukan masalah.",
-  },
-];
+import { useLang } from "@/lib/i18n";
 
 export default function FAQ() {
+  const { t } = useLang();
   const [open, setOpen] = useState<number | null>(0);
+
+  const FAQS = [t.faq.q1, t.faq.q2, t.faq.q3, t.faq.q4, t.faq.q5, t.faq.q6, t.faq.q7, t.faq.q8];
 
   return (
     <section id="faq" className="py-24 px-6">
       <div className="max-w-3xl mx-auto">
         <Reveal>
-          <p className="eyebrow mb-4 text-center">FAQ</p>
+          <p className="eyebrow mb-4 text-center">{t.faq.eyebrow}</p>
           <h2 className="font-bold tracking-tight text-3xl md:text-5xl text-center">
-            Sering ditanyakan
+            {t.faq.title}
           </h2>
           <p className="text-soft mt-4 text-center max-w-lg mx-auto leading-relaxed">
-            Masih ragu? Ini jawaban untuk pertanyaan yang paling sering masuk.
+            {t.faq.desc}
           </p>
         </Reveal>
 

@@ -1,37 +1,41 @@
+"use client";
 import Reveal from "./Reveal";
-
-const CAPABILITIES = [
-  {
-    title: "Web Development",
-    desc: "Website company profile, dashboard, dan aplikasi web full-stack. Next.js, React, Laravel. Cepat, responsif, dan SEO-friendly.",
-    tags: ["Next.js", "React", "Laravel", "Tailwind"],
-    span: true,
-  },
-  {
-    title: "Bot & Automasi",
-    desc: "Bot WhatsApp, Telegram, dan Discord untuk automasi bisnis. Notifikasi, auto-reply, integrasi API.",
-    tags: ["Baileys", "Telegram API", "Discord.js"],
-    span: false,
-  },
-  {
-    title: "Optimasi & Performa",
-    desc: "Audit kecepatan, optimasi bundle, dan best practice. Website yang ringan itu website yang dihormati pengunjungnya.",
-    tags: ["Lighthouse", "SEO", "Caching"],
-    span: false,
-  },
-];
+import { useLang } from "@/lib/i18n";
 
 export default function Capabilities() {
+  const { t } = useLang();
+
+  const CAPABILITIES = [
+    {
+      title: t.capabilities.item1.title,
+      desc: t.capabilities.item1.desc,
+      tags: ["Next.js", "React", "Laravel", "Tailwind"],
+      span: true,
+    },
+    {
+      title: t.capabilities.item2.title,
+      desc: t.capabilities.item2.desc,
+      tags: ["Baileys", "Telegram API", "Discord.js"],
+      span: false,
+    },
+    {
+      title: t.capabilities.item3.title,
+      desc: t.capabilities.item3.desc,
+      tags: ["Lighthouse", "SEO", "Caching"],
+      span: false,
+    },
+  ];
+
   return (
     <section id="kemampuan" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <Reveal>
-          <p className="eyebrow mb-4 text-center">Core Capabilities</p>
+          <p className="eyebrow mb-4 text-center">{t.capabilities.eyebrow}</p>
           <h2 className="font-bold tracking-tight text-3xl md:text-5xl text-center max-w-2xl mx-auto leading-tight">
-            Kami menolak hasil yang biasa-biasa saja.
+            {t.capabilities.title}
           </h2>
           <p className="text-soft mt-4 text-center max-w-lg mx-auto leading-relaxed">
-            Setiap piksel direkayasa untuk performa mutlak. Ini yang bisa saya kerjakan untukmu.
+            {t.capabilities.desc}
           </p>
         </Reveal>
 
@@ -41,7 +45,7 @@ export default function Capabilities() {
               <div className="glass p-8 md:p-10 h-full">
                 <h3 className="font-bold text-xl md:text-2xl mb-3">{c.title}</h3>
                 <p className="text-soft leading-relaxed max-w-xl">{c.desc}</p>
-                <ul className="flex flex-wrap gap-2 mt-6" aria-label={`Teknologi ${c.title}`}>
+                <ul className="flex flex-wrap gap-2 mt-6" aria-label={`${t.capabilities.techLabel} ${c.title}`}>
                   {c.tags.map((t) => (
                     <li
                       key={t}

@@ -1,21 +1,21 @@
+"use client";
 import Reveal from "./Reveal";
-
-const MILESTONES = [
-  { year: "2023", title: "Masuk SMKN 7 Baleendah", desc: "Mulai belajar programming dengan serius di bangku SMK." },
-  { year: "2024", title: "Mendalami bot development", desc: "Fokus ke bot WhatsApp, Telegram, dan Discord dengan Node.js dan TypeScript." },
-  { year: "2025", title: "Terjun ke freelance", desc: "Mulai mengerjakan project untuk klien: website dan bot automasi." },
-  { year: "2026", title: "Portfolio & Perpus-Online", desc: "Merilis website portfolio ini dan sistem perpustakaan Laravel untuk sekolah." },
-  { year: "Kini", title: "Kelas XII", desc: "Tahun terakhir SMK. Terbuka untuk freelance dan kolaborasi.", now: true },
-];
+import { useLang } from "@/lib/i18n";
 
 export default function Journey() {
+  const { t } = useLang();
+
+  const MILESTONES = [t.journey.m1, t.journey.m2, t.journey.m3, t.journey.m4, t.journey.m5].map(
+    (m, i, arr) => ({ ...m, now: i === arr.length - 1 })
+  );
+
   return (
     <section id="perjalanan" className="py-24 px-6">
       <div className="max-w-3xl mx-auto">
         <Reveal>
-          <p className="eyebrow mb-4 text-center">Perjalanan</p>
+          <p className="eyebrow mb-4 text-center">{t.journey.eyebrow}</p>
           <h2 className="font-bold tracking-tight text-3xl md:text-5xl text-center">
-            Dari awal sampai kini
+            {t.journey.title}
           </h2>
         </Reveal>
 

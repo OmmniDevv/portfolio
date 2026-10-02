@@ -1,3 +1,6 @@
+"use client";
+import { useLang } from "@/lib/i18n";
+
 /**
  * "Live coding stats" — kartu statistik ngoding.
  *
@@ -17,8 +20,8 @@ const CONFIG = {
 // Data placeholder — tampil selama USE_LIVE_DATA = false.
 const PLACEHOLDER = {
   weekHours: 18.5,
-  dailyAvg: "2,6 jam",
-  totalAllTime: "640+ jam",
+  dailyAvg: "2,6",
+  totalAllTime: "640+",
   languages: [
     { name: "TypeScript", hours: 8.2, color: "#3178c6" },
     { name: "PHP", hours: 4.5, color: "#777bb4" },
@@ -28,26 +31,28 @@ const PLACEHOLDER = {
 };
 
 export default function CodingStats() {
+  const { t } = useLang();
   const data = PLACEHOLDER; // TODO: ganti dengan data live saat CONFIG.USE_LIVE_DATA
   const maxHours = Math.max(...data.languages.map((l) => l.hours));
+  const unit = t.codingStats.hoursUnit;
 
   const stats = [
-    { label: "Minggu ini", value: `${data.weekHours} jam` },
-    { label: "Rata-rata harian", value: data.dailyAvg },
-    { label: "Total", value: data.totalAllTime },
+    { label: t.codingStats.stat1, value: `${data.weekHours} ${unit}` },
+    { label: t.codingStats.stat2, value: `${data.dailyAvg} ${unit}` },
+    { label: t.codingStats.stat3, value: `${data.totalAllTime} ${unit}` },
   ];
 
   return (
-    <section aria-label="Statistik ngoding" className="px-6 py-16">
+    <section aria-label={t.codingStats.label} className="px-6 py-16">
       <div className="max-w-6xl mx-auto">
-        <p className="eyebrow mb-4">Aktivitas</p>
+        <p className="eyebrow mb-4">{t.codingStats.eyebrow}</p>
         <h2 className="font-bold tracking-tight text-3xl md:text-4xl">
-          Live Coding <span className="text-gradient">Stats</span>
+          {t.codingStats.titleA} <span className="text-gradient">{t.codingStats.titleB}</span>
         </h2>
         <p className="mt-3 text-soft max-w-xl">
-          Jam ngoding tercatat otomatis.
+          {t.codingStats.desc}
           {!CONFIG.USE_LIVE_DATA && (
-            <span className="text-faint"> (data contoh — hubungkan WakaTime untuk data live)</span>
+            <span className="text-faint"> {t.codingStats.note}</span>
           )}
         </p>
 
@@ -61,18 +66,18 @@ export default function CodingStats() {
         </div>
 
         <div className="mt-4 glass p-6">
-          <h3 className="font-semibold">Bahasa teratas minggu ini</h3>
+          <h3 className="font-semibold">{t.codingStats.langTitle}</h3>
           <div className="mt-5 space-y-4">
             {data.languages.map((l) => (
               <div key={l.name}>
                 <div className="flex items-center justify-between text-sm mb-1.5">
                   <span className="font-mono">{l.name}</span>
-                  <span className="text-soft font-mono text-xs">{l.hours} jam</span>
+                  <span className="text-soft font-mono text-xs">{l.hours} {unit}</span>
                 </div>
                 <div
                   className="h-2.5 rounded-full bg-[var(--ink)]/10 overflow-hidden"
                   role="img"
-                  aria-label={`${l.name}: ${l.hours} jam`}
+                  aria-label={`${l.name}: ${l.hours} ${unit}`}
                 >
                   <div
                     className="h-full rounded-full transition-all"

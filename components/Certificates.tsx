@@ -1,44 +1,28 @@
+"use client";
 import Reveal from "./Reveal";
-
-// PLACEHOLDER — ganti dengan sertifikat asli (course / lomba).
-const CERTIFICATES = [
-  {
-    title: "Contoh: Web Development Bootcamp",
-    issuer: "Contoh: Platform Course X",
-    year: "2024",
-    type: "Course",
-  },
-  {
-    title: "Contoh: Lomba Web Design Tingkat Kota",
-    issuer: "Contoh: Penyelenggara Y",
-    year: "2024",
-    type: "Lomba",
-  },
-  {
-    title: "Contoh: JavaScript Algorithms",
-    issuer: "Contoh: Platform Course Z",
-    year: "2025",
-    type: "Course",
-  },
-  {
-    title: "Contoh: Hackathon Pelajar",
-    issuer: "Contoh: Komunitas W",
-    year: "2025",
-    type: "Lomba",
-  },
-];
+import { useLang } from "@/lib/i18n";
 
 export default function Certificates() {
+  const { t } = useLang();
+
+  // PLACEHOLDER — ganti dengan sertifikat asli (course / lomba).
+  const CERTIFICATES = [
+    t.certificates.item1,
+    t.certificates.item2,
+    t.certificates.item3,
+    t.certificates.item4,
+  ];
+
   return (
     <section id="sertifikat" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <Reveal>
-          <p className="eyebrow mb-4 text-center">Sertifikat</p>
+          <p className="eyebrow mb-4 text-center">{t.certificates.eyebrow}</p>
           <h2 className="font-bold tracking-tight text-3xl md:text-5xl text-center">
-            Course &amp; lomba
+            {t.certificates.title}
           </h2>
           <p className="text-faint mt-4 text-center max-w-lg mx-auto text-sm leading-relaxed">
-            Daftar di bawah ini masih contoh placeholder — ganti dengan sertifikat asli.
+            {t.certificates.note}
           </p>
         </Reveal>
 
