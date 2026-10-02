@@ -8,6 +8,7 @@ export type Post = {
   tags: string[];
   excerpt: string;
   minutes: number;
+  image: string;
   content: string;
 };
 
@@ -49,6 +50,7 @@ export async function getAllPosts(): Promise<Post[]> {
       date: meta.date || "1970-01-01",
       tags: (meta.tags || "").split(",").map((t) => t.trim()).filter(Boolean),
       excerpt: meta.excerpt || body.slice(0, 160).replace(/\n/g, " ").trim(),
+      image: meta.image || "",
       minutes: Math.max(1, Math.round(words / 200)),
       content: body,
     });

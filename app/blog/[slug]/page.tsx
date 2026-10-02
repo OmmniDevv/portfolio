@@ -12,7 +12,12 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const post = await getPost(params.slug);
   if (!post) return { title: "Tidak ditemukan · OmniDev" };
-  return { title: `${post.title} · OmniDev`, description: post.excerpt };
+  const meta: any = { title: `${post.title} · OmniDev`, description: post.excerpt };
+  if (post.image) {
+    meta.openGraph = { title: post.title, description: post.excerpt, images: [{ url: post.image }] };
+    meta.twitter = { card: "summary_large_image", title: post.title, description: post.excerpt, images: [post.image] };
+  }
+  return meta;
 }
 
 export default async function BlogPost({ params }: { params: { slug: string } }) {
@@ -31,6 +36,13 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         <p className="font-mono text-xs text-faint mt-4">
           {post.date} · {post.minutes} menit baca
         </p>
+        {post.image ? (
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full aspect-[16/9] object-cover rounded-3xl mt-8"
+          />
+        ) : null}
         <hr className="border-[var(--hairline)] my-10" />
 
         <div className="blog-prose">
@@ -40,6 +52,10 @@ export default async function BlogPost({ params }: { params: { slug: string } })
               h2: ({ children }) => <h2 className="font-display font-bold text-xl text-ink mt-10 mb-4">{children}</h2>,
               h3: ({ children }) => <h3 className="font-display font-semibold text-lg text-ink mt-8 mb-3">{children}</h3>,
               p: ({ children }) => <p className="text-soft text-[16px] leading-[1.8] mb-5">{children}</p>,
+              img: ({ src, alt }) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={src} alt={alt || ""} loading="lazy" className="w-full rounded-2xl my-6 object-cover" />
+              ),
               a: ({ href, children }) => <a href={href} className="text-primary hover:underline">{children}</a>,
               ul: ({ children }) => <ul className="text-soft mb-5 ml-5 list-disc space-y-2 marker:text-faint">{children}</ul>,
               ol: ({ children }) => <ol className="text-soft mb-5 ml-5 list-decimal space-y-2 marker:text-faint">{children}</ol>,

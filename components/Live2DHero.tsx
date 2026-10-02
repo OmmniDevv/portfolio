@@ -2,12 +2,12 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
 const LINES = [
-  "Halo! Aku Mao, asisten virtual di sini~",
-  "Jangan lupa cek proyek-proyeknya ya!",
-  "OmniDev lagi sibuk ngoding~",
-  "Ehehe~ kamu ngeliatin aku ya?",
-  "Blog-nya ada tulisan baru loh!",
-  "Butuh bot atau website? Om bisa bantuin!",
+  { id: "Halo! Aku Mao, asisten virtual di sini~", ja: "こんにちは！あたしはマオだよ～！" },
+  { id: "Jangan lupa cek proyek-proyeknya ya!", ja: "プロジェクトもチェックしてね！" },
+  { id: "OmniDev lagi sibuk ngoding~", ja: "オムニデブは今コーディング中だよ～！" },
+  { id: "Ehehe~ kamu ngeliatin aku ya?", ja: "えへへ～、あたしのこと見てたでしょ？" },
+  { id: "Blog-nya ada tulisan baru loh!", ja: "ブログに新しい記事があるよ！" },
+  { id: "Butuh bot atau website? Om bisa bantuin!", ja: "ボットやウェブサイトが必要？お兄さんが手伝えるよ！" },
 ];
 
 const EXPRESSIONS = ["exp_02", "exp_01", "exp_03", "exp_07"];
@@ -28,6 +28,8 @@ export default function Live2DHero() {
   const [error, setError] = useState<string | null>(null);
   const bubbleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lineIdx = useRef(0);
+  const [muted, setMuted] = useState(false);
+  const mutedRef = useRef(false);
   const downPos = useRef<{ x: number; y: number } | null>(null);
 
   const say = useCallback((text: string, ms = 3000) => {
@@ -35,6 +37,55 @@ export default function Live2DHero() {
     if (bubbleTimer.current) clearTimeout(bubbleTimer.current);
     bubbleTimer.current = setTimeout(() => setBubble(null), ms);
   }, []);
+
+  // Text-to-speech Bahasa Jepang dengan suara moe/kawaii
+  const speakJapanese = useCallback((text: string) => {
+    try {
+      if (mutedRef.current) return;
+      const synth = window.speechSynthesis;
+      if (!synth) return;
+      synth.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = "ja-JP";
+      utter.pitch = 1.35; // lebih tinggi = lebih kawaii
+      utter.rate = 1.05;
+      utter.volume = 1;
+      const pickVoice = () => {
+        const voices = synth.getVoices();
+        const ja = voices.filter((v) => v.lang.startsWith("ja"));
+        if (!ja.length) return;
+        // Prioritas: suara perempuan Jepang (Google 日本語, Kyoko, dll)
+        const female =
+          ja.find((v) => /female|kyoko|haruka|sayaka|mizuki|mei|google.*jepang|google 日本語/i.test(v.name)) ||
+          ja.find((v) => /google/i.test(v.name)) ||
+          ja[0];
+        if (female) utter.voice = female;
+      };
+      pickVoice();
+      if (!utter.voice) {
+        // Voices kadang load async — coba lagi saat ready
+        const onVoices = () => {
+          pickVoice();
+          synth.speak(utter);
+          synth.removeEventListener?.("voiceschanged", onVoices);
+        };
+        synth.addEventListener("voiceschanged", onVoices);
+        setTimeout(() => synth.removeEventListener?.("voiceschanged", onVoices), 3000);
+        return;
+      }
+      synth.speak(utter);
+    } catch {}
+  }, []);
+
+  const toggleMute = () => {
+    setMuted((m) => {
+      mutedRef.current = !m;
+      if (!m) {
+        try { window.speechSynthesis?.cancel(); } catch {}
+      }
+      return !m;
+    });
+  };
 
   useEffect(() => {
     let app: any = null;
@@ -115,8 +166,8 @@ export default function Live2DHero() {
         // Idle motion loop
         model.motion("Idle", 0);
 
-        // Sapa sekali
-        setTimeout(() => say(LINES[0], 4000), 1500);
+        // Sapa sekali (teks saja; suara butuh gesture user, jadi bunyi pas diklik)
+        setTimeout(() => say(LINES[0].ja, 4000), 1500);
       } catch (e: any) {
         console.error("Live2D load failed:", e);
         setError(e?.message || String(e));
@@ -177,7 +228,9 @@ export default function Live2DHero() {
     const model = modelRef.current;
     if (!model) return;
     lineIdx.current = (lineIdx.current + 1) % LINES.length;
-    say(LINES[lineIdx.current]);
+    const line = LINES[lineIdx.current];
+    say(line.ja);
+    speakJapanese(line.ja);
     try {
       // Random tap motion + ekspresi
       model.motion("TapBody", Math.floor(Math.random() * 3));
@@ -191,6 +244,14 @@ export default function Live2DHero() {
 
   return (
     <div ref={wrapRef} className="relative z-10 w-full h-[440px] md:h-[720px] select-none">
+      <button
+        onClick={toggleMute}
+        aria-label={muted ? "Nyalakan suara Mao" : "Bisukan suara Mao"}
+        title={muted ? "Nyalakan suara" : "Bisukan suara"}
+        className="absolute top-2 right-2 z-20 w-10 h-10 rounded-full glass-strong flex items-center justify-center text-lg hover:scale-105 active:scale-95 transition-transform"
+      >
+        {muted ? "🔇" : "🔊"}
+      </button>
       {bubble && (
         <div className="absolute top-2 left-1/2 -translate-x-1/2 z-10 glass-strong px-4 py-2.5 max-w-[240px] text-sm text-ink leading-relaxed text-center animate-[pop_0.25s_ease] pointer-events-none">
           {bubble}

@@ -32,14 +32,24 @@ export default async function BlogIndex() {
               <Link
                 key={p.slug}
                 href={`/blog/${p.slug}`}
-                className="group py-7 border-b border-[var(--hairline)] first:border-t px-2 -mx-2 hover:bg-[var(--glass-bg)] transition-colors"
+                className="group py-7 border-b border-[var(--hairline)] first:border-t px-2 -mx-2 hover:bg-[var(--glass-bg)] transition-colors flex gap-5 items-start"
               >
-                <p className="font-mono text-xs text-faint mb-2">{p.date}</p>
-                <h2 className="font-display font-semibold text-xl text-ink group-hover:text-primary transition-colors">
-                  {p.title}
-                </h2>
-                <p className="text-soft text-sm mt-2 leading-relaxed line-clamp-2">{p.excerpt}</p>
-                <p className="text-xs text-faint mt-3">{p.minutes} menit baca</p>
+                {p.image ? (
+                  <img
+                    src={p.image}
+                    alt=""
+                    loading="lazy"
+                    className="w-24 h-24 md:w-32 md:h-32 rounded-2xl object-cover shrink-0"
+                  />
+                ) : null}
+                <div className="min-w-0">
+                  <p className="font-mono text-xs text-faint mb-2">{p.date}</p>
+                  <h2 className="font-display font-semibold text-xl text-ink group-hover:text-primary transition-colors">
+                    {p.title}
+                  </h2>
+                  <p className="text-soft text-sm mt-2 leading-relaxed line-clamp-2">{p.excerpt}</p>
+                  <p className="text-xs text-faint mt-3">{p.minutes} menit baca</p>
+                </div>
               </Link>
             ))}
           </div>
