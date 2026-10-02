@@ -19,13 +19,13 @@ export default function Journey() {
           </h2>
         </Reveal>
 
-        <ol className="mt-12 relative border-l-2 border-primary/20 ml-2 flex flex-col gap-10">
+        <ol className="mt-12 relative border-l-2 border-[color-mix(in_srgb,var(--primary)_25%,transparent)] ml-2 flex flex-col gap-10">
           {MILESTONES.map((m, i) => (
             <Reveal as="li" key={m.title} delay={i * 60} className="relative pl-8">
               <span
                 aria-hidden="true"
                 className={`absolute -left-[9px] top-1 w-4 h-4 rounded-full border-2 bg-paper ${
-                  m.now ? "bg-primary border-primary shadow-[0_0_0_4px_rgba(139,92,246,0.2)]" : "border-primary/40"
+                  m.now ? "bg-primary border-primary shadow-[0_0_0_4px_rgba(139,92,246,0.2)]" : "border-[color-mix(in_srgb,var(--primary)_45%,transparent)]"
                 }`}
               />
               <p className="font-mono text-xs font-semibold text-primary mb-1.5">{m.year}</p>

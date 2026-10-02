@@ -36,7 +36,7 @@ export default function About() {
             </p>
             <dl className="mt-8 grid grid-cols-2 gap-x-8 gap-y-5 max-w-xl">
               {FACTS.map((f) => (
-                <div key={f.k} className="border-b border-ink/10 pb-4">
+                <div key={f.k} className="border-b border-[var(--hairline)] pb-4">
                   <dt className="eyebrow mb-1.5">{f.k}</dt>
                   <dd className="text-ink font-medium">{f.v}</dd>
                 </div>

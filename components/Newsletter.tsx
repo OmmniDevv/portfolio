@@ -54,7 +54,7 @@ export default function Newsletter() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="nama@email.com"
                   disabled={status === "loading"}
-                  className="flex-1 md:w-64 bg-white/70 border border-ink/10 rounded-full px-5 h-12 text-sm text-ink placeholder:text-faint outline-none focus:border-primary/60 transition-colors disabled:opacity-50"
+                  className="flex-1 md:w-64 bg-[var(--input-bg)] border border-[var(--hairline)] rounded-full px-5 h-12 text-sm text-ink placeholder:text-faint outline-none focus:border-[color-mix(in_srgb,var(--primary)_65%,transparent)] transition-colors disabled:opacity-50"
                 />
                 <button type="submit" disabled={status === "loading" || !email} className="btn-primary !min-h-[48px] shrink-0 disabled:opacity-50">
                   {status === "loading" ? "..." : "Daftar"}

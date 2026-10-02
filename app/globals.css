@@ -2,14 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Light theme (default): dari design prompt. */
 :root {
   --bg: #fafaff;
   --ink: #111827;
-  --ink-soft: #4b5563;
-  --ink-faint: #9ca3af;
+  --soft: #4b5563;
+  --faint: #9ca3af;
   --primary: #8b5cf6;
   --accent: #d946ef;
   --sky: #38bdf8;
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-bg-strong: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.75);
+  --glass-shadow: 0 8px 32px rgba(139, 92, 246, 0.08), 0 2px 8px rgba(17, 24, 39, 0.04);
+  --input-bg: rgba(255, 255, 255, 0.7);
+  --hairline: rgba(17, 24, 39, 0.1);
+  --ground:
+    radial-gradient(42rem 30rem at 12% 8%, rgba(139, 92, 246, 0.28), transparent 60%),
+    radial-gradient(36rem 28rem at 88% 12%, rgba(217, 70, 239, 0.22), transparent 60%),
+    radial-gradient(40rem 32rem at 50% 100%, rgba(56, 189, 248, 0.2), transparent 65%),
+    radial-gradient(24rem 20rem at 78% 62%, rgba(139, 92, 246, 0.14), transparent 60%);
+}
+
+/* Dark theme: ground gelap, kaca tetap frosted tapi lebih pekat. */
+.dark {
+  --bg: #0b0b12;
+  --ink: #f4f4f8;
+  --soft: #b6b8c7;
+  --faint: #6d6f82;
+  --primary: #a78bfa;
+  --accent: #e879f9;
+  --sky: #7dd3fc;
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-bg-strong: rgba(255, 255, 255, 0.09);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.2);
+  --input-bg: rgba(255, 255, 255, 0.06);
+  --hairline: rgba(255, 255, 255, 0.1);
+  --ground:
+    radial-gradient(42rem 30rem at 12% 8%, rgba(139, 92, 246, 0.22), transparent 60%),
+    radial-gradient(36rem 28rem at 88% 12%, rgba(217, 70, 239, 0.16), transparent 60%),
+    radial-gradient(40rem 32rem at 50% 100%, rgba(56, 189, 248, 0.14), transparent 65%);
 }
 
 html {
@@ -23,46 +56,42 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   min-height: 100vh;
+  background: var(--bg);
+  transition: background 300ms ease, color 300ms ease;
 }
 
 ::selection {
   background: rgba(139, 92, 246, 0.25);
 }
 
-/* Gradient ground: bounded vibrant base untuk efek kaca.
-   Fixed layer di z -1, semua panel frost di atasnya. */
+/* Gradient ground: fixed layer di z -1. */
 .ground {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background:
-    radial-gradient(42rem 30rem at 12% 8%, rgba(139, 92, 246, 0.28), transparent 60%),
-    radial-gradient(36rem 28rem at 88% 12%, rgba(217, 70, 239, 0.22), transparent 60%),
-    radial-gradient(40rem 32rem at 50% 100%, rgba(56, 189, 248, 0.2), transparent 65%),
-    radial-gradient(24rem 20rem at 78% 62%, rgba(139, 92, 246, 0.14), transparent 60%),
-    var(--bg);
+  background: var(--ground), var(--bg);
 }
 
-/* Glass di atas ground terang: putih frosted + shadow lembut untuk depth. */
+/* Glass: semua token dari variable, otomatis ikut tema. */
 .glass {
-  background: rgba(255, 255, 255, 0.62);
-  border: 1px solid rgba(255, 255, 255, 0.75);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   backdrop-filter: blur(20px) saturate(1.4);
   -webkit-backdrop-filter: blur(20px) saturate(1.4);
   border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.08), 0 2px 8px rgba(17, 24, 39, 0.04);
+  box-shadow: var(--glass-shadow);
 }
 
 .glass-strong {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
   backdrop-filter: blur(24px) saturate(1.5);
   -webkit-backdrop-filter: blur(24px) saturate(1.5);
   border-radius: 16px;
-  box-shadow: 0 12px 40px rgba(139, 92, 246, 0.12), 0 2px 8px rgba(17, 24, 39, 0.05);
+  box-shadow: var(--glass-shadow);
 }
 
-/* Buttons: hierarki dari prompt, primary violet + ghost glass. */
+/* Buttons */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -92,21 +121,20 @@ body {
   min-height: 52px;
   padding: 0 32px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(139, 92, 246, 0.25);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   color: var(--ink);
   font-weight: 500;
   font-size: 15px;
-  transition: border-color 200ms ease, background 200ms ease;
+  transition: border-color 200ms ease, background 200ms ease, transform 200ms ease;
 }
 .btn-ghost:hover {
-  border-color: rgba(139, 92, 246, 0.5);
-  background: rgba(255, 255, 255, 0.85);
+  transform: translateY(-2px);
 }
 
-/* Scroll reveal: tetap tanpa framer-motion. */
+/* Scroll reveal */
 .reveal {
   opacity: 0;
   transform: translateY(28px);
@@ -127,7 +155,6 @@ body {
   }
 }
 
-/* Keyboard focus yang terlihat di atas tema terang. */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible {
@@ -136,7 +163,6 @@ input:focus-visible {
   border-radius: 6px;
 }
 
-/* Label teknis mono dari prompt. */
 .eyebrow {
   font-family: var(--font-mono), monospace;
   font-size: 12px;
@@ -146,7 +172,6 @@ input:focus-visible {
   color: var(--primary);
 }
 
-/* Gradient text untuk headline. */
 .text-gradient {
   background: linear-gradient(120deg, var(--primary) 20%, var(--accent) 80%);
   -webkit-background-clip: text;

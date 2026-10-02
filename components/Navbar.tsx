@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
+import ThemeToggle from "./ThemeToggle";
+
 const LINKS = [
   { label: "Tentang", href: "/#tentang" },
   { label: "Kemampuan", href: "/#kemampuan" },
@@ -42,12 +44,17 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <Link href="/#kontak" className="hidden md:inline-flex btn-primary !min-h-[44px] !px-6 text-sm">
-          Mari Bicara
-        </Link>
+        <div className="hidden md:flex items-center gap-3">
+          <Link href="/#kontak" className="btn-primary !min-h-[44px] !px-6 text-sm">
+            Mari Bicara
+          </Link>
+          <ThemeToggle />
+        </div>
 
-        <button
-          className="md:hidden w-11 h-11 flex flex-col items-center justify-center gap-1.5"
+        <div className="flex md:hidden items-center gap-2">
+          <ThemeToggle />
+          <button
+          className="w-11 h-11 flex flex-col items-center justify-center gap-1.5"
           onClick={() => setOpen((o) => !o)}
           aria-expanded={open}
           aria-label={open ? "Tutup menu" : "Buka menu"}
@@ -56,6 +63,7 @@ export default function Navbar() {
           <span className={`block w-6 h-0.5 bg-ink transition-opacity ${open ? "opacity-0" : ""}`} />
           <span className={`block w-6 h-0.5 bg-ink transition-transform ${open ? "-rotate-45 -translate-y-2" : ""}`} />
         </button>
+        </div>
       </nav>
 
       {open && (
@@ -65,7 +73,7 @@ export default function Navbar() {
               <Link
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="block py-3 text-base text-ink border-b border-ink/5 last:border-0"
+                className="block py-3 text-base text-ink border-b border-[var(--hairline)] last:border-0"
               >
                 {l.label}
               </Link>

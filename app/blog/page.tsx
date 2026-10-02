@@ -32,7 +32,7 @@ export default async function BlogIndex() {
               <Link
                 key={p.slug}
                 href={`/blog/${p.slug}`}
-                className="group py-7 border-b border-ink/10 first:border-t px-2 -mx-2 hover:bg-white/60 transition-colors"
+                className="group py-7 border-b border-[var(--hairline)] first:border-t px-2 -mx-2 hover:bg-[var(--glass-bg)] transition-colors"
               >
                 <p className="font-mono text-xs text-faint mb-2">{p.date}</p>
                 <h2 className="font-display font-semibold text-xl text-ink group-hover:text-primary transition-colors">

@@ -45,7 +45,7 @@ export default function Capabilities() {
                   {c.tags.map((t) => (
                     <li
                       key={t}
-                      className="font-mono text-xs px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20"
+                      className="font-mono text-xs px-3 py-1.5 rounded-full bg-[color-mix(in_srgb,var(--primary)_10%,transparent)] text-primary border border-[color-mix(in_srgb,var(--primary)_25%,transparent)]"
                     >
                       {t}
                     </li>

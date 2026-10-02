@@ -52,7 +52,7 @@ export default async function Projects() {
                   <p className="text-soft text-sm leading-relaxed flex-1 line-clamp-3">
                     {repo.description ?? "Belum ada deskripsi."}
                   </p>
-                  <div className="flex items-center gap-4 pt-3 border-t border-ink/10 text-xs text-faint">
+                  <div className="flex items-center gap-4 pt-3 border-t border-[var(--hairline)] text-xs text-faint">
                     {repo.language && (
                       <span className="flex items-center gap-1.5">
                         <span

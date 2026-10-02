@@ -31,7 +31,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         <p className="font-mono text-xs text-faint mt-4">
           {post.date} · {post.minutes} menit baca
         </p>
-        <hr className="border-ink/10 my-10" />
+        <hr className="border-[var(--hairline)] my-10" />
 
         <div className="blog-prose">
           <ReactMarkdown
@@ -47,20 +47,20 @@ export default async function BlogPost({ params }: { params: { slug: string } })
                 className?.includes("language-") ? (
                   <code className={className}>{children}</code>
                 ) : (
-                  <code className="font-mono text-[13px] px-1.5 py-0.5 rounded bg-white/8 text-ink">{children}</code>
+                  <code className="font-mono text-[13px] px-1.5 py-0.5 rounded bg-[var(--glass-bg)] text-ink">{children}</code>
                 ),
               pre: ({ children }) => (
-                <pre className="font-mono text-[13px] leading-relaxed bg-white/70 border border-ink/10 rounded-2xl p-5 mb-6 overflow-x-auto text-ink/90">{children}</pre>
+                <pre className="font-mono text-[13px] leading-relaxed bg-[var(--input-bg)] border border-[var(--hairline)] rounded-2xl p-5 mb-6 overflow-x-auto text-ink">{children}</pre>
               ),
               blockquote: ({ children }) => (
-                <blockquote className="border-l-2 border-primary/60 pl-5 my-6 text-soft italic">{children}</blockquote>
+                <blockquote className="border-l-2 border-[color-mix(in_srgb,var(--primary)_65%,transparent)] pl-5 my-6 text-soft italic">{children}</blockquote>
               ),
               table: ({ children }) => (
                 <div className="overflow-x-auto mb-6"><table className="w-full text-sm text-soft border-collapse">{children}</table></div>
               ),
-              th: ({ children }) => <th className="border border-ink/10 bg-primary/5 px-4 py-2.5 text-left font-display text-xs text-ink">{children}</th>,
-              td: ({ children }) => <td className="border border-ink/10 px-4 py-2.5">{children}</td>,
-              hr: () => <hr className="border-ink/10 my-10" />,
+              th: ({ children }) => <th className="border border-[var(--hairline)] bg-[color-mix(in_srgb,var(--primary)_6%,transparent)] px-4 py-2.5 text-left font-display text-xs text-ink">{children}</th>,
+              td: ({ children }) => <td className="border border-[var(--hairline)] px-4 py-2.5">{children}</td>,
+              hr: () => <hr className="border-[var(--hairline)] my-10" />,
               input: (props) => <input {...props} disabled className="accent-[#8B5CF6] mr-2" />,
             }}
           >
@@ -68,7 +68,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           </ReactMarkdown>
         </div>
 
-        <hr className="border-ink/10 my-10" />
+        <hr className="border-[var(--hairline)] my-10" />
         <div className="flex flex-wrap gap-3">
           <Link href="/blog" className="btn-ghost text-sm">Tulisan lain</Link>
           <Link href="/#kontak" className="btn-primary text-sm">Hubungi saya</Link>
