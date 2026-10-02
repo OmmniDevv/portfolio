@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
 import About from "@/components/About";
+import Journey from "@/components/Journey";
 import WaifuShowcase from "@/components/WaifuShowcase";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
@@ -17,6 +18,7 @@ export default function Home() {
       <Hero />
       <Stats />
       <About />
+      <Journey />
       <WaifuShowcase />
       <Skills />
       <Suspense fallback={<ProjectsSkeleton />}>
