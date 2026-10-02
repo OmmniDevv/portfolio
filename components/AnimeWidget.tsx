@@ -45,7 +45,9 @@ export default function AnimeWidget() {
                   src={a.cover}
                   alt=""
                   loading="lazy"
-                  className="w-full h-full object-cover"
+                  decoding="async"
+                  draggable={false}
+                  className="w-full h-full object-cover pointer-events-none"
                 />
               </div>
               <div className="min-w-0">

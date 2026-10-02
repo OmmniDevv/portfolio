@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useRef } from "react";
 import { useLang } from "@/lib/i18n";
 
 const STACK = [
@@ -22,17 +23,31 @@ const STACK = [
 /** Strip marquee tech stack — animasi CSS infinite, pause saat hover. */
 export default function Marquee() {
   const { t } = useLang();
+  const trackRef = useRef<HTMLDivElement>(null);
+  // Pause animasi saat marquee di luar viewport — hemat GPU di HP
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        el.style.animationPlayState = e.isIntersecting ? "running" : "paused";
+      },
+      { threshold: 0 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
   // Duplikat 2x agar translateX(-50%) loop mulus tanpa lompatan.
   const items = [...STACK, ...STACK];
 
   return (
     <section aria-label={t.marquee.label} className="py-8 overflow-hidden border-y border-[var(--hairline)]">
-      <div className="marquee-track flex w-max">
+      <div ref={trackRef} className="marquee-track flex w-max" style={{ touchAction: "pan-y" }}>
         {items.map((s, i) => (
           <span
             key={i}
             aria-hidden={i >= STACK.length}
-            className="glass rounded-full px-6 py-3 mr-4 font-mono text-sm text-soft whitespace-nowrap shrink-0"
+            className="glass marquee-pill rounded-full px-6 py-3 mr-4 font-mono text-sm text-soft whitespace-nowrap shrink-0"
           >
             {s}
           </span>

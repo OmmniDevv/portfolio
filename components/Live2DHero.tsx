@@ -125,13 +125,14 @@ export default function Live2DHero() {
         const width = wrapRef.current.clientWidth || 400;
         const height = wrapRef.current.clientHeight || 560;
 
+        const isMobile = window.innerWidth < 768;
         app = new PIXI.Application({
           view: canvasRef.current,
           width,
           height,
           transparent: true,
-          antialias: true,
-          resolution: Math.min(window.devicePixelRatio, 2),
+          antialias: !isMobile,
+          resolution: isMobile ? Math.min(window.devicePixelRatio, 1.5) : Math.min(window.devicePixelRatio, 2),
         });
 
         const model = await Live2DModel.from(MAO_MODEL_URL, {
@@ -210,8 +211,24 @@ export default function Live2DHero() {
     };
     window.addEventListener("resize", onResize);
 
+    // Pause ticker PIXI saat hero tidak terlihat (scroll ke bawah)
+    let visible = true;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        visible = e.isIntersecting;
+        try {
+          if (!app) return;
+          if (visible) app.ticker.start();
+          else app.ticker.stop();
+        } catch {}
+      },
+      { threshold: 0 }
+    );
+    if (wrapRef.current) io.observe(wrapRef.current);
+
     return () => {
       destroyed = true;
+      io.disconnect();
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("resize", onResize);
       if (bubbleTimer.current) clearTimeout(bubbleTimer.current);
