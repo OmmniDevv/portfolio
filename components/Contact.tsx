@@ -9,19 +9,19 @@ const SOCIALS = [
 
 export default function Contact() {
   return (
-    <section id="kontak" className="py-28 px-6">
-      <div className="max-w-5xl mx-auto">
+    <section id="kontak" className="py-24 px-6">
+      <div className="max-w-6xl mx-auto">
         <Reveal>
-          <div className="glass-strong p-10 md:p-14 text-center relative overflow-hidden">
+          <div className="glass-strong p-10 md:p-16 text-center relative overflow-hidden">
             <div
               aria-hidden="true"
-              className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-48 rounded-full bg-accent/10 blur-[80px] pointer-events-none"
+              className="absolute -top-32 left-1/2 -translate-x-1/2 w-[36rem] h-64 rounded-full bg-gradient-to-r from-primary/25 to-accent/25 blur-[100px] pointer-events-none"
             />
             <p className="eyebrow mb-4 relative">Kontak</p>
-            <h2 className="font-display font-bold tracking-tight text-3xl md:text-4xl relative">
-              Punya proyek dalam pikiran?
+            <h2 className="font-bold tracking-tight text-3xl md:text-5xl relative max-w-2xl mx-auto leading-tight">
+              Punya proyek dalam pikiran? <span className="text-gradient">Mari bicara.</span>
             </h2>
-            <p className="text-muted mt-4 max-w-md mx-auto leading-relaxed relative">
+            <p className="text-soft mt-4 max-w-md mx-auto leading-relaxed relative">
               Ceritakan kebutuhanmu. Saya akan membalas secepat mungkin,
               biasanya dalam 1x24 jam.
             </p>
@@ -32,7 +32,7 @@ export default function Contact() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-ghost !min-h-[44px] !px-6 text-sm"
+                  className="btn-ghost !min-h-[48px] !px-7 text-sm"
                 >
                   {s.label}
                 </a>

@@ -10,27 +10,27 @@ const MILESTONES = [
 
 export default function Journey() {
   return (
-    <section id="perjalanan" className="py-28 px-6">
+    <section id="perjalanan" className="py-24 px-6">
       <div className="max-w-3xl mx-auto">
         <Reveal>
-          <p className="eyebrow mb-4">Perjalanan</p>
-          <h2 className="font-display font-bold tracking-tight text-3xl md:text-4xl">
+          <p className="eyebrow mb-4 text-center">Perjalanan</p>
+          <h2 className="font-bold tracking-tight text-3xl md:text-5xl text-center">
             Dari awal sampai kini
           </h2>
         </Reveal>
 
-        <ol className="mt-12 relative border-l border-white/10 ml-2 flex flex-col gap-10">
+        <ol className="mt-12 relative border-l-2 border-primary/20 ml-2 flex flex-col gap-10">
           {MILESTONES.map((m, i) => (
             <Reveal as="li" key={m.title} delay={i * 60} className="relative pl-8">
               <span
                 aria-hidden="true"
-                className={`absolute -left-[7px] top-1 w-3.5 h-3.5 rounded-full border-2 ${
-                  m.now ? "bg-accent border-accent" : "bg-ink border-faint"
+                className={`absolute -left-[9px] top-1 w-4 h-4 rounded-full border-2 bg-paper ${
+                  m.now ? "bg-primary border-primary shadow-[0_0_0_4px_rgba(139,92,246,0.2)]" : "border-primary/40"
                 }`}
               />
-              <p className="font-mono text-xs text-accent mb-1.5">{m.year}</p>
-              <h3 className="font-display font-semibold text-mist mb-1.5">{m.title}</h3>
-              <p className="text-muted text-[15px] leading-relaxed">{m.desc}</p>
+              <p className="font-mono text-xs font-semibold text-primary mb-1.5">{m.year}</p>
+              <h3 className="font-bold text-lg text-ink mb-1.5">{m.title}</h3>
+              <p className="text-soft text-[15px] leading-relaxed">{m.desc}</p>
             </Reveal>
           ))}
         </ol>

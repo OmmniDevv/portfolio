@@ -37,12 +37,12 @@ export default function Newsletter() {
               <h2 className="font-display font-bold tracking-tight text-2xl">
                 Newsletter
               </h2>
-              <p className="text-muted text-sm mt-2 leading-relaxed">
+              <p className="text-soft text-sm mt-2 leading-relaxed">
                 Update proyek dan tulisan baru, langsung ke emailmu. Tanpa spam.
               </p>
             </div>
             {status === "done" ? (
-              <p className="text-sm text-mist md:text-right" role="status">{msg}</p>
+              <p className="text-sm text-ink md:text-right" role="status">{msg}</p>
             ) : (
               <form onSubmit={submit} className="flex gap-3 w-full md:w-auto">
                 <label htmlFor="nl-email" className="sr-only">Alamat email</label>
@@ -54,7 +54,7 @@ export default function Newsletter() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="nama@email.com"
                   disabled={status === "loading"}
-                  className="flex-1 md:w-64 bg-white/5 border border-white/10 rounded-full px-5 h-12 text-sm text-mist placeholder:text-faint outline-none focus:border-accent/60 transition-colors disabled:opacity-50"
+                  className="flex-1 md:w-64 bg-white/70 border border-ink/10 rounded-full px-5 h-12 text-sm text-ink placeholder:text-faint outline-none focus:border-primary/60 transition-colors disabled:opacity-50"
                 />
                 <button type="submit" disabled={status === "loading" || !email} className="btn-primary !min-h-[48px] shrink-0 disabled:opacity-50">
                   {status === "loading" ? "..." : "Daftar"}
@@ -62,7 +62,7 @@ export default function Newsletter() {
               </form>
             )}
             {status === "error" && (
-              <p className="text-sm text-red-400 md:text-right" role="alert">{msg}</p>
+              <p className="text-sm text-red-600 md:text-right" role="alert">{msg}</p>
             )}
           </div>
         </Reveal>

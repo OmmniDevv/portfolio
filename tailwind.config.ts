@@ -5,14 +5,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#09090B",
-        mist: "#FAFAFA",
-        accent: "#38BDF8",
-        muted: "#A1A1AA",
-        faint: "#52525B",
+        ink: "#111827",
+        soft: "#4B5563",
+        faint: "#9CA3AF",
+        primary: "#8B5CF6",
+        accent: "#D946EF",
+        sky: "#38BDF8",
+        paper: "#FAFAFF",
       },
       fontFamily: {
-        display: ["var(--font-display)", "sans-serif"],
+        display: ["var(--font-sans)", "sans-serif"],
         sans: ["var(--font-sans)", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
       },

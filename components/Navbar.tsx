@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const LINKS = [
   { label: "Tentang", href: "/#tentang" },
-  { label: "Skill", href: "/#skill" },
+  { label: "Kemampuan", href: "/#kemampuan" },
   { label: "Proyek", href: "/#proyek" },
   { label: "Blog", href: "/blog" },
   { label: "Kontak", href: "/#kontak" },
@@ -24,26 +24,27 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass-strong !rounded-none border-x-0 border-t-0" : "bg-transparent border-b border-transparent"
+        scrolled ? "glass-strong !rounded-none border-x-0 border-t-0" : "bg-transparent"
       }`}
     >
-      <nav className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Navigasi utama">
-        <Link href="/" className="font-display font-700 text-lg tracking-tight font-bold">
-          Omni<span className="text-accent">Dev</span>
+      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Navigasi utama">
+        <Link href="/" className="font-bold text-lg tracking-tight text-ink">
+          Omni<span className="text-gradient">Dev</span>
         </Link>
 
         <ul className="hidden md:flex items-center gap-8">
           {LINKS.map((l) => (
             <li key={l.href}>
-              <Link
-                href={l.href}
-                className="text-sm text-muted hover:text-mist transition-colors"
-              >
+              <Link href={l.href} className="text-sm text-soft hover:text-ink transition-colors">
                 {l.label}
               </Link>
             </li>
           ))}
         </ul>
+
+        <Link href="/#kontak" className="hidden md:inline-flex btn-primary !min-h-[44px] !px-6 text-sm">
+          Mari Bicara
+        </Link>
 
         <button
           className="md:hidden w-11 h-11 flex flex-col items-center justify-center gap-1.5"
@@ -51,9 +52,9 @@ export default function Navbar() {
           aria-expanded={open}
           aria-label={open ? "Tutup menu" : "Buka menu"}
         >
-          <span className={`block w-6 h-0.5 bg-mist transition-transform ${open ? "rotate-45 translate-y-2" : ""}`} />
-          <span className={`block w-6 h-0.5 bg-mist transition-opacity ${open ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-0.5 bg-mist transition-transform ${open ? "-rotate-45 -translate-y-2" : ""}`} />
+          <span className={`block w-6 h-0.5 bg-ink transition-transform ${open ? "rotate-45 translate-y-2" : ""}`} />
+          <span className={`block w-6 h-0.5 bg-ink transition-opacity ${open ? "opacity-0" : ""}`} />
+          <span className={`block w-6 h-0.5 bg-ink transition-transform ${open ? "-rotate-45 -translate-y-2" : ""}`} />
         </button>
       </nav>
 
@@ -64,7 +65,7 @@ export default function Navbar() {
               <Link
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="block py-3 text-base text-mist border-b border-white/5 last:border-0"
+                className="block py-3 text-base text-ink border-b border-ink/5 last:border-0"
               >
                 {l.label}
               </Link>

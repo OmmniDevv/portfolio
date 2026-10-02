@@ -14,16 +14,16 @@ export default async function BlogIndex() {
       <div className="max-w-3xl mx-auto">
         <p className="eyebrow mb-4">Blog</p>
         <h1 className="font-display font-bold tracking-tight text-4xl md:text-5xl">Tulisan</h1>
-        <p className="text-muted mt-4 mb-12 max-w-md leading-relaxed">
+        <p className="text-soft mt-4 mb-12 max-w-md leading-relaxed">
           Catatan belajar dan eksperimen.
         </p>
 
         {posts.length === 0 ? (
           <div className="glass p-12 text-center">
-            <p className="text-mist font-medium mb-2">Belum ada tulisan</p>
-            <p className="text-muted text-sm">
+            <p className="text-ink font-medium mb-2">Belum ada tulisan</p>
+            <p className="text-soft text-sm">
               Sementara itu, intip{" "}
-              <Link href="/#proyek" className="text-accent hover:underline">proyekku</Link> dulu.
+              <Link href="/#proyek" className="text-primary hover:underline">proyekku</Link> dulu.
             </p>
           </div>
         ) : (
@@ -32,13 +32,13 @@ export default async function BlogIndex() {
               <Link
                 key={p.slug}
                 href={`/blog/${p.slug}`}
-                className="group py-7 border-b border-white/8 first:border-t px-2 -mx-2 hover:bg-white/[0.02] transition-colors"
+                className="group py-7 border-b border-ink/10 first:border-t px-2 -mx-2 hover:bg-white/60 transition-colors"
               >
                 <p className="font-mono text-xs text-faint mb-2">{p.date}</p>
-                <h2 className="font-display font-semibold text-xl text-mist group-hover:text-accent transition-colors">
+                <h2 className="font-display font-semibold text-xl text-ink group-hover:text-primary transition-colors">
                   {p.title}
                 </h2>
-                <p className="text-muted text-sm mt-2 leading-relaxed line-clamp-2">{p.excerpt}</p>
+                <p className="text-soft text-sm mt-2 leading-relaxed line-clamp-2">{p.excerpt}</p>
                 <p className="text-xs text-faint mt-3">{p.minutes} menit baca</p>
               </Link>
             ))}

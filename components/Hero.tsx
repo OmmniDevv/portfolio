@@ -1,42 +1,27 @@
-"use client";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import Reveal from "./Reveal";
 
-const HeroScene = dynamic(() => import("./HeroScene"), { ssr: false, loading: () => null });
-
 export default function Hero() {
   return (
-    <section className="relative min-h-[100svh] flex items-center overflow-hidden">
-      {/* 3D di kanan pada desktop, jadi latar samar di mobile */}
-      <div className="absolute inset-y-0 right-0 w-full md:w-[58%] opacity-40 md:opacity-100 pointer-events-none">
-        <HeroScene />
-      </div>
-      {/* scrim agar teks tetap terbaca di atas 3D */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 pointer-events-none bg-gradient-to-r from-ink via-ink/70 to-transparent md:via-ink/20"
-      />
-
-      <div className="relative z-10 max-w-5xl mx-auto px-6 w-full pt-24 pb-16">
+    <section className="relative min-h-[100svh] flex items-center pt-24 pb-16 px-6">
+      <div className="max-w-6xl mx-auto w-full text-center">
         <Reveal>
-          <p className="eyebrow mb-6">Halo, saya</p>
+          <p className="eyebrow mb-6">Studio — Portfolio Pribadi</p>
         </Reveal>
         <Reveal delay={80}>
-          <h1 className="font-display font-bold tracking-tight text-5xl md:text-7xl leading-[1.05]">
-            Abdul Malik Rizky
-            <br />
-            Nur Rahmat
+          <h1 className="font-bold tracking-tight text-5xl md:text-7xl leading-[1.04] max-w-4xl mx-auto">
+            Kami membangun <span className="text-gradient">produk digital</span> yang
+            memberikan hasil nyata.
           </h1>
         </Reveal>
         <Reveal delay={160}>
-          <p className="mt-6 max-w-md text-muted text-lg leading-relaxed">
-            Junior developer dari Bandung. Saya bikin website dan bot automasi
-            yang rapi, cepat, dan enak dipakai.
+          <p className="mt-6 max-w-xl mx-auto text-soft text-lg leading-relaxed">
+            Halo, saya Abdul Malik Rizky Nur Rahmat. Junior developer dari Bandung
+            yang fokus bikin website cepat dan bot automasi yang rapi.
           </p>
         </Reveal>
         <Reveal delay={240}>
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link href="/#proyek" className="btn-primary">
               Lihat Proyek
             </Link>
@@ -46,18 +31,18 @@ export default function Hero() {
           </div>
         </Reveal>
         <Reveal delay={320}>
-          <dl className="mt-14 flex gap-10 text-sm">
+          <dl className="mt-16 flex justify-center gap-10 md:gap-16 text-sm">
             <div>
               <dt className="eyebrow mb-1">Fokus</dt>
-              <dd className="text-mist">Web & Bot</dd>
+              <dd className="text-ink font-medium">Web & Bot</dd>
             </div>
             <div>
               <dt className="eyebrow mb-1">Basis</dt>
-              <dd className="text-mist">Bandung, ID</dd>
+              <dd className="text-ink font-medium">Bandung, ID</dd>
             </div>
             <div>
               <dt className="eyebrow mb-1">Status</dt>
-              <dd className="text-mist">Terbuka freelance</dd>
+              <dd className="text-ink font-medium">Terbuka freelance</dd>
             </div>
           </dl>
         </Reveal>
