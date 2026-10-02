@@ -25,7 +25,7 @@ export default function AnimeWidget() {
       <div className="max-w-6xl mx-auto">
         <p className="eyebrow mb-4">{t.anime.eyebrow}</p>
         <h2 className="font-bold tracking-tight text-3xl md:text-4xl">
-          {t.anime.titleA} <span className="text-gradient">{t.anime.titleB}</span>
+          {t.anime.titleA} <span className="text-gradient-warm">{t.anime.titleB}</span>
         </h2>
         <p className="mt-3 text-soft max-w-xl">
           {t.anime.desc}
@@ -51,7 +51,7 @@ export default function AnimeWidget() {
               <div className="min-w-0">
                 <h3 className="font-semibold text-sm leading-snug line-clamp-2">{a.title}</h3>
                 <p className="mt-1 font-mono text-xs text-faint">{a.genre}</p>
-                <p className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-[var(--primary)]/10 px-2.5 py-1 font-mono text-xs font-semibold text-[var(--primary)]">
+                <p className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-[var(--rose)]/10 px-2.5 py-1 font-mono text-xs font-semibold text-[var(--rose)]">
                   ★ {a.score.toFixed(1)}
                 </p>
               </div>

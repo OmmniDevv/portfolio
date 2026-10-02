@@ -25,7 +25,7 @@ export default function Testimonials() {
               <figure className="glass p-6 md:p-8 h-full flex flex-col">
                 <div className="flex gap-1 mb-5" aria-label={t.testimonials.ratingLabel}>
                   {Array.from({ length: 5 }).map((_, s) => (
-                    <span key={s} className="text-gradient text-lg" aria-hidden="true">
+                    <span key={s} className="text-[var(--amber)] text-lg" aria-hidden="true">
                       ★
                     </span>
                   ))}

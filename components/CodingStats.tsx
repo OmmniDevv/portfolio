@@ -47,7 +47,7 @@ export default function CodingStats() {
       <div className="max-w-6xl mx-auto">
         <p className="eyebrow mb-4">{t.codingStats.eyebrow}</p>
         <h2 className="font-bold tracking-tight text-3xl md:text-4xl">
-          {t.codingStats.titleA} <span className="text-gradient">{t.codingStats.titleB}</span>
+          {t.codingStats.titleA} <span className="text-gradient-cool">{t.codingStats.titleB}</span>
         </h2>
         <p className="mt-3 text-soft max-w-xl">
           {t.codingStats.desc}

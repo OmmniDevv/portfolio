@@ -11,6 +11,9 @@
   --primary: #8b5cf6;
   --accent: #d946ef;
   --sky: #38bdf8;
+  --amber: #d97706;
+  --emerald: #059669;
+  --rose: #e11d48;
   --glass-bg: rgba(255, 255, 255, 0.55);
   --glass-bg-strong: rgba(255, 255, 255, 0.72);
   --glass-border: rgba(139, 92, 246, 0.28);
@@ -22,7 +25,9 @@
     radial-gradient(42rem 30rem at 12% 8%, rgba(139, 92, 246, 0.28), transparent 60%),
     radial-gradient(36rem 28rem at 88% 12%, rgba(217, 70, 239, 0.22), transparent 60%),
     radial-gradient(40rem 32rem at 50% 100%, rgba(56, 189, 248, 0.2), transparent 65%),
-    radial-gradient(24rem 20rem at 78% 62%, rgba(139, 92, 246, 0.14), transparent 60%);
+    radial-gradient(24rem 20rem at 78% 62%, rgba(139, 92, 246, 0.14), transparent 60%),
+    radial-gradient(30rem 24rem at 8% 55%, rgba(217, 119, 6, 0.1), transparent 60%),
+    radial-gradient(28rem 22rem at 92% 78%, rgba(5, 150, 105, 0.1), transparent 60%);
 }
 
 /* Dark theme: ground gelap, kaca tetap frosted tapi lebih pekat. */
@@ -34,6 +39,9 @@
   --primary: #a78bfa;
   --accent: #e879f9;
   --sky: #7dd3fc;
+  --amber: #fbbf24;
+  --emerald: #34d399;
+  --rose: #fb7185;
   --glass-bg: rgba(255, 255, 255, 0.09);
   --glass-bg-strong: rgba(255, 255, 255, 0.14);
   --glass-border: rgba(255, 255, 255, 0.22);
@@ -176,6 +184,20 @@ input:focus-visible {
 
 .text-gradient {
   background: linear-gradient(120deg, var(--primary) 20%, var(--accent) 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Varian aksen per section — biar nggak monoton ungu. */
+.text-gradient-warm {
+  background: linear-gradient(120deg, var(--amber) 10%, var(--rose) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.text-gradient-cool {
+  background: linear-gradient(120deg, var(--sky) 10%, var(--emerald) 90%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

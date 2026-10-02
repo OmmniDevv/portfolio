@@ -28,7 +28,7 @@ export default function Certificates() {
             <Reveal key={c.title} delay={i * 70}>
               <div className="glass p-6 h-full flex flex-col">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="font-mono text-[11px] uppercase tracking-widest px-3 py-1 rounded-full bg-[color-mix(in_srgb,var(--primary)_10%,transparent)] text-primary border border-[color-mix(in_srgb,var(--primary)_25%,transparent)]">
+                  <span className="font-mono text-[11px] uppercase tracking-widest px-3 py-1 rounded-full bg-[color-mix(in_srgb,var(--amber)_12%,transparent)] text-[var(--amber)] border border-[color-mix(in_srgb,var(--amber)_30%,transparent)]">
                     {c.type}
                   </span>
                   <span className="font-mono text-xs text-faint">{c.year}</span>

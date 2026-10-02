@@ -52,7 +52,7 @@ export default function Pricing() {
                 <ul className="mt-6 space-y-2.5 flex-1">
                   {p.features.map((f) => (
                     <li key={f} className="flex gap-2.5 text-sm text-soft leading-relaxed">
-                      <span aria-hidden="true" className="text-primary font-bold shrink-0">
+                      <span aria-hidden="true" className="text-[var(--emerald)] font-bold shrink-0">
                         ✓
                       </span>
                       {f}
