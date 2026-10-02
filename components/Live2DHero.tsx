@@ -25,7 +25,7 @@ export default function Live2DHero() {
   const modelRef = useRef<any>(null);
   const [bubble, setBubble] = useState<string | null>(null);
   const [ready, setReady] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [failed, setFailed] = useState(false);
   const bubbleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lineIdx = useRef(0);
   const [muted, setMuted] = useState(false);
@@ -100,6 +100,23 @@ export default function Live2DHero() {
   useEffect(() => {
     let app: any = null;
     let destroyed = false;
+
+    // Deteksi WebGL dulu: kalau nggak ada, jangan load PIXI/Cubism sama sekali
+    const webglOK = (() => {
+      try {
+        const c = document.createElement("canvas");
+        return !!(
+          window.WebGLRenderingContext &&
+          (c.getContext("webgl2") || c.getContext("webgl") || c.getContext("experimental-webgl"))
+        );
+      } catch {
+        return false;
+      }
+    })();
+    if (!webglOK) {
+      setFailed(true);
+      return;
+    }
 
     (async () => {
       try {
@@ -181,7 +198,7 @@ export default function Live2DHero() {
         setTimeout(() => say(LINES[0].id, 4000), 1500);
       } catch (e: any) {
         console.error("Live2D load failed:", e);
-        setError(e?.message || String(e));
+        setFailed(true);
       }
     })();
 
@@ -271,6 +288,7 @@ export default function Live2DHero() {
 
   return (
     <div ref={wrapRef} className="relative z-10 w-full h-[440px] md:h-[720px] select-none">
+      {!failed && (
       <button
         onClick={toggleMute}
         aria-label={muted ? "Nyalakan suara Mao" : "Bisukan suara Mao"}
@@ -279,11 +297,13 @@ export default function Live2DHero() {
       >
         {muted ? "🔇" : "🔊"}
       </button>
+      )}
       {bubble && (
         <div className="absolute top-2 left-1/2 -translate-x-1/2 z-10 glass-strong px-4 py-2.5 max-w-[240px] text-sm text-ink leading-relaxed text-center animate-[pop_0.25s_ease] pointer-events-none">
           {bubble}
         </div>
       )}
+      {!failed && (
       <canvas
         ref={canvasRef}
         onPointerDown={onPointerDown}
@@ -293,14 +313,23 @@ export default function Live2DHero() {
         aria-label="Mao, karakter Live2D interaktif. Ketuk untuk menyapa."
         role="img"
       />
-      {!ready && !error && (
+      )}
+      {!ready && !failed && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-10 h-10 rounded-full border-2 border-primary/30 border-t-primary animate-spin" aria-hidden="true" />
         </div>
       )}
-      {error && (
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none px-8">
-          <p className="text-xs text-red-600 text-center font-mono break-all">Live2D error: {error}</p>
+      {failed && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 pointer-events-none px-8 text-center">
+          <div
+            aria-hidden="true"
+            className="w-24 h-24 rounded-full border border-[var(--glass-border)] bg-gradient-to-br from-[var(--primary)]/25 via-[var(--accent)]/20 to-[var(--sky)]/25 flex items-center justify-center text-4xl animate-pulse"
+          >
+            ✦
+          </div>
+          <p className="text-xs text-faint font-mono max-w-[220px] leading-relaxed">
+            Mao lagi ngumpet — browser ini nggak dukung WebGL
+          </p>
         </div>
       )}
       <style jsx>{`
