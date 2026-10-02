@@ -30,7 +30,7 @@ function InkUnderline({ children }: { children: React.ReactNode }) {
 
 const INFO_ROWS = [
   { label: "School", value: "SMKN 7 Baleendah" },
-  { label: "Class", value: "XI (Eleventh Grade)" },
+  { label: "Class", value: "XII (Twelfth Grade)" },
   { label: "Role", value: "Junior Developer & Freelancer" },
   { label: "Focus", value: "Web Dev, Bot Development" },
   { label: "Waifu", value: "Nadeshiko Kagamihara (Yuru Camp)" },
