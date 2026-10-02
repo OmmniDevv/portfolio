@@ -44,36 +44,46 @@ export default function Live2DHero() {
       if (mutedRef.current) return;
       const synth = window.speechSynthesis;
       if (!synth) return;
-      synth.cancel();
-      const utter = new SpeechSynthesisUtterance(text);
-      utter.lang = "ja-JP";
-      utter.pitch = 1.35; // lebih tinggi = lebih kawaii
-      utter.rate = 1.05;
-      utter.volume = 1;
-      const pickVoice = () => {
-        const voices = synth.getVoices();
-        const ja = voices.filter((v) => v.lang.startsWith("ja"));
-        if (!ja.length) return;
-        // Prioritas: suara perempuan Jepang (Google 日本語, Kyoko, dll)
-        const female =
-          ja.find((v) => /female|kyoko|haruka|sayaka|mizuki|mei|google.*jepang|google 日本語/i.test(v.name)) ||
-          ja.find((v) => /google/i.test(v.name)) ||
-          ja[0];
-        if (female) utter.voice = female;
-      };
-      pickVoice();
-      if (!utter.voice) {
-        // Voices kadang load async — coba lagi saat ready
-        const onVoices = () => {
-          pickVoice();
+
+      const doSpeak = () => {
+        try {
+          const utter = new SpeechSynthesisUtterance(text);
+          utter.lang = "ja-JP";
+          utter.pitch = 1.35; // lebih tinggi = lebih kawaii
+          utter.rate = 1.05;
+          utter.volume = 1;
+          const voices = synth.getVoices();
+          const ja = voices.filter((v) => v.lang && v.lang.toLowerCase().startsWith("ja"));
+          if (ja.length) {
+            utter.voice =
+              ja.find((v) => /female|kyoko|haruka|sayaka|mizuki|mei|google/i.test(v.name)) || ja[0];
+          }
+          // Selalu speak walau tanpa voice JP khusus (browser pakai default)
           synth.speak(utter);
-          synth.removeEventListener?.("voiceschanged", onVoices);
+        } catch {}
+      };
+
+      // cancel() lalu langsung speak() sering bisu di Chrome — kasih jeda
+      try { synth.cancel(); } catch {}
+      const voices = synth.getVoices();
+      if (voices.length) {
+        setTimeout(doSpeak, 60);
+      } else {
+        let done = false;
+        const onVoices = () => {
+          if (done) return;
+          done = true;
+          try { synth.removeEventListener("voiceschanged", onVoices); } catch {}
+          setTimeout(doSpeak, 60);
         };
-        synth.addEventListener("voiceschanged", onVoices);
-        setTimeout(() => synth.removeEventListener?.("voiceschanged", onVoices), 3000);
-        return;
+        try { synth.addEventListener("voiceschanged", onVoices); } catch {}
+        setTimeout(() => {
+          if (done) return;
+          done = true;
+          try { synth.removeEventListener("voiceschanged", onVoices); } catch {}
+          setTimeout(doSpeak, 60);
+        }, 1500);
       }
-      synth.speak(utter);
     } catch {}
   }, []);
 
@@ -167,7 +177,7 @@ export default function Live2DHero() {
         model.motion("Idle", 0);
 
         // Sapa sekali (teks saja; suara butuh gesture user, jadi bunyi pas diklik)
-        setTimeout(() => say(LINES[0].ja, 4000), 1500);
+        setTimeout(() => say(LINES[0].id, 4000), 1500);
       } catch (e: any) {
         console.error("Live2D load failed:", e);
         setError(e?.message || String(e));
@@ -229,7 +239,7 @@ export default function Live2DHero() {
     if (!model) return;
     lineIdx.current = (lineIdx.current + 1) % LINES.length;
     const line = LINES[lineIdx.current];
-    say(line.ja);
+    say(line.id);
     speakJapanese(line.ja);
     try {
       // Random tap motion + ekspresi

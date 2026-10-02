@@ -21,6 +21,55 @@ type Entry = {
 const ENTRIES: Entry[] = [
   {
     date: "2026-10-02",
+    title: "Mao bisa ngomong Bahasa Jepang",
+    detail:
+      "Klik Mao sekarang bikin dia bersuara: text-to-speech Bahasa Jepang dengan settingan pitch tinggi biar moe/kawaii. Bubble teks tetap Bahasa Indonesia, ada tombol mute juga.",
+    tag: "fitur",
+  },
+  {
+    date: "2026-10-02",
+    title: "Fix tap Mao di mobile",
+    detail:
+      "Tap di HP sering nggak ke-register karena onClick kalah sama gesture scroll. Sekarang pakai pointer events + deteksi tap vs scroll.",
+    tag: "perbaikan",
+  },
+  {
+    date: "2026-10-02",
+    title: "Blog artikel harian otomatis",
+    detail:
+      "Cron tiap jam 7 pagi nulis 3 artikel baru (AI/coding) dengan SEO, anti-slop, dan gambar. Blog juga sekarang support cover image di list, halaman artikel, dan OG metadata.",
+    tag: "fitur",
+  },
+  {
+    date: "2026-10-02",
+    title: "Anime widget pakai foto asli",
+    detail:
+      "Cover gradient diganti foto poster asli dari MyAnimeList (Frieren, Steins;Gate, Violet Evergarden, Mushishi, Cowboy Bebop, Sangatsu no Lion).",
+    tag: "konten",
+  },
+  {
+    date: "2026-10-02",
+    title: "Toggle bahasa ID/EN penuh",
+    detail:
+      "Semua 17 section sekarang ikut ganti bahasa, bukan cuma navbar. Kamus i18n terpusat, pilihan tersimpan di localStorage.",
+    tag: "fitur",
+  },
+  {
+    date: "2026-10-02",
+    title: "Rapikan tampilan mobile",
+    detail:
+      "Headline hero dikecilin, spacing section dirampingkan, canvas Mao 440px di HP, form newsletter vertikal, cegah auto-zoom iOS.",
+    tag: "desain",
+  },
+  {
+    date: "2026-10-02",
+    title: "20 fitur portfolio",
+    detail:
+      "Testimoni, pricing jasa, FAQ, case study, guestbook, command palette (Ctrl+K), halaman Now/Changelog/CV, 404 anime-style, marquee tech stack, SEO + Open Graph.",
+    tag: "fitur",
+  },
+  {
+    date: "2026-10-02",
     title: "Live2D Mao full-body di hero",
     detail:
       "Karakter 2D statis diganti model Live2D Cubism asli (Mao, official sample). Full-body, idle motion, mata ngikutin kursor, bisa diklik buat interaksi + speech bubble.",
