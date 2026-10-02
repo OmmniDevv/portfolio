@@ -28,6 +28,7 @@ export default function Live2DHero() {
   const [error, setError] = useState<string | null>(null);
   const bubbleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lineIdx = useRef(0);
+  const downPos = useRef<{ x: number; y: number } | null>(null);
 
   const say = useCallback((text: string, ms = 3000) => {
     setBubble(text);
@@ -160,6 +161,18 @@ export default function Live2DHero() {
     };
   }, [say]);
 
+  const onPointerDown = (e: React.PointerEvent) => {
+    downPos.current = { x: e.clientX, y: e.clientY };
+  };
+
+  const onPointerUp = (e: React.PointerEvent) => {
+    const d = downPos.current;
+    downPos.current = null;
+    if (!d) return;
+    // Hanya anggap tap kalau jari tidak bergeser jauh (bukan scroll)
+    if (Math.hypot(e.clientX - d.x, e.clientY - d.y) < 12) poke();
+  };
+
   const poke = () => {
     const model = modelRef.current;
     if (!model) return;
@@ -185,9 +198,11 @@ export default function Live2DHero() {
       )}
       <canvas
         ref={canvasRef}
-        onClick={poke}
+        onPointerDown={onPointerDown}
+        onPointerUp={onPointerUp}
         className="w-full h-full cursor-pointer"
-        aria-label="Mao, karakter Live2D interaktif. Klik untuk menyapa."
+        style={{ touchAction: "manipulation" }}
+        aria-label="Mao, karakter Live2D interaktif. Ketuk untuk menyapa."
         role="img"
       />
       {!ready && !error && (
