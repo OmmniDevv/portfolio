@@ -12,6 +12,8 @@ const LINES = [
 
 const EXPRESSIONS = ["exp_02", "exp_01", "exp_03", "exp_07"];
 
+// Fit penuh tanpa crop — ukuran besar didapat dari stage yang tinggi & lebar
+
 // Model resmi Live2D (pinned commit, sama seperti kana-hermes) — tidak didistribusikan ulang.
 // Sample data milik Live2D Inc., digunakan sesuai ketentuan mereka.
 const MAO_MODEL_URL =
@@ -77,13 +79,34 @@ export default function Live2DHero() {
           return;
         }
 
-        // Scale: model tinggi ~ full body, fit ke canvas
-        const scale = Math.min(width / model.width, height / model.height) * 1.05;
-        model.scale.set(scale);
-        model.anchor.set(0.5, 0.5);
-        model.position.set(width / 2, height / 2 + 10);
-
         app.stage.addChild(model);
+
+        // Warm-up 2 frame agar bounds model stabil (deformer/pose sudah apply),
+        // lalu ukur bounds lokal SEKALI — jangan pakai model.width karena
+        // nilainya ikut scale (feedback loop) dan bisa belum stabil.
+        await new Promise<void>((r) => requestAnimationFrame(() => requestAnimationFrame(() => r())));
+        if (destroyed) {
+          model.destroy();
+          return;
+        }
+        const baseBounds = model.getLocalBounds();
+        if (!baseBounds.width || !baseBounds.height) {
+          throw new Error("Live2D bounds tidak valid");
+        }
+        // Pivot di tengah bounds agar model selalu ter-center sempurna
+        model.pivot.set(baseBounds.x + baseBounds.width / 2, baseBounds.y + baseBounds.height / 2);
+
+        const fitModel = () => {
+          const w = wrapRef.current!.clientWidth || 400;
+          const h = wrapRef.current!.clientHeight || 560;
+          const scale = Math.min(w / baseBounds.width, h / baseBounds.height);
+          model.scale.set(scale);
+          model.position.set(w / 2, h / 2);
+        };
+        fitModel();
+        // Simpan untuk resize handler
+        (model as any)._fitModel = fitModel;
+
         modelRef.current = model;
         setReady(true);
 
@@ -111,16 +134,16 @@ export default function Live2DHero() {
     };
     window.addEventListener("mousemove", onMove, { passive: true });
 
-    // Resize
+    // Resize: pakai ulang fungsi fit yang sama (bounds sudah disimpan)
     const onResize = () => {
       const model = modelRef.current;
       if (!model || !wrapRef.current || !app) return;
       const w = wrapRef.current.clientWidth;
       const h = wrapRef.current.clientHeight;
       app.renderer.resize(w, h);
-      const scale = Math.min(w / model.width, h / model.height) * 1.05;
-      model.scale.set(scale);
-      model.position.set(w / 2, h / 2 + 10);
+      try {
+        (model as any)._fitModel?.();
+      } catch {}
     };
     window.addEventListener("resize", onResize);
 
@@ -153,7 +176,7 @@ export default function Live2DHero() {
   };
 
   return (
-    <div ref={wrapRef} className="relative w-full h-[420px] md:h-[560px] select-none">
+    <div ref={wrapRef} className="relative z-10 w-full h-[560px] md:h-[720px] select-none">
       {bubble && (
         <div className="absolute top-2 left-1/2 -translate-x-1/2 z-10 glass-strong px-4 py-2.5 max-w-[240px] text-sm text-ink leading-relaxed text-center animate-[pop_0.25s_ease] pointer-events-none">
           {bubble}
