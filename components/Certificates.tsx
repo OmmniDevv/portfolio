@@ -21,9 +21,6 @@ export default function Certificates() {
           <h2 className="font-bold tracking-tight text-3xl md:text-5xl text-center">
             {t.certificates.title}
           </h2>
-          <p className="text-faint mt-4 text-center max-w-lg mx-auto text-sm leading-relaxed">
-            {t.certificates.note}
-          </p>
         </Reveal>
 
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">

@@ -12,12 +12,12 @@ export default function AnimeWidget() {
   const { t } = useLang();
 
   const FAVORITES = [
-    { ...t.anime.item1, score: 9.1, hue: 265 },
-    { ...t.anime.item2, score: 9.0, hue: 210 },
-    { ...t.anime.item3, score: 8.9, hue: 190 },
-    { ...t.anime.item4, score: 8.8, hue: 150 },
-    { ...t.anime.item5, score: 8.7, hue: 20 },
-    { ...t.anime.item6, score: 8.6, hue: 330 },
+    { ...t.anime.item1, score: 9.1, hue: 265, cover: "https://cdn.myanimelist.net/images/anime/1015/138006.jpg" },
+    { ...t.anime.item2, score: 9.0, hue: 210, cover: "https://cdn.myanimelist.net/images/anime/1935/127974.jpg" },
+    { ...t.anime.item3, score: 8.9, hue: 190, cover: "https://cdn.myanimelist.net/images/anime/1795/95088.jpg" },
+    { ...t.anime.item4, score: 8.8, hue: 150, cover: "https://cdn.myanimelist.net/images/anime/2/73862.jpg" },
+    { ...t.anime.item5, score: 8.7, hue: 20, cover: "https://cdn.myanimelist.net/images/anime/4/19644.jpg" },
+    { ...t.anime.item6, score: 8.6, hue: 330, cover: "https://cdn.myanimelist.net/images/anime/1590/154000.jpg" },
   ];
 
   return (
@@ -34,14 +34,20 @@ export default function AnimeWidget() {
         <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4">
           {FAVORITES.map((a) => (
             <article key={a.title} className="glass p-4 flex gap-4 items-center">
-              {/* Cover placeholder gradient */}
               <div
                 aria-hidden="true"
-                className="w-14 h-20 rounded-lg shrink-0"
+                className="w-14 h-20 rounded-lg shrink-0 overflow-hidden"
                 style={{
                   background: `linear-gradient(135deg, hsl(${a.hue} 70% 55%), hsl(${(a.hue + 40) % 360} 70% 40%))`,
                 }}
-              />
+              >
+                <img
+                  src={a.cover}
+                  alt=""
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <div className="min-w-0">
                 <h3 className="font-semibold text-sm leading-snug line-clamp-2">{a.title}</h3>
                 <p className="mt-1 font-mono text-xs text-faint">{a.genre}</p>
