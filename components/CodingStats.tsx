@@ -11,7 +11,7 @@ type LangStat = { name: string; hours: number; color: string };
 type LiveData = {
   weekHours: number;
   dailyAvgHours: number;
-  totalHours: number;
+  totalHours: number | null;
   languages: LangStat[];
 };
 
@@ -56,7 +56,10 @@ export default function CodingStats() {
   const stats = [
     { label: t.codingStats.stat1, value: `${fmt(data.weekHours)} ${unit}` },
     { label: t.codingStats.stat2, value: `${fmt(data.dailyAvgHours)} ${unit}` },
-    { label: t.codingStats.stat3, value: `${fmt(data.totalHours)} ${unit}` },
+    {
+      label: t.codingStats.stat3,
+      value: data.totalHours == null ? "–" : `${fmt(data.totalHours)} ${unit}`,
+    },
   ];
 
   return (

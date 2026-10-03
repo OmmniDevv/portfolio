@@ -29,6 +29,7 @@ const LANG_COLORS: Record<string, string> = {
 
 export async function GET() {
   const base = (process.env.WAKAPI_URL || "").replace(/\/$/, "");
+  const apiPath = (process.env.WAKAPI_API_PATH || "/api/compat/wakatime/v1").replace(/\/$/, "");
   const key = process.env.WAKAPI_API_KEY || "";
 
   if (!base || !key) {
@@ -45,10 +46,10 @@ export async function GET() {
 
   try {
     const [statsRes, allTimeRes] = await Promise.all([
-      fetch(`${base}/api/compat/wakatime/v1/users/current/stats/last_7_days`, {
+      fetch(`${base}${apiPath}/users/current/stats/last_7_days`, {
         headers,
       }),
-      fetch(`${base}/api/compat/wakatime/v1/users/current/all_time_since_today`, {
+      fetch(`${base}${apiPath}/users/current/all_time_since_today`, {
         headers,
       }),
     ]);
@@ -71,10 +72,16 @@ export async function GET() {
 
     const weekHours = Math.round((totalSec / 3600) * 10) / 10;
 
-    let totalHours = 0;
+    // all_time tidak wajib — beberapa instance (mis. Hackatime) tidak menyediakannya
+    let totalHours: number | null = null;
     if (allTimeRes.ok) {
-      const at = await allTimeRes.json();
-      totalHours = Math.round(((at.data?.total_seconds || 0) / 3600) * 10) / 10;
+      try {
+        const at = await allTimeRes.json();
+        const sec = at.data?.total_seconds;
+        if (typeof sec === "number") {
+          totalHours = Math.round((sec / 3600) * 10) / 10;
+        }
+      } catch {}
     }
 
     return NextResponse.json({
