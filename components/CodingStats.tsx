@@ -1,27 +1,25 @@
 "use client";
+import { useEffect, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 /**
- * "Live coding stats" — kartu statistik ngoding.
- *
- * TODO: sambungkan ke WakaTime API (https://wakatime.com/developers):
- *  1. Buat API key di https://wakatime.com/settings/api-key
- *     — JANGAN taruh API key di kode ini / di repo!
- *  2. Buat route server `app/api/wakatime/route.ts` yang membaca key dari
- *     env `WAKATIME_API_KEY` (server-only) lalu mem-proxy response WakaTime.
- *  3. Set `CONFIG.USE_LIVE_DATA = true` dan ganti PLACEHOLDER di bawah
- *     dengan fetch ke `CONFIG.ENDPOINT`.
+ * "Live coding stats" — data live dari WakAPI via route server
+ * `app/api/wakapi/route.ts` (API key aman di env server).
+ * Kalau WakAPI belum dikonfigurasi / error, otomatis fallback ke placeholder.
  */
-const CONFIG = {
-  USE_LIVE_DATA: false,
-  ENDPOINT: "/api/wakatime", // route server-side (belum diimplementasikan)
-} as const;
+type LangStat = { name: string; hours: number; color: string };
+type LiveData = {
+  weekHours: number;
+  dailyAvgHours: number;
+  totalHours: number;
+  languages: LangStat[];
+};
 
-// Data placeholder — tampil selama USE_LIVE_DATA = false.
-const PLACEHOLDER = {
+// Data placeholder — tampil selama data live belum tersedia.
+const PLACEHOLDER: LiveData = {
   weekHours: 18.5,
-  dailyAvg: "2,6",
-  totalAllTime: "640+",
+  dailyAvgHours: 2.6,
+  totalHours: 640,
   languages: [
     { name: "TypeScript", hours: 8.2, color: "#3178c6" },
     { name: "PHP", hours: 4.5, color: "#777bb4" },
@@ -30,16 +28,35 @@ const PLACEHOLDER = {
   ],
 };
 
+const fmt = (n: number) => n.toLocaleString("id-ID", { maximumFractionDigits: 1 });
+
 export default function CodingStats() {
   const { t } = useLang();
-  const data = PLACEHOLDER; // TODO: ganti dengan data live saat CONFIG.USE_LIVE_DATA
+  const [live, setLive] = useState<LiveData | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/wakapi")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        if (!cancelled && j && !j.error && typeof j.weekHours === "number") {
+          setLive(j as LiveData);
+        }
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const data = live ?? PLACEHOLDER;
   const maxHours = Math.max(...data.languages.map((l) => l.hours));
   const unit = t.codingStats.hoursUnit;
 
   const stats = [
-    { label: t.codingStats.stat1, value: `${data.weekHours} ${unit}` },
-    { label: t.codingStats.stat2, value: `${data.dailyAvg} ${unit}` },
-    { label: t.codingStats.stat3, value: `${data.totalAllTime} ${unit}` },
+    { label: t.codingStats.stat1, value: `${fmt(data.weekHours)} ${unit}` },
+    { label: t.codingStats.stat2, value: `${fmt(data.dailyAvgHours)} ${unit}` },
+    { label: t.codingStats.stat3, value: `${fmt(data.totalHours)} ${unit}` },
   ];
 
   return (
@@ -50,8 +67,13 @@ export default function CodingStats() {
           {t.codingStats.titleA} <span className="text-gradient-cool">{t.codingStats.titleB}</span>
         </h2>
         <p className="mt-3 text-soft max-w-xl">
-          {t.codingStats.desc}
-          {!CONFIG.USE_LIVE_DATA && (
+          {t.codingStats.desc}{" "}
+          {live ? (
+            <span className="inline-flex items-center gap-1.5 font-mono text-[11px] px-2.5 py-1 rounded-full bg-[color-mix(in_srgb,var(--emerald)_12%,transparent)] text-[var(--emerald)] border border-[color-mix(in_srgb,var(--emerald)_30%,transparent)] align-middle">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--emerald)] animate-pulse" aria-hidden="true" />
+              LIVE · WakAPI
+            </span>
+          ) : (
             <span className="text-faint"> {t.codingStats.note}</span>
           )}
         </p>
