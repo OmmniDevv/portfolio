@@ -6,11 +6,22 @@ export type Post = {
   title: string;
   date: string;
   tags: string[];
+  category: string;
   excerpt: string;
   minutes: number;
   image: string;
   content: string;
 };
+
+/** Kategori otomatis dari tags — dipakai filter blog. */
+export function postCategory(tags: string[]): string {
+  const t = tags.map((x) => x.toLowerCase());
+  if (t.includes("ai")) return "AI";
+  if (t.includes("tutorial")) return "Tutorial";
+  if (t.includes("tips") || t.includes("produktivitas")) return "Tips";
+  if (t.includes("opini")) return "Opini";
+  return "Lainnya";
+}
 
 const DIR = path.join(process.cwd(), "content", "blog");
 
@@ -44,11 +55,13 @@ export async function getAllPosts(): Promise<Post[]> {
     const raw = await fs.readFile(path.join(DIR, file), "utf-8");
     const { meta, body } = parseFrontmatter(raw);
     const words = body.split(/\s+/).filter(Boolean).length;
+    const tags = (meta.tags || "").split(",").map((t) => t.trim()).filter(Boolean);
     posts.push({
       slug: file.replace(/\.md$/, ""),
       title: meta.title || file.replace(/\.md$/, ""),
       date: meta.date || "1970-01-01",
-      tags: (meta.tags || "").split(",").map((t) => t.trim()).filter(Boolean),
+      tags,
+      category: postCategory(tags),
       excerpt: meta.excerpt || body.slice(0, 160).replace(/\n/g, " ").trim(),
       image: meta.image || "",
       minutes: Math.max(1, Math.round(words / 200)),
