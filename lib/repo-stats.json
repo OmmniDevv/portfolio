@@ -1,0 +1,58 @@
+{
+  "generated": "2026-10-03",
+  "method": "Estimasi kasar dari kode di repo publik: tiap repo = total byte / 3000 (±75 baris produktif per jam, termasuk mikir & debug), dibatasi 400 jam/repo agar template/dependency tidak mendominasi.",
+  "totalHours": 1656,
+  "totalRepos": 13,
+  "totalCommits": 213,
+  "totalBytes": 37944982,
+  "languages": [
+    {
+      "name": "JavaScript",
+      "bytes": 34739582,
+      "percent": 91.6,
+      "color": "#f1e05a"
+    },
+    {
+      "name": "PHP",
+      "bytes": 953109,
+      "percent": 2.5,
+      "color": "#777bb4"
+    },
+    {
+      "name": "CSS",
+      "bytes": 836669,
+      "percent": 2.2,
+      "color": "#a074c4"
+    },
+    {
+      "name": "Blade",
+      "bytes": 750600,
+      "percent": 2.0,
+      "color": "#f7523f"
+    },
+    {
+      "name": "TypeScript",
+      "bytes": 531531,
+      "percent": 1.4,
+      "color": "#3178c6"
+    },
+    {
+      "name": "Python",
+      "bytes": 65530,
+      "percent": 0.2,
+      "color": "#3572a5"
+    },
+    {
+      "name": "HTML",
+      "bytes": 61177,
+      "percent": 0.2,
+      "color": "#e34c26"
+    },
+    {
+      "name": "Hack",
+      "bytes": 4379,
+      "percent": 0.0,
+      "color": "#878787"
+    }
+  ]
+}
