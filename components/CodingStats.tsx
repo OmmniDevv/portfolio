@@ -43,8 +43,7 @@ export default function CodingStats() {
           {t.codingStats.titleA} <span className="text-gradient-cool">{t.codingStats.titleB}</span>
         </h2>
         <p className="mt-3 text-soft max-w-xl">
-          {t.codingStats.desc}{" "}
-          <span className="text-faint">{t.codingStats.note}</span>
+          {t.codingStats.desc}
         </p>
 
         <div className="mt-8 grid sm:grid-cols-3 gap-4">
