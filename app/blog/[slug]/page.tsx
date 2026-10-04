@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { getAllPosts, getPost } from "@/lib/blog";
+import KomentarBlog from "@/components/KomentarBlog";
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -84,6 +85,8 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           </ReactMarkdown>
         </div>
 
+        <hr className="border-[var(--hairline)] my-10" />
+        <KomentarBlog slug={post.slug} />
         <hr className="border-[var(--hairline)] my-10" />
         <div className="flex flex-wrap gap-3">
           <Link href="/blog" className="btn-ghost text-sm">Tulisan lain</Link>

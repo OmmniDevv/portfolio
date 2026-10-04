@@ -1,29 +1,36 @@
 import { NextResponse } from "next/server";
-import { promises as fs } from "fs";
-import path from "path";
+import { sb, supabaseSiap, validasiMasukan } from "@/lib/supabase";
 
-const DATA_FILE = path.join(process.cwd(), "data", "guestbook.json");
+type Baris = { id: string; nama: string; pesan: string; dibuat: string };
 
-type Entry = { nama: string; pesan: string; createdAt: string };
+const KE_BENTUK_LAMA = (b: Baris) => ({
+  nama: b.nama,
+  pesan: b.pesan,
+  createdAt: b.dibuat,
+});
 
-async function readAll(): Promise<Entry[]> {
+export async function GET() {
+  if (!supabaseSiap()) {
+    return NextResponse.json({ entries: [] });
+  }
   try {
-    const raw = await fs.readFile(DATA_FILE, "utf-8");
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
+    const baris = await sb<Baris[]>("buku_tamu", {
+      query: "?select=id,nama,pesan,dibuat&order=dibuat.desc&limit=100",
+    });
+    return NextResponse.json({ entries: baris.map(KE_BENTUK_LAMA) });
+  } catch (e) {
+    console.error("guestbook GET:", e);
+    return NextResponse.json({ entries: [] });
   }
 }
 
-export async function GET() {
-  const list = await readAll();
-  // Terbaru dulu.
-  const sorted = [...list].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
-  return NextResponse.json({ entries: sorted });
-}
-
 export async function POST(req: Request) {
+  if (!supabaseSiap()) {
+    return NextResponse.json(
+      { error: "Penyimpanan belum dikonfigurasi." },
+      { status: 503 }
+    );
+  }
   let nama = "";
   let pesan = "";
   try {
@@ -34,35 +41,25 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  if (nama.length < 1 || nama.length > 50) {
-    return NextResponse.json(
-      { error: "Nama wajib diisi (maksimal 50 karakter)." },
-      { status: 400 }
-    );
-  }
-  if (pesan.length < 1 || pesan.length > 500) {
-    return NextResponse.json(
-      { error: "Pesan wajib diisi (maksimal 500 karakter)." },
-      { status: 400 }
-    );
-  }
-
-  const entry: Entry = { nama, pesan, createdAt: new Date().toISOString() };
-  const list = await readAll();
-  list.push(entry);
+  const galat = validasiMasukan(nama, pesan);
+  if (galat) return NextResponse.json({ error: galat }, { status: 400 });
 
   try {
-    await fs.mkdir(path.dirname(DATA_FILE), { recursive: true });
-    await fs.writeFile(DATA_FILE, JSON.stringify(list, null, 2), "utf-8");
-  } catch {
-    // Fallback: tetap anggap sukses agar UX tidak rusak di environment read-only.
-    // Catatan: di Vercel filesystem tidak persisten — untuk produksi yang
-    // durable, pindahkan ke database/KV (mis. Vercel KV, Supabase, dsb).
-    return NextResponse.json({
-      message: "Pesan terkirim! (mode sementara)",
-      entry,
+    const hasil = await sb<Baris[]>("buku_tamu", {
+      method: "POST",
+      body: { nama, pesan },
+      prefer: "return=representation",
     });
+    const tersimpan = hasil[0];
+    return NextResponse.json({
+      message: "Pesan terkirim! Terima kasih.",
+      entry: KE_BENTUK_LAMA(tersimpan),
+    });
+  } catch (e) {
+    console.error("guestbook POST:", e);
+    return NextResponse.json(
+      { error: "Gagal menyimpan pesan, coba lagi." },
+      { status: 500 }
+    );
   }
-
-  return NextResponse.json({ message: "Pesan terkirim! Terima kasih.", entry });
 }
