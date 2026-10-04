@@ -21,6 +21,13 @@ type Entry = {
 const ENTRIES: Entry[] = [
   {
     date: "2026-10-04",
+    title: "Komentar blog + buku tamu permanen",
+    detail:
+      "Pesan buku tamu dan komentar blog kini tersimpan permanen di Supabase (sebelumnya hilang tiap deploy). Komentar blog mendukung balasan 1 level.",
+    tag: "fitur",
+  },
+  {
+    date: "2026-10-04",
     title: "Coding stats: Dart masuk top language",
     detail:
       "Statistik ngoding dihitung ulang: Dart kini 9,6% berkat repo aplikasi kasir Warkop Doa Ambu, lengkap dengan deskripsi keahlian Flutter. Bagian 'estimasi kasar' dihapus dari tampilan.",
