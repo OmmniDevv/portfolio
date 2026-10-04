@@ -20,6 +20,20 @@ type Entry = {
 
 const ENTRIES: Entry[] = [
   {
+    date: "2026-10-04",
+    title: "Coding stats: Dart masuk top language",
+    detail:
+      "Statistik ngoding dihitung ulang: Dart kini 9,6% berkat repo aplikasi kasir Warkop Doa Ambu, lengkap dengan deskripsi keahlian Flutter. Bagian 'estimasi kasar' dihapus dari tampilan.",
+    tag: "konten",
+  },
+  {
+    date: "2026-10-04",
+    title: "Fix gambar blog yang rusak",
+    detail:
+      "Akar masalahnya: parser frontmatter tidak membersihkan tanda kutip, jadi URL gambar tersimpan sebagai \"https://...\" dan rusak di HTML. Sekarang kutip di sekeliling nilai otomatis dibersihkan — judul artikel yang tampil dengan tanda kutip juga ikut rapi.",
+    tag: "perbaikan",
+  },
+  {
     date: "2026-10-02",
     title: "Mao bisa ngomong Bahasa Jepang",
     detail:
