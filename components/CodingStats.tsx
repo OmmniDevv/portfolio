@@ -82,7 +82,6 @@ export default function CodingStats() {
             ))}
           </div>
           <p className="mt-6 text-xs text-faint leading-relaxed border-t border-[var(--hairline)] pt-4">
-            {data.method}{" "}
             {t.codingStats.updated}: {data.generated}
           </p>
         </div>

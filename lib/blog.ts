@@ -35,7 +35,13 @@ function parseFrontmatter(raw: string): { meta: Record<string, string>; body: st
       body = raw.slice(end + 3).trim();
       for (const line of block.split("\n")) {
         const i = line.indexOf(":");
-        if (i > 0) meta[line.slice(0, i).trim()] = line.slice(i + 1).trim();
+        if (i > 0) {
+          const key = line.slice(0, i).trim();
+          // Strip tanda kutip di sekeliling nilai ("..." atau '...'),
+          // karena penulis artikel sering menulis frontmatter dengan kutip.
+          const val = line.slice(i + 1).trim().replace(/^(['"])(.*)\1$/, "$2");
+          meta[key] = val;
+        }
       }
     }
   }
