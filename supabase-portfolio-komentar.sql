@@ -1,6 +1,7 @@
 -- ============================================================
 -- Portfolio OmniDev: buku tamu + komentar blog
--- Jalankan sekali di SQL Editor (project qgvuyayoiutqvabjqfan)
+-- Jalankan sekali di SQL Editor project "OmmniDevv's Project"
+-- (ref: xdjzykuzycncqprfnyfm) — BUKAN project warkop-do-a-ambu.
 -- ============================================================
 
 -- 1. Buku tamu (pesan tentang web)
