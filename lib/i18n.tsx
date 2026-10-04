@@ -74,6 +74,10 @@ const STRINGS = {
         title: "Optimasi & Performa",
         desc: "Audit kecepatan, optimasi bundle, dan best practice. Website yang ringan itu website yang dihormati pengunjungnya.",
       },
+      item4: {
+        title: "Aplikasi Mobile",
+        desc: "Aplikasi Android dengan Flutter. Offline-first, sinkronisasi cloud, dan UI yang mulus. Contoh: aplikasi kasir (POS) untuk warung kopi.",
+      },
     },
     marquee: {
       label: "Tech stack",
@@ -444,6 +448,10 @@ const STRINGS = {
       item3: {
         title: "Optimization & Performance",
         desc: "Speed audits, bundle optimization, and best practices. A lightweight website is a website visitors respect.",
+      },
+      item4: {
+        title: "Mobile Apps",
+        desc: "Android apps with Flutter. Offline-first, cloud sync, and smooth UI. Example: a point-of-sale (POS) app for a coffee shop.",
       },
     },
     marquee: {

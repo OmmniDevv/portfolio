@@ -26,6 +26,12 @@ export default function Capabilities() {
       tags: ["Lighthouse", "SEO", "Caching"],
       span: false,
     },
+    {
+      title: t.capabilities.item4.title,
+      desc: t.capabilities.item4.desc,
+      tags: ["Flutter", "Dart", "Supabase", "Riverpod"],
+      span: false,
+    },
   ];
 
   return (
