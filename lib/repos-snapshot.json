@@ -1,0 +1,111 @@
+[
+  {
+    "id": 1227492949,
+    "name": "portfolio",
+    "description": null,
+    "html_url": "https://github.com/OmmniDevv/portfolio",
+    "language": "TypeScript",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "updated_at": "2026-10-06T00:48:03Z",
+    "topics": []
+  },
+  {
+    "id": 1403386517,
+    "name": "warkop-doa-ambu",
+    "description": null,
+    "html_url": "https://github.com/OmmniDevv/warkop-doa-ambu",
+    "language": "Dart",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "updated_at": "2026-10-04T04:16:05Z",
+    "topics": []
+  },
+  {
+    "id": 1372378819,
+    "name": "api-ujikom",
+    "description": null,
+    "html_url": "https://github.com/OmmniDevv/api-ujikom",
+    "language": "Blade",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "updated_at": "2026-09-30T05:03:16Z",
+    "topics": []
+  },
+  {
+    "id": 1235296781,
+    "name": "Elaina-MD",
+    "description": "ElainaBOT MD adalah WhatsApp Bot multi device yang dibangun dengan ourin-baileys. Dilengkapi fitur downloader, game RPG, sticker maker, jadibot, NSFW, anime, dan masih banyak lagi. Support Heroku, Termux, VPS & Windows.",
+    "html_url": "https://github.com/OmmniDevv/Elaina-MD",
+    "language": "JavaScript",
+    "stargazers_count": 4,
+    "forks_count": 0,
+    "updated_at": "2026-09-28T10:20:32Z",
+    "topics": [
+      "baileys",
+      "bot",
+      "botwa",
+      "javascript",
+      "multi-device",
+      "nodejs",
+      "wabot",
+      "whatsapp",
+      "whatsapp-bot"
+    ]
+  },
+  {
+    "id": 1227429253,
+    "name": "OmmniDevv",
+    "description": null,
+    "html_url": "https://github.com/OmmniDevv/OmmniDevv",
+    "language": null,
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "updated_at": "2026-09-27T04:38:16Z",
+    "topics": []
+  },
+  {
+    "id": 1387539372,
+    "name": "pain-bot",
+    "description": "Hola, este es el repositorio oficial de PAIN BOT, espero el bot sea de tu agrado :)           ",
+    "html_url": "https://github.com/OmmniDevv/pain-bot",
+    "language": "JavaScript",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "updated_at": "2026-09-25T13:21:39Z",
+    "topics": []
+  },
+  {
+    "id": 1274225511,
+    "name": "hmone",
+    "description": null,
+    "html_url": "https://github.com/OmmniDevv/hmone",
+    "language": "TypeScript",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "updated_at": "2026-06-19T09:58:16Z",
+    "topics": []
+  },
+  {
+    "id": 1225896023,
+    "name": "LuxBid",
+    "description": null,
+    "html_url": "https://github.com/OmmniDevv/LuxBid",
+    "language": "JavaScript",
+    "stargazers_count": 0,
+    "forks_count": 1,
+    "updated_at": "2026-06-15T03:04:54Z",
+    "topics": []
+  },
+  {
+    "id": 1242337045,
+    "name": "buatt-someone",
+    "description": null,
+    "html_url": "https://github.com/OmmniDevv/buatt-someone",
+    "language": "HTML",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "updated_at": "2026-05-18T10:50:12Z",
+    "topics": []
+  }
+]
