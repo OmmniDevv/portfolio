@@ -20,6 +20,13 @@ type Entry = {
 
 const ENTRIES: Entry[] = [
   {
+    date: "2026-10-06",
+    title: "Fix section Karya yang gagal memuat",
+    detail:
+      "Akar masalahnya: fetch repo GitHub tanpa token kena rate limit 60/jam di IP bersama Vercel, lalu section menampilkan pesan error. Sekarang ada fallback ke snapshot lokal (lib/repos-snapshot.json) — section Karya tidak pernah kosong lagi. Regenerasi snapshot: bin/update-repos-snapshot.",
+    tag: "perbaikan",
+  },
+  {
     date: "2026-10-04",
     title: "Komentar blog + buku tamu permanen",
     detail:
