@@ -6,6 +6,7 @@ import Projects from "@/components/Projects";
 import Testimonials from "@/components/Testimonials";
 import Journey from "@/components/Journey";
 import Certificates from "@/components/Certificates";
+import LearnPromo from "@/components/LearnPromo";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import BlogTeaser from "@/components/BlogTeaser";
@@ -27,6 +28,7 @@ export default function Home() {
       <Testimonials />
       <Journey />
       <Certificates />
+      <LearnPromo />
       <AnimeWidget />
       <CodingStats />
       <Pricing />

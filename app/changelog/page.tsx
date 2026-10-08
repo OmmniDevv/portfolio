@@ -21,6 +21,13 @@ type Entry = {
 const ENTRIES: Entry[] = [
   {
     date: "2026-10-08",
+    title: "Section promo Learn di beranda",
+    detail:
+      "Beranda kini punya section 'Ingin seperti saya? Ayo belajar.' tepat di bawah Sertifikat — banner CTA ke learn.omnidevv.biz.id dengan tombol ke halaman /learn.",
+    tag: "fitur",
+  },
+  {
+    date: "2026-10-08",
     title: "Halaman promo Learn",
     detail:
       "Portfolio kini punya halaman /learn yang mempromosikan learn.omnidevv.biz.id — web tutorial, dokumentasi, dan troubleshooting ngoding (OmniCode). Bisa dibuka lewat footer dan Ctrl+K.",
