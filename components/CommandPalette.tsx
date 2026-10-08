@@ -23,6 +23,7 @@ const ITEMS: PaletteItem[] = [
   { id: "blog", label: "Blog", deskripsi: "Tulisan tutorial & pengalaman", kategori: "Halaman", keywords: "artikel tulisan", href: "/blog" },
   { id: "now", label: "Now", deskripsi: "Lagi ngapain sekarang", kategori: "Halaman", keywords: "sekarang now update", href: "/now" },
   { id: "changelog", label: "Changelog", deskripsi: "Update apa saja di web ini", kategori: "Halaman", keywords: "perubahan update log riwayat", href: "/changelog" },
+  { id: "learn", label: "Learn", deskripsi: "Tutorial & dokumentasi ngoding", kategori: "Halaman", keywords: "learn tutorial dokumentasi belajar ngoding omnicode", href: "/learn" },
   { id: "buku-tamu", label: "Buku Tamu", deskripsi: "Tinggalkan pesan", kategori: "Navigasi", keywords: "guestbook pesan tamu", href: "/#buku-tamu" },
   {
     id: "tema",

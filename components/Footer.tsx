@@ -16,6 +16,7 @@ export default function Footer() {
             <Link href="/changelog" className="hover:text-ink transition-colors">Changelog</Link>
             <Link href="/cv" className="hover:text-ink transition-colors">CV</Link>
             <Link href="/blog" className="hover:text-ink transition-colors">Blog</Link>
+            <Link href="/learn" className="hover:text-ink transition-colors">Learn</Link>
           </nav>
         </div>
         <p className="text-faint text-xs text-center">

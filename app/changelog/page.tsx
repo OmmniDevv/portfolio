@@ -20,6 +20,13 @@ type Entry = {
 
 const ENTRIES: Entry[] = [
   {
+    date: "2026-10-08",
+    title: "Halaman promo Learn",
+    detail:
+      "Portfolio kini punya halaman /learn yang mempromosikan learn.omnidevv.biz.id — web tutorial, dokumentasi, dan troubleshooting ngoding (OmniCode). Bisa dibuka lewat footer dan Ctrl+K.",
+    tag: "fitur",
+  },
+  {
     date: "2026-10-06",
     title: "Fix section Karya yang gagal memuat",
     detail:
