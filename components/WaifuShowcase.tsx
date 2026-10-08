@@ -179,7 +179,7 @@ export default function WaifuShowcase() {
           >
             <FlankCard
               src={RIN_IMG}
-              label="Rin Shima — Yuru Camp"
+              label="Rin Shima, Yuru Camp"
               alt="Rin Shima from Yuru Camp (Laid-Back Camp)"
             />
           </motion.div>
@@ -202,7 +202,7 @@ export default function WaifuShowcase() {
           >
             <FlankCard
               src={GANYU_IMG}
-              label="Ganyu — Genshin Impact"
+              label="Ganyu, Genshin Impact"
               alt="Ganyu from Genshin Impact"
             />
           </motion.div>

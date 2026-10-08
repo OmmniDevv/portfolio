@@ -13,7 +13,7 @@ export type Post = {
   content: string;
 };
 
-/** Kategori otomatis dari tags — dipakai filter blog. */
+/** Kategori otomatis dari tags, dipakai filter blog. */
 export function postCategory(tags: string[]): string {
   const t = tags.map((x) => x.toLowerCase());
   if (t.includes("ai")) return "AI";

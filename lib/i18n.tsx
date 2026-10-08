@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 export type Lang = "id" | "en";
 
 /**
- * Kamus string UI utama — mencakup seluruh section homepage.
+ * Kamus string UI utama, mencakup seluruh section homepage.
  * Tambah key baru di BOTH id & en dengan struktur identik agar typecheck lolos.
  */
 const STRINGS = {
@@ -21,7 +21,7 @@ const STRINGS = {
       mainNavLabel: "Navigasi utama",
     },
     hero: {
-      eyebrow: "Studio — Portfolio Pribadi",
+      eyebrow: "Studio · Portfolio Pribadi",
       titleA: "Kami membangun",
       titleHighlight: "produk digital",
       titleB: "yang memberikan hasil nyata.",
@@ -29,7 +29,7 @@ const STRINGS = {
         "Halo, saya Abdul Malik Rizky Nur Rahmat. Junior developer dari Bandung yang fokus bikin website cepat dan bot automasi yang rapi.",
       viewProjects: "Lihat Proyek",
       contactMe: "Hubungi Saya",
-      hint: "Psst — klik Mao di sebelah kanan, dia bisa diajak interaksi!",
+      hint: "Psst, klik Mao di sebelah kanan, dia bisa diajak interaksi!",
     },
     buttons: {
       viewProjects: "Lihat Proyek",
@@ -97,7 +97,7 @@ const STRINGS = {
       ratingLabel: "Rating 5 dari 5",
       item1: {
         name: "Rina Wijaya",
-        role: "Owner, Dapur Rina — UMKM Kuliner Bandung",
+        role: "Owner Dapur Rina (UMKM kuliner Bandung)",
         quote:
           "Web company profile-nya rapi banget dan loading-nya cepat. Sejak punya website sendiri, pelanggan jadi lebih percaya dan order via WhatsApp naik hampir dua kali lipat.",
       },
@@ -175,7 +175,7 @@ const STRINGS = {
       eyebrow: "learn.omnidevv.biz.id",
       titleA: "Ingin seperti saya?",
       titleB: "Ayo belajar.",
-      desc: "Semua yang kupelajari soal ngoding — tutorial, dokumentasi, dan bedah error — kubagikan gratis di Learn. Langsung praktik di browser, tanpa install apa-apa.",
+      desc: "Semua yang kupelajari soal ngoding (tutorial, dokumentasi, dan bedah error) kubagikan gratis di Learn. Langsung praktik di browser, tanpa install apa-apa.",
       point1: "10 modul tutorial",
       point2: "Playground interaktif",
       point3: "100% gratis",
@@ -220,11 +220,11 @@ const STRINGS = {
     pricing: {
       eyebrow: "Harga Jasa",
       title: "Transparan sejak awal",
-      desc: "Estimasi harga untuk project freelance. Harga final menyesuaikan kompleksitas — diskusi dulu gratis.",
+      desc: "Estimasi harga untuk project freelance. Harga final menyesuaikan kompleksitas. Diskusi dulu gratis.",
       popular: "Populer",
       cta: "Tanya Dulu",
       footnote:
-        "*Syarat & ketentuan berlaku. Butuh yang custom? Ceritakan kebutuhanmu — estimasi detail diberikan sebelum project mulai, tanpa biaya.",
+        "*Syarat & ketentuan berlaku. Butuh yang custom? Ceritakan kebutuhanmu. Estimasi detail diberikan sebelum project mulai, tanpa biaya.",
       plan1: {
         name: "Web Company Profile",
         price: "Rp 1,5 jt",
@@ -276,7 +276,7 @@ const STRINGS = {
       desc: "Masih ragu? Ini jawaban untuk pertanyaan yang paling sering masuk.",
       q1: {
         q: "Berapa lama pengerjaan project?",
-        a: "Company profile biasanya 1–2 minggu, web app/dashboard 3–6 minggu, dan bot 1–3 minggu — tergantung kompleksitas dan kelengkapan materi (teks, foto, logo) dari kamu. Timeline pasti dikasih sebelum project mulai.",
+        a: "Company profile biasanya 1–2 minggu, web app/dashboard 3–6 minggu, dan bot 1–3 minggu, tergantung kompleksitas dan kelengkapan materi (teks, foto, logo) dari kamu. Timeline pasti dikasih sebelum project mulai.",
       },
       q2: {
         q: "Sistem pembayarannya bagaimana?",
@@ -426,7 +426,7 @@ const STRINGS = {
       mainNavLabel: "Main navigation",
     },
     hero: {
-      eyebrow: "Studio — Personal Portfolio",
+      eyebrow: "Studio · Personal Portfolio",
       titleA: "We build",
       titleHighlight: "digital products",
       titleB: "that deliver real results.",
@@ -434,7 +434,7 @@ const STRINGS = {
         "Hi, I'm Abdul Malik Rizky Nur Rahmat. A junior developer from Bandung focused on fast websites and tidy automation bots.",
       viewProjects: "View Projects",
       contactMe: "Contact Me",
-      hint: "Psst — click Mao on the right, she's interactive!",
+      hint: "Psst, click Mao on the right, she's interactive!",
     },
     buttons: {
       viewProjects: "View Projects",
@@ -502,7 +502,7 @@ const STRINGS = {
       ratingLabel: "Rated 5 out of 5",
       item1: {
         name: "Rina Wijaya",
-        role: "Owner, Dapur Rina — Culinary SME, Bandung",
+        role: "Owner of Dapur Rina (culinary SME, Bandung)",
         quote:
           "The company profile website is super neat and loads fast. Since having our own website, customers trust us more and WhatsApp orders nearly doubled.",
       },
@@ -580,7 +580,7 @@ const STRINGS = {
       eyebrow: "learn.omnidevv.biz.id",
       titleA: "Want to be like me?",
       titleB: "Let's learn.",
-      desc: "Everything I've learned about coding — tutorials, docs, and error breakdowns — shared free on Learn. Practice right in the browser, nothing to install.",
+      desc: "Everything I've learned about coding (tutorials, docs, and error breakdowns), shared free on Learn. Practice right in the browser, nothing to install.",
       point1: "10 tutorial modules",
       point2: "Interactive playground",
       point3: "100% free",
@@ -625,11 +625,11 @@ const STRINGS = {
     pricing: {
       eyebrow: "Pricing",
       title: "Transparent from the start",
-      desc: "Estimated rates for freelance projects. Final price adjusts to complexity — the initial discussion is free.",
+      desc: "Estimated rates for freelance projects. Final price adjusts to complexity. The initial discussion is free.",
       popular: "Popular",
       cta: "Ask First",
       footnote:
-        "*Terms & conditions apply. Need something custom? Tell me your needs — a detailed estimate is given before the project starts, free of charge.",
+        "*Terms & conditions apply. Need something custom? Tell me your needs. A detailed estimate is given before the project starts, free of charge.",
       plan1: {
         name: "Company Profile Website",
         price: "Rp 1.5 mio",
@@ -681,7 +681,7 @@ const STRINGS = {
       desc: "Still unsure? Here are answers to the most common questions.",
       q1: {
         q: "How long does a project take?",
-        a: "Company profiles usually take 1–2 weeks, web apps/dashboards 3–6 weeks, and bots 1–3 weeks — depending on complexity and how complete your materials are (text, photos, logo). You'll get a firm timeline before the project starts.",
+        a: "Company profiles usually take 1–2 weeks, web apps/dashboards 3–6 weeks, and bots 1–3 weeks, depending on complexity and how complete your materials are (text, photos, logo). You'll get a firm timeline before the project starts.",
       },
       q2: {
         q: "How does payment work?",
@@ -727,7 +727,7 @@ const STRINGS = {
       item1: {
         juara: "1st Place",
         lomba: "Web Design Competition",
-        penyelenggara: "TechFest — Bandung Vocational Schools",
+        penyelenggara: "TechFest, Bandung Vocational Schools",
         desc: "Built a company profile landing page in 6 hours, judged on design, responsiveness, and load speed.",
       },
       item2: {
@@ -847,7 +847,7 @@ export function LangProvider({ children }: { children: ReactNode }) {
         document.documentElement.lang = saved;
       }
     } catch {
-      /* abaikan — pakai default 'id' */
+      /* abaikan, pakai default 'id' */
     }
   }, []);
 

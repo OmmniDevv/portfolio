@@ -26,7 +26,7 @@ export interface Badge {
   id: BadgeId;
   nama: string;
   deskripsi: string;
-  /** Cara membuka — ditampilkan sebagai hint di kartu yang masih terkunci. */
+  /** Cara membuka, ditampilkan sebagai hint di kartu yang masih terkunci. */
   caraBuka: string;
 }
 

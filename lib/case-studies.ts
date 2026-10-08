@@ -10,10 +10,10 @@ export type CaseStudy = {
   hasil: string[];
 };
 
-/* ————————————————————————————————
+/* ================================
    EDIT DI SINI: tambah/edit case study.
    slug dipakai untuk URL /studi-kasus/[slug]
-———————————————————————————————— */
+================================ */
 export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "company-profile-umkm-kuliner",
@@ -21,10 +21,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     ringkasan:
       "Website company profile untuk usaha kuliner lokal: katalog menu, lokasi, dan tombol order via WhatsApp.",
     durasi: "3 minggu",
-    peran: "Solo developer — desain sampai deploy",
+    peran: "Solo developer, desain sampai deploy",
     masalah: [
       "Usaha hanya mengandalkan Instagram; calon pembeli kesulitan melihat daftar menu lengkap dan harga.",
-      "Tidak ada kehadiran di Google — pencarian nama usaha tidak menampilkan info resmi.",
+      "Tidak ada kehadiran di Google, pencarian nama usaha tidak menampilkan info resmi.",
       "Pemilik gaptek: butuh cara update menu tanpa ngoding.",
     ],
     solusi: [
@@ -73,7 +73,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     durasi: "6 minggu",
     peran: "Full-stack developer",
     masalah: [
-      "Data presensi dan sirkulasi masih di Excel terpisah — rekap bulanan makan waktu berhari-hari.",
+      "Data presensi dan sirkulasi masih di Excel terpisah, rekap bulanan makan waktu berhari-hari.",
       "Kepala sekolah tidak punya gambaran tren: buku populer, jam ramai, denda menunggak.",
       "Laporan harus diketik ulang manual untuk rapat.",
     ],
