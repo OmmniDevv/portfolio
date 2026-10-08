@@ -23,11 +23,11 @@ const STACK = [
   "Figma",
 ];
 
-/** Strip marquee tech stack — animasi CSS infinite, pause saat hover. */
+/** Strip marquee tech stack, animasi CSS infinite, pause saat hover. */
 export default function Marquee() {
   const { t } = useLang();
   const trackRef = useRef<HTMLDivElement>(null);
-  // Pause animasi saat marquee di luar viewport — hemat GPU di HP
+  // Pause animasi saat marquee di luar viewport, hemat GPU di HP
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;

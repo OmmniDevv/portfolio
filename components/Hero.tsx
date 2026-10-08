@@ -17,7 +17,7 @@ export default function Hero() {
   const { t } = useLang();
   return (
     <section className="relative min-h-[100svh] flex items-center pt-20 md:pt-24 pb-12 md:pb-16 px-6 overflow-hidden">
-      {/* Background ilustrasi kamar — hanya di hero ini */}
+      {/* Background ilustrasi kamar, hanya di hero ini */}
       <div aria-hidden="true" className="absolute inset-0">
         <img
           src="/images/hero-room.webp"

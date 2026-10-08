@@ -5,7 +5,7 @@ import { useLang } from "@/lib/i18n";
 export default function Testimonials() {
   const { t } = useLang();
 
-  // NOTE: Data di bawah ini contoh fiktif (disetujui user) —
+  // NOTE: Data di bawah ini contoh fiktif (disetujui user).
   // ganti dengan testimoni asli kalau sudah ada dari klien beneran.
   const TESTIMONIALS = [t.testimonials.item1, t.testimonials.item2, t.testimonials.item3];
 

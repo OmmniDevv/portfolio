@@ -11,7 +11,7 @@ const CHARACTERS = [
     color: "#EF9A9A",
     glow: "rgba(239,154,154,0.5)",
     weapon: "Polearm",
-    quote: "Life and death are like day and night — one cannot exist without the other.",
+    quote: "Life and death are like day and night, one cannot exist without the other.",
   },
   {
     name: "Raiden Shogun",
@@ -20,7 +20,7 @@ const CHARACTERS = [
     color: "#9B72CF",
     glow: "rgba(155,114,207,0.5)",
     weapon: "Polearm",
-    quote: "Eternity is not a destination — it is the journey itself.",
+    quote: "Eternity is not a destination, it is the journey itself.",
   },
   {
     name: "Kazuha",
@@ -29,7 +29,7 @@ const CHARACTERS = [
     color: "#74C69D",
     glow: "rgba(116,198,157,0.5)",
     weapon: "Sword",
-    quote: "The wind carries no regrets — only the scent of distant shores.",
+    quote: "The wind carries no regrets, only the scent of distant shores.",
   },
   {
     name: "Zhongli",
@@ -79,7 +79,7 @@ function CharCard({ char, onClick }: { char: Character; onClick: () => void }) {
       ) : (
         <Image
           src={src}
-          alt={`${char.name} — ${char.element} character from Genshin Impact`}
+          alt={`${char.name}, ${char.element} character from Genshin Impact`}
           fill
           className="object-cover object-top transition-transform duration-300 hover:scale-105"
           loading="lazy"

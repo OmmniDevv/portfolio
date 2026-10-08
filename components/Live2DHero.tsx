@@ -12,9 +12,9 @@ const LINES = [
 
 const EXPRESSIONS = ["exp_02", "exp_01", "exp_03", "exp_07"];
 
-// Fit penuh tanpa crop — ukuran besar didapat dari stage yang tinggi & lebar
+// Fit penuh tanpa crop, ukuran besar didapat dari stage yang tinggi & lebar
 
-// Model resmi Live2D (pinned commit, sama seperti kana-hermes) — tidak didistribusikan ulang.
+// Model resmi Live2D (pinned commit, sama seperti kana-hermes), tidak didistribusikan ulang.
 // Sample data milik Live2D Inc., digunakan sesuai ketentuan mereka.
 const MAO_MODEL_URL =
   "https://raw.githubusercontent.com/Live2D/CubismWebSamples/b1de66b0b1f1cb881d95fb6158622aeb6a2827bd/Samples/Resources/Mao/Mao.model3.json";
@@ -63,7 +63,7 @@ export default function Live2DHero() {
         } catch {}
       };
 
-      // cancel() lalu langsung speak() sering bisu di Chrome — kasih jeda
+      // cancel() lalu langsung speak() sering bisu di Chrome, kasih jeda
       try { synth.cancel(); } catch {}
       const voices = synth.getVoices();
       if (voices.length) {
@@ -163,7 +163,7 @@ export default function Live2DHero() {
         app.stage.addChild(model);
 
         // Warm-up 2 frame agar bounds model stabil (deformer/pose sudah apply),
-        // lalu ukur bounds lokal SEKALI — jangan pakai model.width karena
+        // lalu ukur bounds lokal SEKALI, jangan pakai model.width karena
         // nilainya ikut scale (feedback loop) dan bisa belum stabil.
         await new Promise<void>((r) => requestAnimationFrame(() => requestAnimationFrame(() => r())));
         if (destroyed) {
@@ -328,7 +328,7 @@ export default function Live2DHero() {
             ✦
           </div>
           <p className="text-xs text-faint font-mono max-w-[220px] leading-relaxed">
-            Mao lagi ngumpet — browser ini nggak dukung WebGL
+            Mao lagi ngumpet, browser ini nggak dukung WebGL
           </p>
         </div>
       )}

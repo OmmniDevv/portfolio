@@ -6,7 +6,7 @@ type Line = { type: "cmd" | "out" | "blank"; text: string };
 
 const SEQUENCE: Line[] = [
   { type: "cmd", text: "whoami" },
-  { type: "out", text: "OmniDev — Junior Developer & Bot Architect" },
+  { type: "out", text: "OmniDev, Junior Developer & Bot Architect" },
   { type: "blank", text: "" },
   { type: "cmd", text: "cat skills.txt" },
   { type: "out", text: "JavaScript, TypeScript, PHP, Dart, Flutter" },

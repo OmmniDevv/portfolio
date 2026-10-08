@@ -288,7 +288,7 @@ export default function ProjectsClient({ repos }: { repos: GithubRepo[] }) {
           </p>
         )}
 
-        {/* GitHub Activity Graph — custom, tidak tergantung service pihak ketiga */}
+        {/* GitHub Activity Graph, custom, tidak tergantung service pihak ketiga */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}

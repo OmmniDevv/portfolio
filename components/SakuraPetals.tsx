@@ -13,7 +13,7 @@ type Petal = {
   opacity: number;
 };
 
-// Kelopak sakura jatuh — ringan, pause saat tab tidak aktif
+// Kelopak sakura jatuh, ringan, pause saat tab tidak aktif
 export default function SakuraPetals({ density = 18 }: { density?: number }) {
   const ref = useRef<HTMLCanvasElement>(null);
 

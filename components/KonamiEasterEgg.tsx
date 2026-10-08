@@ -116,7 +116,7 @@ export default function KhodamChecker() {
   };
 
   const copy = () => {
-    navigator.clipboard.writeText(`My khodam is ${khodam} — checked at omnidev.vercel.app`);
+    navigator.clipboard.writeText(`My khodam is ${khodam}, checked at omnidev.vercel.app`);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
