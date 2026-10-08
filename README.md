@@ -18,10 +18,10 @@ npm run dev
 
 ## Struktur
 
-- `app/` — halaman (beranda, blog) dan API newsletter
-- `components/` — komponen UI
-- `content/blog/` — tulisan blog dalam Markdown
-- `lib/` — helper (blog, GitHub API)
+- `app/`, halaman (beranda, blog) dan API newsletter
+- `components/`, komponen UI
+- `content/blog/`, tulisan blog dalam Markdown
+- `lib/`, helper (blog, GitHub API)
 
 ## Menambah tulisan blog
 

@@ -12,11 +12,11 @@ const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", displ
 export const metadata: Metadata = {
   metadataBase: new URL("https://omnidevv.vercel.app"),
   title: {
-    default: "OmniDev — Abdul Malik Rizky Nur Rahmat | Junior Web Developer",
-    template: "%s — OmniDev",
+    default: "OmniDev · Abdul Malik Rizky Nur Rahmat | Junior Web Developer",
+    template: "%s · OmniDev",
   },
   description:
-    "Portfolio Abdul Malik Rizky Nur Rahmat — junior developer dari Bandung yang membangun website cepat, bot automasi WhatsApp/Telegram/Discord, dan pengalaman digital yang rapi.",
+    "Portfolio Abdul Malik Rizky Nur Rahmat, junior developer dari Bandung yang membangun website cepat, bot automasi WhatsApp/Telegram/Discord, dan pengalaman digital yang rapi.",
   keywords: [
     "Abdul Malik Rizky Nur Rahmat",
     "OmniDev",
@@ -32,9 +32,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Abdul Malik Rizky Nur Rahmat" }],
   creator: "OmniDev",
   openGraph: {
-    title: "OmniDev — Abdul Malik Rizky Nur Rahmat | Junior Web Developer",
+    title: "OmniDev · Abdul Malik Rizky Nur Rahmat | Junior Web Developer",
     description:
-      "Junior developer dari Bandung — website cepat, bot automasi, dan pengalaman digital yang rapi.",
+      "Junior developer dari Bandung, website cepat, bot automasi, dan pengalaman digital yang rapi.",
     url: "https://omnidevv.vercel.app",
     siteName: "OmniDev",
     locale: "id_ID",
@@ -44,15 +44,15 @@ export const metadata: Metadata = {
         url: "/images/hero-room.webp",
         width: 1200,
         height: 630,
-        alt: "OmniDev — Portfolio Abdul Malik Rizky Nur Rahmat",
+        alt: "OmniDev · Portfolio Abdul Malik Rizky Nur Rahmat",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "OmniDev — Abdul Malik Rizky Nur Rahmat | Junior Web Developer",
+    title: "OmniDev · Abdul Malik Rizky Nur Rahmat | Junior Web Developer",
     description:
-      "Junior developer dari Bandung — website cepat, bot automasi, dan pengalaman digital yang rapi.",
+      "Junior developer dari Bandung, website cepat, bot automasi, dan pengalaman digital yang rapi.",
     images: ["/images/hero-room.webp"],
   },
   robots: { index: true, follow: true },

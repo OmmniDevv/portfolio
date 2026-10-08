@@ -195,7 +195,7 @@ export default function CommandPalette() {
       <div
         role="dialog"
         aria-modal="true"
-        aria-label="Command palette — navigasi cepat"
+        aria-label="Command palette, navigasi cepat"
         className="glass-strong relative w-full max-w-lg overflow-hidden !rounded-2xl"
       >
         <div className="flex items-center gap-3 border-b border-[var(--hairline)] px-5 py-4">

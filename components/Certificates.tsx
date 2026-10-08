@@ -5,7 +5,7 @@ import { useLang } from "@/lib/i18n";
 export default function Certificates() {
   const { t } = useLang();
 
-  // PLACEHOLDER — ganti dengan sertifikat asli (course / lomba).
+  // PLACEHOLDER, ganti dengan sertifikat asli (course / lomba).
   const CERTIFICATES = [
     t.certificates.item1,
     t.certificates.item2,

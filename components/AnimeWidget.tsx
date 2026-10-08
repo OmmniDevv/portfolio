@@ -2,7 +2,7 @@
 import { useLang } from "@/lib/i18n";
 
 /**
- * Widget "Anime Favorit" — data STATIS agar tidak bergantung API eksternal.
+ * Widget "Anime Favorit", data STATIS agar tidak bergantung API eksternal.
  *
  * TODO: ganti 6 entri di bawah dengan anime favorit kamu (judul, skor, genre).
  * Kalau nanti kamu kasih username MyAnimeList, widget ini bisa di-upgrade

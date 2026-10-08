@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Halaman CV — rapi untuk dibaca di layar & di-print ke PDF via tombol di bawah
+ * Halaman CV, rapi untuk dibaca di layar & di-print ke PDF via tombol di bawah
  * (File > Print > Save as PDF). Tidak ada file cv.pdf statis; halaman ini penggantinya.
  *
  * TODO: sesuaikan isi (email, nomor HP, pengalaman, proyek) dengan data asli kamu.
@@ -19,8 +19,8 @@ const CV = {
   education: [
     {
       school: "SMKN 7 Baleendah",
-      period: "2023 — 2026",
-      detail: "Kelas XII — mulai programming serius sejak masuk SMK.",
+      period: "2023–2026",
+      detail: "Kelas XII, mulai programming serius sejak masuk SMK.",
     },
   ],
   skills: [
@@ -32,14 +32,14 @@ const CV = {
   experience: [
     {
       role: "Freelance Web & Bot Developer",
-      period: "2025 — Sekarang",
+      period: "2025–Sekarang",
       points: [
         "Mengerjakan project website dan bot automasi untuk klien.",
         "Membangun bot WhatsApp (Baileys) dengan fitur notifikasi & auto-reply.",
       ],
     },
     {
-      role: "Perpus-Online — Sistem Perpustakaan Sekolah",
+      role: "Perpus-Online: Sistem Perpustakaan Sekolah",
       period: "2026",
       points: [
         "Aplikasi Laravel untuk sirkulasi, denda, dan laporan perpustakaan.",
@@ -48,8 +48,8 @@ const CV = {
     },
   ],
   projects: [
-    "Portfolio pribadi (Next.js + Live2D) — omnidevv.vercel.app",
-    "Perpus-Online — sistem perpustakaan Laravel (github.com/OmmniDevv/Perpus-Online)",
+    "Portfolio pribadi (Next.js + Live2D), omnidevv.vercel.app",
+    "Perpus-Online, sistem perpustakaan Laravel (github.com/OmmniDevv/Perpus-Online)",
   ],
 };
 

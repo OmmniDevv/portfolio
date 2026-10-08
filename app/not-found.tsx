@@ -2,7 +2,7 @@ import Link from "next/link";
 import Reveal from "@/components/Reveal";
 
 export const metadata = {
-  title: "404 — Isekai! · OmniDev",
+  title: "404 · Isekai! · OmniDev",
   description: "Halaman yang kamu cari sudah isekai ke dunia lain.",
 };
 
@@ -27,7 +27,7 @@ export default function NotFound() {
             Tenang, portal pulangnya masih kebuka kok.
           </p>
           <p className="mt-4 font-mono text-xs text-faint">
-            {"// status: 404 — hero tidak ditemukan di party"}
+            {"// status: 404, hero tidak ditemukan di party"}
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link href="/" className="btn-primary text-sm">

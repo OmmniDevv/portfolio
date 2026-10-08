@@ -3,7 +3,7 @@ import { useLang } from "@/lib/i18n";
 import stats from "@/lib/repo-stats.json";
 
 /**
- * "Coding stats" — dihitung dari analisis repo publik GitHub.
+ * "Coding stats", dihitung dari analisis repo publik GitHub.
  * Data statis di lib/repo-stats.json, regenerate via:
  *   ~/workspace/bin/update-repo-stats
  */
@@ -19,7 +19,7 @@ const data = stats as {
 
 const fmt = (n: number) => n.toLocaleString("id-ID");
 
-/** Ringkasan keahlian dari distribusi bahasa — ditulis manual dari hasil analisis. */
+/** Ringkasan keahlian dari distribusi bahasa, ditulis manual dari hasil analisis. */
 function skillSummary(lang: string, t: any): string {
   return t.codingStats.skills[lang] ?? "";
 }

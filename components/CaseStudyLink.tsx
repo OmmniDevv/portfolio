@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 /**
- * Link "Lihat case study" — siap dipasang di kartu project
+ * Link "Lihat case study", siap dipasang di kartu project
  * (mis. di dalam components/Projects.tsx) tanpa mengubah file lain.
  *
  * Contoh pakai:

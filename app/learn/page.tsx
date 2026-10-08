@@ -4,13 +4,13 @@ import Reveal from "@/components/Reveal";
 export const metadata = {
   title: "Learn · OmniDev",
   description:
-    "learn.omnidevv.biz.id — web tutorial, dokumentasi, dan troubleshooting ngoding dari OmniDev: HTML/CSS, JavaScript, Next.js, Laravel, Flutter. Gratis, dengan playground interaktif.",
+    "learn.omnidevv.biz.id adalah web tutorial, dokumentasi, dan troubleshooting ngoding dari OmniDev: HTML/CSS, JavaScript, Next.js, Laravel, Flutter. Gratis, dengan playground interaktif.",
 };
 
 const LEARN_URL = "https://learn.omnidevv.biz.id";
 const REPO_URL = "https://github.com/OmmniDevv/OmniCode";
 
-/* Ikon SVG inline — portfolio tidak pakai icon library */
+/* Ikon SVG inline, portfolio tidak pakai icon library */
 function Icon({ d }: { d: string }) {
   return (
     <svg
@@ -35,13 +35,13 @@ const FITUR = [
     d: "M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15z",
     judul: "10 Modul Tutorial",
     deskripsi:
-      "HTML/CSS, JavaScript, Next.js + TypeScript, Laravel + PHP, sampai Flutter + Dart — tersusun dari dasar sampai praktik.",
+      "HTML/CSS, JavaScript, Next.js + TypeScript, Laravel + PHP, sampai Flutter + Dart: tersusun dari dasar sampai praktik.",
   },
   {
     d: "M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z",
     judul: "Troubleshooting & Error",
     deskripsi:
-      "Artikel bedah error: gejala/log, akar penyebab, dan solusi langkah demi langkah — mis. CORS Laravel, hydration mismatch.",
+      "Artikel bedah error: gejala/log, akar penyebab, dan solusi langkah demi langkah (mis. CORS Laravel, hydration mismatch).",
   },
   {
     d: "M6 3h12l4 6-4 6H6l-4-6 4-6zM12 9v6M9 12h6",
@@ -53,7 +53,7 @@ const FITUR = [
     d: "M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM21 21l-4.35-4.35",
     judul: "Pencarian Instan",
     deskripsi:
-      "Tekan Ctrl/⌘ + K untuk mencari semua tutorial dan artikel dalam sekejap — ala command palette.",
+      "Tekan Ctrl/⌘ + K untuk mencari semua tutorial dan artikel dalam sekejap, ala command palette.",
   },
   {
     d: "M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z",
@@ -101,7 +101,7 @@ export default function LearnPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-soft">
             OmniCode adalah web dokumentasi, tutorial interaktif, dan basis pengetahuan
-            troubleshooting yang kubangun dari pengalaman ngoding sehari-hari — HTML/CSS,
+            troubleshooting yang kubangun dari pengalaman ngoding sehari-hari, HTML/CSS,
             JavaScript, Next.js, Laravel, sampai Flutter. Semua gratis, semua bisa dicoba
             langsung di browser.
           </p>

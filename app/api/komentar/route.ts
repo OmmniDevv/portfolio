@@ -12,7 +12,7 @@ type Baris = {
 
 const SLUG_AMAN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
-/** GET /api/komentar?slug=xxx — daftar komentar 1 artikel, terlama dulu. */
+/** GET /api/komentar?slug=xxx, daftar komentar 1 artikel, terlama dulu. */
 export async function GET(req: Request) {
   const slug = new URL(req.url).searchParams.get("slug") ?? "";
   if (!SLUG_AMAN.test(slug)) {
@@ -40,7 +40,7 @@ export async function GET(req: Request) {
   }
 }
 
-/** POST /api/komentar — { slug, nama, pesan, parentId? } */
+/** POST /api/komentar, { slug, nama, pesan, parentId? } */
 export async function POST(req: Request) {
   if (!supabaseSiap()) {
     return NextResponse.json(

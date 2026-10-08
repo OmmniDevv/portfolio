@@ -3,13 +3,13 @@ import Reveal from "@/components/Reveal";
 
 export const metadata = {
   title: "Now · OmniDev",
-  description: "Lagi ngapain sekarang — project aktif, fokus belajar, dan tontonan.",
+  description: "Lagi ngapain sekarang: project aktif, fokus belajar, dan tontonan.",
 };
 
-/* ————————————————————————————————
+/* ================================
    EDIT DI SINI: semua data halaman Now.
    Update tiap beberapa minggu biar tetap fresh.
-———————————————————————————————— */
+================================ */
 const NOW = {
   updated: "Oktober 2026",
   status: "Kelas XII · terbuka untuk freelance",
@@ -26,7 +26,7 @@ const NOW = {
     },
     {
       nama: "Perpus-Online",
-      deskripsi: "Sistem perpustakaan Laravel untuk sekolah — notifikasi WA, export Excel.",
+      deskripsi: "Sistem perpustakaan Laravel untuk sekolah: notifikasi WA, export Excel.",
       status: "Maintenance",
     },
   ],
@@ -50,7 +50,7 @@ export default function NowPage() {
             Lagi <span className="text-gradient">ngapain</span> sekarang?
           </h1>
           <p className="mt-4 text-soft leading-relaxed">
-            Halaman ini update manual — snapshot singkat kesibukanku saat ini.
+            Halaman ini update manual. Snapshot singkat kesibukanku saat ini.
           </p>
           <p className="mt-3 font-mono text-xs text-faint">
             terakhir update: {NOW.updated} · {NOW.status}

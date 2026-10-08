@@ -3,14 +3,14 @@ import Reveal from "@/components/Reveal";
 
 export const metadata = {
   title: "Changelog · OmniDev",
-  description: "Riwayat update website portfolio ini — bukti web-nya hidup.",
+  description: "Riwayat update website portfolio ini: bukti web-nya hidup.",
 };
 
-/* ————————————————————————————————
+/* ================================
    EDIT DI SINI: tambah entri baru di ATAS
    tiap kali ada update yang layak dicatat.
    Format tanggal: YYYY-MM-DD
-———————————————————————————————— */
+================================ */
 type Entry = {
   date: string;
   title: string;
@@ -23,21 +23,21 @@ const ENTRIES: Entry[] = [
     date: "2026-10-08",
     title: "Section promo Learn di beranda",
     detail:
-      "Beranda kini punya section 'Ingin seperti saya? Ayo belajar.' tepat di bawah Sertifikat — banner CTA ke learn.omnidevv.biz.id dengan tombol ke halaman /learn.",
+      "Beranda kini punya section 'Ingin seperti saya? Ayo belajar.' tepat di bawah Sertifikat, banner CTA ke learn.omnidevv.biz.id dengan tombol ke halaman /learn.",
     tag: "fitur",
   },
   {
     date: "2026-10-08",
     title: "Halaman promo Learn",
     detail:
-      "Portfolio kini punya halaman /learn yang mempromosikan learn.omnidevv.biz.id — web tutorial, dokumentasi, dan troubleshooting ngoding (OmniCode). Bisa dibuka lewat footer dan Ctrl+K.",
+      "Portfolio kini punya halaman /learn yang mempromosikan learn.omnidevv.biz.id: web tutorial, dokumentasi, dan troubleshooting ngoding (OmniCode). Bisa dibuka lewat footer dan Ctrl+K.",
     tag: "fitur",
   },
   {
     date: "2026-10-06",
     title: "Fix section Karya yang gagal memuat",
     detail:
-      "Akar masalahnya: fetch repo GitHub tanpa token kena rate limit 60/jam di IP bersama Vercel, lalu section menampilkan pesan error. Sekarang ada fallback ke snapshot lokal (lib/repos-snapshot.json) — section Karya tidak pernah kosong lagi. Regenerasi snapshot: bin/update-repos-snapshot.",
+      "Akar masalahnya: fetch repo GitHub tanpa token kena rate limit 60/jam di IP bersama Vercel, lalu section menampilkan pesan error. Sekarang ada fallback ke snapshot lokal (lib/repos-snapshot.json). Section Karya tidak pernah kosong lagi. Regenerasi snapshot: bin/update-repos-snapshot.",
     tag: "perbaikan",
   },
   {
@@ -58,7 +58,7 @@ const ENTRIES: Entry[] = [
     date: "2026-10-04",
     title: "Fix gambar blog yang rusak",
     detail:
-      "Akar masalahnya: parser frontmatter tidak membersihkan tanda kutip, jadi URL gambar tersimpan sebagai \"https://...\" dan rusak di HTML. Sekarang kutip di sekeliling nilai otomatis dibersihkan — judul artikel yang tampil dengan tanda kutip juga ikut rapi.",
+      "Akar masalahnya: parser frontmatter tidak membersihkan tanda kutip, jadi URL gambar tersimpan sebagai \"https://...\" dan rusak di HTML. Sekarang kutip di sekeliling nilai otomatis dibersihkan. Judul artikel yang tampil dengan tanda kutip juga ikut rapi.",
     tag: "perbaikan",
   },
   {
@@ -128,7 +128,7 @@ const ENTRIES: Entry[] = [
     date: "2026-10-02",
     title: "Background ilustrasi kamar di hero",
     detail:
-      "Hero section pakai ilustrasi kamar lo-fi sebagai background — cuma di bagian paling atas, section bawah tetap bersih.",
+      "Hero section pakai ilustrasi kamar lo-fi sebagai background, cuma di bagian paling atas. Section bawah tetap bersih.",
     tag: "desain",
   },
   {

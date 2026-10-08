@@ -41,7 +41,7 @@ export async function POST(req: Request) {
     await fs.writeFile(DATA_FILE, JSON.stringify(list, null, 2), "utf-8");
   } catch {
     // Fallback: tetap anggap sukses agar UX tidak rusak di environment read-only.
-    // Untuk produksi (Vercel), hubungkan ke Resend/Brevo lewat RESEND_API_KEY —
+    // Untuk produksi (Vercel), hubungkan ke Resend/Brevo lewat RESEND_API_KEY ,
     // lihat komentar di components/Newsletter.tsx
     return NextResponse.json({
       message: "Terdaftar! (mode sementara)",

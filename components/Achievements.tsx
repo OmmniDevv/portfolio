@@ -5,7 +5,7 @@ import { useLang } from "@/lib/i18n";
 export default function Achievements() {
   const { t } = useLang();
 
-  // ISI DENGAN PRESTASI ASLI — contoh format per item:
+  // ISI DENGAN PRESTASI ASLI, contoh format per item:
 // {
 //   juara: "Juara 1",
 //   lomba: "Web Design Competition",
