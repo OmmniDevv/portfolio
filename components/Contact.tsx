@@ -4,7 +4,8 @@ import { useLang } from "@/lib/i18n";
 
 const SOCIALS = [
   { label: "GitHub", href: "https://github.com/OmmniDevv" },
-  { label: "Email", href: "mailto:omnidevv@gmail.com" },
+  { label: "Email Support", href: "mailto:support@omnidevv.biz.id" },
+  { label: "Email Admin", href: "mailto:admin@omnidevv.biz.id" },
   { label: "WhatsApp", href: "https://wa.me/6285869074622" },
   { label: "Telegram", href: "https://t.me/omnidevv" },
   { label: "Instagram", href: "https://instagram.com/mermaid_mannz" },
